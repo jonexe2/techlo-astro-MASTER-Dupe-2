@@ -1,0 +1,121 @@
+---
+import type { z } from "astro/zod";
+import type { Section } from "@/types";
+import { markdownify } from "@/lib/utils/textConverter";
+import overrideObjects from "@/lib/utils/overrideObjects.ts";
+import { getEntryCTM } from "@/lib/contentParser.astro";
+import type { faqSectionSchema } from "@/sections.schema";
+import Icons from "@/helpers/Icons.astro";
+
+type FaqSectionContent = Section &
+  NonNullable<z.infer<typeof faqSectionSchema>>;
+
+type Props = {
+  content?: FaqSectionContent;
+  hasSectionSpacing?: boolean;
+};
+
+const defaultContent = (
+  await getEntryCTM("sections", "faq-section", Astro.currentLocale)
+)?.data as FaqSectionContent;
+
+const actualContent = overrideObjects(
+  { ...defaultContent },
+  Astro.props.content,
+) as FaqSectionContent;
+
+const { enable = true, title, items = [] } = actualContent;
+const { hasSectionSpacing = true } = Astro.props;
+
+if (!enable || !items.length) {
+  return null;
+}
+---
+
+<section class:list={[!hasSectionSpacing && "pt-0", "pb-16 lg:pb-20 xl:pb-24"]}>
+  <div class="container space-y-12">
+    {
+      title && (
+        <h2
+          class="mx-auto max-w-3xl text-center"
+          data-scroll-reveal="blur-up"
+          set:html={markdownify(title)}
+        />
+      )
+    }
+
+    <div
+      class="faq-accordion mx-auto max-w-3xl"
+      data-scroll-reveal="fade-up"
+      data-scroll-reveal-delay="120">
+      <div class="hs-accordion-group">
+        {
+          items.map((item, index) => (
+            <div
+              class:list={[
+                "hs-accordion border-border-light border-b",
+                index === 0 && "border-t",
+              ]}
+              data-group="faq"
+              id={`faq-item-${index}`}>
+              <button
+                type="button"
+                class="hs-accordion-toggle text-dark flex w-full items-center justify-between gap-4 py-6 text-start font-medium transition-colors"
+                aria-expanded="false"
+                aria-controls={`faq-content-${index}`}>
+                <span class="text-h6" set:html={markdownify(item.question)} />
+                <span class="faq-icon flex size-8 shrink-0 items-center justify-center rounded-full bg-theme-light transition-colors">
+                  <Icons icon="Plus" class="hs-accordion-active:hidden size-4" />
+                  <Icons icon="Minus" class="hidden hs-accordion-active:block size-4" />
+                </span>
+              </button>
+              <div
+                id={`faq-content-${index}`}
+                role="region"
+                aria-labelledby={`faq-item-${index}`}
+                class="hs-accordion-content w-full overflow-hidden transition-all duration-300 ease-in-out hidden">
+                <p
+                  class="text-text-default leading-body pb-6 pe-12"
+                  set:html={markdownify(item.answer)}
+                />
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Keep scroll reveal measurements fresh after accordion content changes.
+  // @ts-nocheck
+  import { HSAccordion } from "preline";
+
+  window.addEventListener("load", () => {
+    const accordions = document.querySelectorAll(".faq-accordion .hs-accordion");
+
+    accordions.forEach((currentAccordion) => {
+      const instance = HSAccordion.getInstance(currentAccordion, true);
+
+      if (instance?.element) {
+        instance.element.on("open", () => {
+          window.__techloScrollReveal?.refresh();
+
+          const group = currentAccordion.getAttribute("data-group");
+
+          if (group) {
+            document
+              .querySelectorAll(`.hs-accordion[data-group="${group}"]`)
+              .forEach((accordion) => {
+                if (accordion !== currentAccordion) {
+                  const other = HSAccordion.getInstance(accordion, true);
+                  other?.element?.hide();
+                }
+              });
+          }
+        });
+      }
+    });
+  });
+</script>
