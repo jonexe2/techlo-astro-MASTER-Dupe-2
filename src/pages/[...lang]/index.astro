@@ -10,7 +10,9 @@ import ServicesSection from "@/components/sections/ServicesSection.astro";
 import WorkingProcessSection from "@/components/sections/WorkingProcessSection.astro";
 import TestimonialQuoteSection from "@/components/sections/TestimonialQuoteSection.astro";
 import FaqSection from "@/components/sections/FaqSection.astro";
+import ServiceAreaSection from "@/components/sections/ServiceAreaSection.astro";
 import ContactSectionTwo from "@/components/sections/ContactSectionTwo.astro";
+import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection.astro";
 
 export function getStaticPaths() {
   return generatePaths();
@@ -43,9 +45,11 @@ const skillSectionContent = await getEntryCTM(
     hasSectionBackground={true}
     content={skillSectionContent.data}
   />
+  <WhyChooseUsSection />
   <WorkingProcessSection />
   <TestimonialQuoteSection />
   <FaqSection />
+  <ServiceAreaSection />
   <ContactSectionTwo hasSectionSpacing={false} />
   <TeamSection hasDarkAppearance={true} hasSectionSpacing={false} />
   <BlogSection />

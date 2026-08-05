@@ -349,6 +349,30 @@ export const faqSectionSchema = z
   })
   .optional();
 
+export const serviceAreaSectionSchema = z
+  .object({
+    enable: z.boolean().default(true).optional(),
+    eyebrow: z.string().optional(),
+    title: z.string().optional(),
+    description: z.string().optional(),
+    cities: z.array(z.string()).optional(),
+    mapLabel: z.string().optional(),
+    mapEmbedUrl: z.string().optional(),
+  })
+  .optional();
+
+export const whyChooseUsSectionSchema = z
+  .object({
+    enable: z.boolean().default(true).optional(),
+    eyebrow: z.string().optional(),
+    title: z.string().optional(),
+    paragraphs: z.array(z.string()).optional(),
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
+    button: sharedButton.optional(),
+  })
+  .optional();
+
 export const sectionsSchema = {
   servicesSection: servicesSectionSchema,
   ctaSection: ctaSectionSchema,
@@ -360,4 +384,6 @@ export const sectionsSchema = {
   workingProcessSection: workingProcessSectionSchema,
   multipurposeSection: multipurposeSectionSchema,
   faqSection: faqSectionSchema,
+  serviceAreaSection: serviceAreaSectionSchema,
+  whyChooseUsSection: whyChooseUsSectionSchema,
 };
