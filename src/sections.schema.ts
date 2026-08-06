@@ -373,6 +373,23 @@ export const whyChooseUsSectionSchema = z
   })
   .optional();
 
+export const alternativeServicesSectionSchema = z
+  .object({
+    enable: z.boolean().default(true).optional(),
+    services: z
+      .array(
+        z.object({
+          title: z.string(),
+          description: z.string(),
+          image: z.string(),
+          imageAlt: z.string(),
+          button: sharedButton,
+        }),
+      )
+      .length(6),
+  })
+  .optional();
+
 export const sectionsSchema = {
   servicesSection: servicesSectionSchema,
   ctaSection: ctaSectionSchema,
@@ -386,4 +403,5 @@ export const sectionsSchema = {
   faqSection: faqSectionSchema,
   serviceAreaSection: serviceAreaSectionSchema,
   whyChooseUsSection: whyChooseUsSectionSchema,
+  alternativeServicesSection: alternativeServicesSectionSchema,
 };
