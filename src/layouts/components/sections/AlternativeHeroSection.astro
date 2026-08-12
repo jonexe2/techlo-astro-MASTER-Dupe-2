@@ -1,0 +1,112 @@
+---
+import type { z } from "astro/zod";
+import type { Section } from "@/types";
+import Button from "@/components/Button.astro";
+import DynamicIcon from "@/helpers/DynamicIcon.astro";
+import OptimizedImage from "@/components/utilities/OptimizedImage.astro";
+import AlternativeHeroForm from "@/components/widgets/AlternativeHeroForm.astro";
+import { getEntryCTM } from "@/lib/contentParser.astro";
+import overrideObjects from "@/lib/utils/overrideObjects.ts";
+import type { alternativeHeroSectionSchema } from "@/sections.schema";
+
+type AlternativeHeroContent = Section &
+  NonNullable<z.infer<typeof alternativeHeroSectionSchema>>;
+
+type Props = {
+  content?: AlternativeHeroContent;
+};
+
+const defaultContent = (
+  await getEntryCTM("sections", "alternative-hero-section", Astro.currentLocale)
+)?.data as AlternativeHeroContent;
+
+const actualContent = overrideObjects(
+  { ...defaultContent },
+  Astro.props.content || {},
+) as AlternativeHeroContent;
+
+const {
+  enable = true,
+  heading,
+  description,
+  backgroundImage,
+  backgroundImageAlt = "",
+  checklist = [],
+  button,
+  form,
+} = actualContent;
+
+if (!enable || !heading || !form) {
+  return null;
+}
+---
+
+<section
+  aria-labelledby="alternative-hero-heading"
+  class="section-spacing-vertical relative isolate overflow-hidden">
+  {
+    backgroundImage && (
+      <OptimizedImage
+        src={backgroundImage}
+        alt={backgroundImageAlt}
+        aria-hidden="true"
+        width={1920}
+        height={1280}
+        widths={[768, 1024, 1440, 1920, 2560]}
+        sizes="100vw"
+        quality={78}
+        loading="lazy"
+        class="absolute inset-0 -z-20 size-full object-cover"
+      />
+    )
+  }
+  <div class="absolute inset-0 -z-10 bg-black/60" aria-hidden="true"></div>
+
+  <div class="container max-sm:px-6">
+    <div class="grid gap-12 xl:grid-cols-12 xl:items-center xl:gap-16">
+      <div class="max-w-3xl xl:col-span-7">
+        <h2
+          id="alternative-hero-heading"
+          class="text-h2-sm sm:text-h1-sm md:text-display-6 lg:text-display-5 xl:text-display-4 text-white">
+          {heading}
+        </h2>
+
+        <p class="mt-5 max-w-2xl text-base text-white/85 md:text-lg">
+          {description}
+        </p>
+
+        {
+          checklist.length > 0 && (
+            <ul class="mt-8 space-y-4" role="list">
+              {checklist.map((item) => (
+                <li class="flex items-start gap-3 text-base font-medium text-white md:text-lg">
+                  <span class="text-primary mt-1 flex size-6 shrink-0 items-center justify-center rounded-full bg-white">
+                    <DynamicIcon
+                      name="Check"
+                      class="size-4"
+                      aria-hidden="true"
+                    />
+                  </span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          )
+        }
+
+        {
+          button && (
+            <div class="mt-10">
+              <Button {...button} />
+            </div>
+          )
+        }
+      </div>
+
+      <div
+        class="mx-auto w-full max-w-lg xl:col-span-5 xl:mx-0 xl:justify-self-end">
+        <AlternativeHeroForm form={form} />
+      </div>
+    </div>
+  </div>
+</section>

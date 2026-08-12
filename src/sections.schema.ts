@@ -390,6 +390,43 @@ export const alternativeServicesSectionSchema = z
   })
   .optional();
 
+export const alternativeHeroFormSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  emailSubject: z.string().optional(),
+  fields: z.object({
+    firstNameLabel: z.string(),
+    lastNameLabel: z.string(),
+    phoneLabel: z.string(),
+    emailLabel: z.string(),
+    servicesLabel: z.string(),
+    servicesPlaceholder: z.string(),
+  }),
+  services: z.array(z.string()).min(1),
+  submitButton: sharedButton,
+  messages: z.object({
+    validation: z.string(),
+    servicesRequired: z.string(),
+    pending: z.string(),
+    success: z.string(),
+    error: z.string(),
+    unknownProvider: z.string(),
+  }),
+});
+
+export const alternativeHeroSectionSchema = z
+  .object({
+    enable: z.boolean().default(true).optional(),
+    heading: z.string(),
+    description: z.string(),
+    backgroundImage: z.string(),
+    backgroundImageAlt: z.string().optional(),
+    checklist: z.array(z.string()).length(4),
+    button: sharedButton,
+    form: alternativeHeroFormSchema,
+  })
+  .optional();
+
 export const sectionsSchema = {
   servicesSection: servicesSectionSchema,
   ctaSection: ctaSectionSchema,
@@ -404,4 +441,5 @@ export const sectionsSchema = {
   serviceAreaSection: serviceAreaSectionSchema,
   whyChooseUsSection: whyChooseUsSectionSchema,
   alternativeServicesSection: alternativeServicesSectionSchema,
+  alternativeHeroSection: alternativeHeroSectionSchema,
 };
