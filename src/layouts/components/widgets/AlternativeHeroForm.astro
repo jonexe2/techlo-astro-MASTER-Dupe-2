@@ -25,15 +25,16 @@ const fieldIds = {
 };
 ---
 
-<div class="w-full max-w-lg shadow-xl shadow-black/20">
-  <div class="bg-primary rounded-t-2xl px-6 py-6 sm:px-8 sm:py-7">
+<div
+  class="w-full max-w-lg overflow-hidden rounded-3xl border border-white/25 bg-white shadow-2xl shadow-black/30">
+  <div class="bg-primary px-6 py-7 sm:px-9 sm:py-8">
     <h3 class="text-h4-sm md:text-h4 text-white">{form.title}</h3>
     <p class="mt-2 text-sm text-white/85 sm:text-base">{form.description}</p>
   </div>
 
   <form
     id="alternative-hero-form"
-    class="scroll-mt-32 rounded-b-2xl bg-white px-6 py-7 sm:px-8 sm:py-8"
+    class="scroll-mt-32 bg-white px-6 py-8 sm:px-9 sm:py-9"
     method="post"
     {...{
       "data-action": contactFormAction,
@@ -205,7 +206,7 @@ const fieldIds = {
       </p>
     </div>
 
-    <div class="mt-7">
+    <div class="mt-8 flex justify-center">
       <Button
         {...form.submitButton}
         tag="button"
@@ -213,6 +214,15 @@ const fieldIds = {
         id="alternative-hero-submit"
       />
     </div>
+
+    {
+      form.trustNote && (
+        <p class="text-text-light mt-3 flex items-center justify-center gap-1.5 text-center text-xs sm:text-sm">
+          <DynamicIcon name="Lock" class="size-4 shrink-0" aria-hidden="true" />
+          <span>{form.trustNote}</span>
+        </p>
+      )
+    }
 
     <div
       class="message pending border-primary/30 bg-primary/10 text-dark mt-5 hidden rounded-md border px-4 py-3 text-sm"

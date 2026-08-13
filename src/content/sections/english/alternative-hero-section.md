@@ -1,13 +1,21 @@
 ---
 enable: true
 
-heading: "Heating & Cooling Services in Boston, MA"
+eyebrow: "Reliable Heating & Cooling Solutions"
+heading: "Trusted Heating & Cooling Services in Boston, MA"
+headingAccent: "Boston, MA"
 description: "Get help with HVAC repairs, installation, maintenance, and indoor air quality for your Boston-area home."
 
 # Pexels photo 32497161 by Kathleen Austin Kuhn. The image is decorative,
 # so its accessible alternative is intentionally empty.
 backgroundImage: "/images/alternative-hero-hvac.jpg"
 backgroundImageAlt: ""
+
+trustBanner:
+  googleReview:
+    rating: "5.0 Rating"
+    reviews: "200+ Reviews"
+  licensedLabel: "Licensed & Insured"
 
 checklist:
   - "Air Conditioning Repair"
@@ -33,6 +41,7 @@ form:
   title: "Request Your Service"
   description: "Tell us what you need and we'll use your information to follow up about your request."
   emailSubject: "New HVAC service request"
+  trustNote: "100% Secure. Your info stays private."
 
   fields:
     firstNameLabel: "First Name"
@@ -54,7 +63,7 @@ form:
     # Refer to sharedButton in src/sections.schema.ts for all options.
     enable: true
     tag: "button"
-    label: "Request Service"
+    label: "Get My Free Quote"
     variant: "fill"
     rel: ""
     target: ""

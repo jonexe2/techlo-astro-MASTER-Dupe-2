@@ -394,6 +394,7 @@ export const alternativeHeroFormSchema = z.object({
   title: z.string(),
   description: z.string(),
   emailSubject: z.string().optional(),
+  trustNote: z.string().optional(),
   fields: z.object({
     firstNameLabel: z.string(),
     lastNameLabel: z.string(),
@@ -417,11 +418,22 @@ export const alternativeHeroFormSchema = z.object({
 export const alternativeHeroSectionSchema = z
   .object({
     enable: z.boolean().default(true).optional(),
+    eyebrow: z.string().optional(),
     heading: z.string(),
+    headingAccent: z.string().optional(),
     description: z.string(),
     backgroundImage: z.string(),
     backgroundImageAlt: z.string().optional(),
     checklist: z.array(z.string()).length(4),
+    trustBanner: z
+      .object({
+        googleReview: z.object({
+          rating: z.string(),
+          reviews: z.string(),
+        }),
+        licensedLabel: z.string(),
+      })
+      .optional(),
     button: sharedButton,
     form: alternativeHeroFormSchema,
   })
