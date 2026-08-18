@@ -1,0 +1,10 @@
+---
+import Base from "@/layouts/Base.astro";
+import { generatePaths } from "@/lib/utils/i18nUtils.ts";
+
+export function getStaticPaths() {
+  return generatePaths();
+}
+---
+
+<Base metaTitle="Hero Alternatives" fitToScreen={false} hideCallToAction />

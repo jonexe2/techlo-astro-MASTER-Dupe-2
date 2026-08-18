@@ -45,6 +45,11 @@
           "enable": true,
           "name": "Alternative Services",
           "url": "/services/alternative-services/"
+        },
+        {
+          "enable": true,
+          "name": "Hero Alternatives",
+          "url": "/services/hero-alternatives/"
         }
       ]
     },
