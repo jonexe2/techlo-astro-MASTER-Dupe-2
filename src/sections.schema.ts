@@ -414,6 +414,17 @@ export const alternativeHeroFormSchema = z.object({
   }),
 });
 
+export const aboutUsIntroSectionSchema = z
+  .object({
+    enable: z.boolean().default(true).optional(),
+    pageTitle: z.string(),
+    metaDescription: z.string(),
+    image: z.string(),
+    imageAlt: z.string(),
+    description: z.string(),
+  })
+  .optional();
+
 export const alternativeHeroSectionSchema = z
   .object({
     enable: z.boolean().default(true).optional(),
@@ -451,6 +462,7 @@ export const sectionsSchema = {
   faqSection: faqSectionSchema,
   serviceAreaSection: serviceAreaSectionSchema,
   whyChooseUsSection: whyChooseUsSectionSchema,
+  aboutUsIntroSection: aboutUsIntroSectionSchema,
   alternativeServicesSection: alternativeServicesSectionSchema,
   alternativeHeroSection: alternativeHeroSectionSchema,
 };

@@ -50,6 +50,11 @@
     },
     {
       "enable": true,
+      "name": "About Us",
+      "url": "/about-us/"
+    },
+    {
+      "enable": true,
       "name": "Blog",
       "url": "/blog/"
     },
@@ -77,7 +82,7 @@
         {
           "enable": true,
           "name": "About Us",
-          "url": "#"
+          "url": "/about-us/"
         },
         {
           "enable": true,

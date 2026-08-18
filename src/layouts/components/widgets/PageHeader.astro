@@ -9,10 +9,16 @@ type Props = {
     image?: string;
     breadcrumb?: boolean;
     hiddenPaths?: string[];
+    currentBreadcrumbLabel?: string;
   };
 };
 
-const { title, hiddenPaths, breadcrumb = true } = Astro.props.content || {};
+const {
+  title,
+  hiddenPaths,
+  breadcrumb = true,
+  currentBreadcrumbLabel,
+} = Astro.props.content || {};
 const t = await useTranslations(Astro.currentLocale as string);
 
 const createBreadcrumbParts = (pathname: string) => {
@@ -37,8 +43,11 @@ const createBreadcrumbParts = (pathname: string) => {
   segments.forEach((segment, index) => {
     if (segment === "page") return;
 
+    const isCurrent = index === segments.length - 1;
     const label =
-      humanize(segment.replace(".html", "").replace(/[-_]/g, " ")) || "";
+      (isCurrent && currentBreadcrumbLabel) ||
+      humanize(segment.replace(".html", "").replace(/[-_]/g, " ")) ||
+      "";
     const href = getLocaleUrlCTM(
       `/${segments.slice(0, index + 1).join("/")}`,
       Astro.currentLocale,
@@ -47,7 +56,7 @@ const createBreadcrumbParts = (pathname: string) => {
     breadcrumbParts.push({
       label,
       href: hiddenPaths?.includes(label) ? "" : href,
-      isCurrent: index === segments.length - 1,
+      isCurrent,
     });
   });
 
