@@ -55,6 +55,11 @@
     },
     {
       "enable": true,
+      "name": "Contact Us",
+      "url": "/contact-us/"
+    },
+    {
+      "enable": true,
       "name": "Blog",
       "url": "/blog/"
     },
@@ -92,7 +97,7 @@
         {
           "enable": true,
           "name": "Contact",
-          "url": "#"
+          "url": "/contact-us/"
         }
       ]
     },
