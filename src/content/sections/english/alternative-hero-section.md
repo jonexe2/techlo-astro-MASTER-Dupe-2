@@ -38,14 +38,13 @@ button:
     position: "right"
 
 form:
-  title: "Request Your Service"
-  description: "Tell us what you need and we'll use your information to follow up about your request."
+  title: "Get Your Free Estimate"
+  description: "Tell us what you need and we'll your follow up with you."
   emailSubject: "New HVAC service request"
   trustNote: "100% Secure. Your info stays private."
 
   fields:
-    firstNameLabel: "First Name"
-    lastNameLabel: "Last Name"
+    fullNameLabel: "Full Name"
     phoneLabel: "Phone Number"
     emailLabel: "Email"
     servicesLabel: "Which service do you need?"
@@ -67,7 +66,7 @@ form:
     variant: "fill"
     rel: ""
     target: ""
-    class: "px-8 py-4"
+    class: "w-full justify-center px-8 py-4"
     icon:
       enable: false
       name: "ArrowUpRight"

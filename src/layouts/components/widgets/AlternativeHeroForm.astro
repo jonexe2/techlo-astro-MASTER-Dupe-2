@@ -17,8 +17,7 @@ const {
 } = config;
 
 const fieldIds = {
-  firstName: "alternative-hero-first-name",
-  lastName: "alternative-hero-last-name",
+  fullName: "alternative-hero-full-name",
   phone: "alternative-hero-phone",
   email: "alternative-hero-email",
   services: "alternative-hero-services",
@@ -26,15 +25,18 @@ const fieldIds = {
 ---
 
 <div
-  class="w-full max-w-lg overflow-hidden rounded-3xl border border-white/25 bg-white shadow-2xl shadow-black/30">
-  <div class="bg-primary px-6 py-7 sm:px-9 sm:py-8">
-    <h3 class="text-h4-sm md:text-h4 text-white">{form.title}</h3>
-    <p class="mt-2 text-sm text-white/85 sm:text-base">{form.description}</p>
+  class="border-border-light w-full max-w-lg rounded-3xl border bg-white px-6 py-8 shadow-xl shadow-black/15 sm:px-9 sm:py-10">
+  <div class="text-center">
+    <h3 class="text-dark text-h4-sm md:text-h4">{form.title}</h3>
+    <span
+      class="bg-primary mx-auto mt-4 block h-1 w-12 rounded-full"
+      aria-hidden="true"></span>
+    <p class="text-text-light mt-4 text-sm">{form.description}</p>
   </div>
 
   <form
     id="alternative-hero-form"
-    class="scroll-mt-32 bg-white px-6 py-8 sm:px-9 sm:py-9"
+    class="mt-8 scroll-mt-32"
     method="post"
     {...{
       "data-action": contactFormAction,
@@ -73,35 +75,19 @@ const fieldIds = {
       data-services-message={form.messages.servicesRequired}>
     </p>
 
-    <div class="grid grid-cols-1 gap-5 sm:grid-cols-2">
+    <div class="space-y-5">
       <div class="alternative-hero-field">
         <label
           class="text-dark mb-2 block text-sm font-medium"
-          for={fieldIds.firstName}>
-          {form.fields.firstNameLabel}
+          for={fieldIds.fullName}>
+          {form.fields.fullNameLabel}
         </label>
         <input
-          id={fieldIds.firstName}
+          id={fieldIds.fullName}
           class="alternative-hero-control border-border-light focus:border-primary focus:ring-primary/10 text-dark w-full rounded-lg border bg-white px-4 py-3 text-base transition-colors outline-none focus:ring-4"
           type="text"
-          name="firstName"
-          autocomplete="given-name"
-          required
-        />
-      </div>
-
-      <div class="alternative-hero-field">
-        <label
-          class="text-dark mb-2 block text-sm font-medium"
-          for={fieldIds.lastName}>
-          {form.fields.lastNameLabel}
-        </label>
-        <input
-          id={fieldIds.lastName}
-          class="alternative-hero-control border-border-light focus:border-primary focus:ring-primary/10 text-dark w-full rounded-lg border bg-white px-4 py-3 text-base transition-colors outline-none focus:ring-4"
-          type="text"
-          name="lastName"
-          autocomplete="family-name"
+          name="fullName"
+          autocomplete="name"
           required
         />
       </div>
@@ -206,7 +192,7 @@ const fieldIds = {
       </p>
     </div>
 
-    <div class="mt-8 flex justify-center">
+    <div class="mt-8">
       <Button
         {...form.submitButton}
         tag="button"

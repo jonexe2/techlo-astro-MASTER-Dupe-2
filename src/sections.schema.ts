@@ -396,8 +396,7 @@ export const alternativeHeroFormSchema = z.object({
   emailSubject: z.string().optional(),
   trustNote: z.string().optional(),
   fields: z.object({
-    firstNameLabel: z.string(),
-    lastNameLabel: z.string(),
+    fullNameLabel: z.string(),
     phoneLabel: z.string(),
     emailLabel: z.string(),
     servicesLabel: z.string(),
