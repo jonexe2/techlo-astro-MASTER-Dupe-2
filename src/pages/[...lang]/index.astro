@@ -2,7 +2,6 @@
 import Base from "@/layouts/Base.astro";
 import { getEntryCTM } from "@/lib/contentParser.astro";
 import { generatePaths } from "@/lib/utils/i18nUtils.ts";
-import TeamSection from "@/components/sections/TeamSection.astro";
 import BlogSection from "@/components/sections/BlogSection.astro";
 import AlternativeHeroSection from "@/components/sections/AlternativeHeroSection.astro";
 import MultipurposeSection from "@/components/sections/Section.astro";
@@ -51,6 +50,5 @@ const skillSectionContent = await getEntryCTM(
   <FaqSection />
   <ServiceAreaSection />
   <ContactSectionTwo hasSectionSpacing={false} />
-  <TeamSection hasDarkAppearance={true} hasSectionSpacing={false} />
   <BlogSection />
 </Base>

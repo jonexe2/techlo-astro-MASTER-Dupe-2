@@ -67,23 +67,12 @@
       "enable": true,
       "name": "Blog",
       "url": "/blog/"
-    },
-    {
-      "enable": true,
-      "name": "Team",
-      "url": "/team/"
     }
   ],
   "footer": [
     {
       "label": "Quick Links",
       "list": [
-        {
-          "enable": true,
-          "name": "Our Team",
-          "url": "/team/",
-          "active": true
-        },
         {
           "enable": true,
           "name": "Blogs",

@@ -124,22 +124,6 @@ export const inputFieldSchema = z.object({
 // SECTIONS SCHEMA
 // ================================================================================
 
-export const teamSectionSchema = z
-  .object({
-    enable: z.boolean().default(false), // Control visibility of this section
-    title: z.string().optional(),
-    button: button.optional(),
-    limit: z.union([z.number(), z.literal(false)]).optional(), // Max number of members to show
-    options: z
-      .object({
-        layout: z.enum(["grid", "carousel"]).default("grid"),
-        limit: z.union([z.number(), z.literal(false)]).optional(),
-        marquee: sharedMarquee.optional(),
-      })
-      .optional(),
-  })
-  .optional();
-
 export const contactFormSchema = z.object({
   action: z.string().optional(),
   emailSubject: z.string().optional(),
@@ -454,7 +438,6 @@ export const sectionsSchema = {
   ctaSection: ctaSectionSchema,
   contactSection: contactSectionSchema,
   contactSectionTwo: contactSectionTwoSchema,
-  teamSection: teamSectionSchema,
   testimonialSection: testimonialSectionSchema,
   bannerAgencySection: bannerAgencySectionSchema,
   workingProcessSection: workingProcessSectionSchema,
