@@ -14,7 +14,10 @@ type AlternativeHeroContent = Section &
 
 type Props = {
   content?: AlternativeHeroContent;
+  hasFixedHeaderOffset?: boolean;
 };
+
+const { hasFixedHeaderOffset = false } = Astro.props;
 
 const defaultContent = (
   await getEntryCTM("sections", "alternative-hero-section", Astro.currentLocale)
@@ -46,7 +49,12 @@ if (!enable || !heading || !form) {
 
 <section
   aria-labelledby="alternative-hero-heading"
-  class="section-spacing-vertical relative isolate overflow-visible">
+  class:list={[
+    "relative isolate overflow-visible",
+    hasFixedHeaderOffset
+      ? "pb-16 pt-48 lg:pb-20 lg:pt-40 xl:pb-24 xl:pt-44"
+      : "section-spacing-vertical",
+  ]}>
   {
     backgroundImage && (
       <OptimizedImage
@@ -58,7 +66,8 @@ if (!enable || !heading || !form) {
         widths={[768, 1024, 1440, 1920, 2560]}
         sizes="100vw"
         quality={78}
-        loading="lazy"
+        loading="eager"
+        fetchpriority="high"
         class="absolute inset-0 -z-20 size-full object-cover"
       />
     )
@@ -80,7 +89,7 @@ if (!enable || !heading || !form) {
           )
         }
 
-        <h2
+        <h1
           id="alternative-hero-heading"
           class="font-montserrat text-h2-sm sm:text-h1-sm md:text-display-6 lg:text-display-5 xl:text-display-4 leading-[1.02] font-extrabold text-white">
           {
@@ -103,7 +112,7 @@ if (!enable || !heading || !form) {
               heading
             )
           }
-        </h2>
+        </h1>
 
         <p class="mt-10 max-w-2xl text-base text-white/85 md:mt-12 md:text-lg">
           {description}

@@ -4,7 +4,6 @@ import { getEntryCTM } from "@/lib/contentParser.astro";
 import { generatePaths } from "@/lib/utils/i18nUtils.ts";
 import TeamSection from "@/components/sections/TeamSection.astro";
 import BlogSection from "@/components/sections/BlogSection.astro";
-import BannerThree from "@/components/sections/BannerThree.astro";
 import AlternativeHeroSection from "@/components/sections/AlternativeHeroSection.astro";
 import MultipurposeSection from "@/components/sections/Section.astro";
 import ServicesSection from "@/components/sections/ServicesSection.astro";
@@ -33,8 +32,7 @@ const skillSectionContent = await getEntryCTM(
 ---
 
 <Base {...homepageContent?.data} headerLayout="three" headerPosition="fixed">
-  <BannerThree />
-  <AlternativeHeroSection />
+  <AlternativeHeroSection hasFixedHeaderOffset />
   <ServicesSection
     hasLightBackground={false}
     content={{

@@ -1,5 +1,6 @@
 ---
 import Base from "@/layouts/Base.astro";
+import BannerThree from "@/components/sections/BannerThree.astro";
 import { generatePaths } from "@/lib/utils/i18nUtils.ts";
 
 export function getStaticPaths() {
@@ -7,4 +8,11 @@ export function getStaticPaths() {
 }
 ---
 
-<Base metaTitle="Hero Alternatives" fitToScreen={false} hideCallToAction />
+<Base
+  metaTitle="Hero Alternatives"
+  fitToScreen={false}
+  hideCallToAction
+  headerLayout="three"
+  headerPosition="fixed">
+  <BannerThree />
+</Base>
