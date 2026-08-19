@@ -20,7 +20,6 @@ type ContactSectionContent = Section &
 type Props = {
   content?: ContactSectionTwoContent;
   hasSectionSpacing?: boolean;
-  tightBottomSpacing?: boolean;
 };
 
 const defaultContent = (
@@ -73,7 +72,7 @@ if (formContent && formOverride?.submitLabel) {
   };
 }
 
-const { hasSectionSpacing = true, tightBottomSpacing = false } = Astro.props;
+const { hasSectionSpacing = true } = Astro.props;
 const infoList = Array.isArray(info)
   ? info.filter((item) => item?.title || item?.description || item?.icon)
   : [];
@@ -90,13 +89,7 @@ if (!hasContentSource || !enable || (!hasLeftContent && !hasFormPanelContent)) {
 ---
 
 <section id="contact" class:list={[!hasSectionSpacing && "pt-0"]}>
-  <div
-    class:list={[
-      "bg-theme-light",
-      tightBottomSpacing
-        ? "pt-20 pb-10 lg:pt-28 lg:pb-12 xl:pt-44 xl:pb-12"
-        : "section-spacing-lg-vertical",
-    ]}>
+  <div class:list={["section-spacing-lg-vertical bg-theme-light"]}>
     <div
       class:list={[
         "container grid gap-14 lg:items-start",
