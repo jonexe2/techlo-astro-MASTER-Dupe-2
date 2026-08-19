@@ -12,7 +12,7 @@ type Props = {
 };
 
 const { content } = Astro.props;
-const { enable = true, image, imageAlt, description } = content;
+const { enable = true, image, imageAlt, title, paragraphs } = content;
 
 if (!enable) {
   return null;
@@ -33,7 +33,10 @@ if (!enable) {
       />
 
       <div class="max-w-xl">
-        <p class="text-lg">{description}</p>
+        <h2>{title}</h2>
+        <div class="mt-6 space-y-4">
+          {paragraphs.map((paragraph) => <p class="text-lg">{paragraph}</p>)}
+        </div>
       </div>
     </div>
   </div>

@@ -405,7 +405,8 @@ export const aboutUsIntroSectionSchema = z
     metaDescription: z.string(),
     image: z.string(),
     imageAlt: z.string(),
-    description: z.string(),
+    title: z.string(),
+    paragraphs: z.array(z.string()).min(1),
   })
   .optional();
 
