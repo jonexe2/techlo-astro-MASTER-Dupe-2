@@ -1,6 +1,7 @@
 ---
 import Base from "@/layouts/Base.astro";
 import ContactSectionTwo from "@/components/sections/ContactSectionTwo.astro";
+import ContactMapSection from "@/components/sections/ContactMapSection.astro";
 import PageHeader from "@/components/widgets/PageHeader.astro";
 import { generatePaths } from "@/lib/utils/i18nUtils.ts";
 
@@ -22,4 +23,5 @@ const metaDescription =
     content={{ title: pageTitle, currentBreadcrumbLabel: pageTitle }}
   />
   <ContactSectionTwo hasSectionSpacing={false} />
+  <ContactMapSection />
 </Base>
