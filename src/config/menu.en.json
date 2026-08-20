@@ -38,11 +38,6 @@
         },
         {
           "enable": true,
-          "name": "Cloud Migration & DevOps",
-          "url": "/services/service-07/"
-        },
-        {
-          "enable": true,
           "name": "Alternative Services",
           "url": "/services/alternative-services/"
         },
