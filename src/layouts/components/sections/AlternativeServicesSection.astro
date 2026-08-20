@@ -52,8 +52,9 @@ if (!enable || services.length === 0) {
             <div
               class:list={[
                 "relative overflow-visible",
-                showIcons &&
-                  "-mx-1 -mt-1 sm:-mx-1.5 sm:-mt-1.5 lg:-mx-2 lg:-mt-2",
+                showIcons
+                  ? "sm:-mx-1.5 sm:-mt-1.5 lg:-mx-2 lg:-mt-2"
+                  : "lg:-mx-2 lg:-mt-2",
               ]}>
               <OptimizedImage
                 src={service.image}
