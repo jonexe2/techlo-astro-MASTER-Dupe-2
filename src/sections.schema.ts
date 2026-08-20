@@ -367,6 +367,7 @@ export const alternativeServicesSectionSchema = z
           description: z.string(),
           image: z.string(),
           imageAlt: z.string(),
+          icon: z.string().optional(),
           button: sharedButton,
         }),
       )
