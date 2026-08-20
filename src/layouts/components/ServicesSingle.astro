@@ -19,6 +19,11 @@ const {
 } = content;
 
 const services = await getCollectionCTM("services", Astro.currentLocale);
+const isWebMobileAppDevelopment =
+  extractSlug(content).split("/").pop() === "service-02";
+const sidebarServices = isWebMobileAppDevelopment
+  ? services.slice(0, 6)
+  : services;
 const { Content } = await render(content);
 const t = await useTranslations(Astro.currentLocale as string);
 ---
@@ -54,7 +59,7 @@ const t = await useTranslations(Astro.currentLocale as string);
           <nav aria-label={t("aria.services")}>
             <ul class="space-y-2.5">
               {
-                services.map((service) => {
+                sidebarServices.map((service) => {
                   const isActive =
                     service.filePath === content.filePath ||
                     service.id === content.id;

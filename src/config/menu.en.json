@@ -40,18 +40,33 @@
           "enable": true,
           "name": "Cloud Migration & DevOps",
           "url": "/services/service-07/"
+        },
+        {
+          "enable": true,
+          "name": "Alternative Services",
+          "url": "/services/alternative-services/"
+        },
+        {
+          "enable": true,
+          "name": "Hero Alternatives",
+          "url": "/services/hero-alternatives/"
         }
       ]
     },
     {
       "enable": true,
-      "name": "Blog",
-      "url": "/blog/"
+      "name": "About Us",
+      "url": "/about-us/"
     },
     {
       "enable": true,
-      "name": "Team",
-      "url": "/team/"
+      "name": "Contact Us",
+      "url": "/contact-us/"
+    },
+    {
+      "enable": true,
+      "name": "Blog",
+      "url": "/blog/"
     }
   ],
   "footer": [
@@ -60,19 +75,13 @@
       "list": [
         {
           "enable": true,
-          "name": "Our Team",
-          "url": "/team/",
-          "active": true
-        },
-        {
-          "enable": true,
           "name": "Blogs",
           "url": "/blog/"
         },
         {
           "enable": true,
           "name": "About Us",
-          "url": "#"
+          "url": "/about-us/"
         },
         {
           "enable": true,
@@ -82,7 +91,7 @@
         {
           "enable": true,
           "name": "Contact",
-          "url": "#"
+          "url": "/contact-us/"
         }
       ]
     },

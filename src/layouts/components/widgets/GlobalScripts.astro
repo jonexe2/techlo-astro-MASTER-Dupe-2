@@ -625,8 +625,8 @@ const clientThemeConfig = JSON.stringify({
   }
 
   function initMagneticHoverAnimation() {
-    const speed = 0.3;
-    const maxDistance = 30;
+    const defaultSpeed = 0.3;
+    const defaultMaxDistance = 30;
     let rafId: number;
 
     function clamp(val: number, max: number): number {
@@ -634,6 +634,11 @@ const clientThemeConfig = JSON.stringify({
     }
 
     function handleMagneticHover(magneticElem: HTMLElement) {
+      const isAlternativeServiceButton = Boolean(
+        magneticElem.closest(".alternative-service-card"),
+      );
+      const speed = isAlternativeServiceButton ? 0.14 : defaultSpeed;
+      const maxDistance = isAlternativeServiceButton ? 12 : defaultMaxDistance;
       let isInside = false;
 
       function updateTransform(e: MouseEvent) {

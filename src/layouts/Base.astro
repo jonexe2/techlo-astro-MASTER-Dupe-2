@@ -18,6 +18,7 @@ type HeaderPosition = "fixed" | "static" | "sticky";
 interface Props extends JSONLDProps {
   className?: string;
   fitToScreen?: boolean;
+  hideCallToAction?: boolean;
   ctaSpacingTop?: boolean;
   footerSpaceTop?: boolean;
   headerLayout?: HeaderLayout;
@@ -44,6 +45,7 @@ let {
   headerLayout = "two",
   headerPosition = "sticky",
   hideOffcanvas = false,
+  hideCallToAction = false,
   hasBodyDarkBackground = false,
   fitToScreen = true,
 } = Astro.props;
@@ -73,7 +75,11 @@ className = fitToScreen
       <slot />
     </main>
 
-    <CallToAction hasSectionSpacing={Astro.props.ctaSpacingTop} />
+    {
+      !hideCallToAction && (
+        <CallToAction hasSectionSpacing={Astro.props.ctaSpacingTop} />
+      )
+    }
     <Footer {...Astro.props} />
 
     <KeepAstroSourceLoc />

@@ -124,22 +124,6 @@ export const inputFieldSchema = z.object({
 // SECTIONS SCHEMA
 // ================================================================================
 
-export const teamSectionSchema = z
-  .object({
-    enable: z.boolean().default(false), // Control visibility of this section
-    title: z.string().optional(),
-    button: button.optional(),
-    limit: z.union([z.number(), z.literal(false)]).optional(), // Max number of members to show
-    options: z
-      .object({
-        layout: z.enum(["grid", "carousel"]).default("grid"),
-        limit: z.union([z.number(), z.literal(false)]).optional(),
-        marquee: sharedMarquee.optional(),
-      })
-      .optional(),
-  })
-  .optional();
-
 export const contactFormSchema = z.object({
   action: z.string().optional(),
   emailSubject: z.string().optional(),
@@ -373,12 +357,88 @@ export const whyChooseUsSectionSchema = z
   })
   .optional();
 
+export const alternativeServicesSectionSchema = z
+  .object({
+    enable: z.boolean().default(true).optional(),
+    services: z
+      .array(
+        z.object({
+          title: z.string(),
+          description: z.string(),
+          image: z.string(),
+          imageAlt: z.string(),
+          button: sharedButton,
+        }),
+      )
+      .length(6),
+  })
+  .optional();
+
+export const alternativeHeroFormSchema = z.object({
+  title: z.string(),
+  description: z.string(),
+  emailSubject: z.string().optional(),
+  trustNote: z.string().optional(),
+  fields: z.object({
+    fullNameLabel: z.string(),
+    phoneLabel: z.string(),
+    emailLabel: z.string(),
+    servicesLabel: z.string(),
+    servicesPlaceholder: z.string(),
+  }),
+  services: z.array(z.string()).min(1),
+  submitButton: sharedButton,
+  messages: z.object({
+    validation: z.string(),
+    servicesRequired: z.string(),
+    pending: z.string(),
+    success: z.string(),
+    error: z.string(),
+    unknownProvider: z.string(),
+  }),
+});
+
+export const aboutUsIntroSectionSchema = z
+  .object({
+    enable: z.boolean().default(true).optional(),
+    pageTitle: z.string(),
+    metaDescription: z.string(),
+    image: z.string(),
+    imageAlt: z.string(),
+    title: z.string(),
+    paragraphs: z.array(z.string()).min(1),
+  })
+  .optional();
+
+export const alternativeHeroSectionSchema = z
+  .object({
+    enable: z.boolean().default(true).optional(),
+    eyebrow: z.string().optional(),
+    heading: z.string(),
+    headingAccent: z.string().optional(),
+    description: z.string(),
+    backgroundImage: z.string(),
+    backgroundImageAlt: z.string().optional(),
+    checklist: z.array(z.string()).length(4),
+    trustBanner: z
+      .object({
+        googleReview: z.object({
+          rating: z.string(),
+          reviews: z.string(),
+        }),
+        licensedLabel: z.string(),
+      })
+      .optional(),
+    button: sharedButton,
+    form: alternativeHeroFormSchema,
+  })
+  .optional();
+
 export const sectionsSchema = {
   servicesSection: servicesSectionSchema,
   ctaSection: ctaSectionSchema,
   contactSection: contactSectionSchema,
   contactSectionTwo: contactSectionTwoSchema,
-  teamSection: teamSectionSchema,
   testimonialSection: testimonialSectionSchema,
   bannerAgencySection: bannerAgencySectionSchema,
   workingProcessSection: workingProcessSectionSchema,
@@ -386,4 +446,7 @@ export const sectionsSchema = {
   faqSection: faqSectionSchema,
   serviceAreaSection: serviceAreaSectionSchema,
   whyChooseUsSection: whyChooseUsSectionSchema,
+  aboutUsIntroSection: aboutUsIntroSectionSchema,
+  alternativeServicesSection: alternativeServicesSectionSchema,
+  alternativeHeroSection: alternativeHeroSectionSchema,
 };
