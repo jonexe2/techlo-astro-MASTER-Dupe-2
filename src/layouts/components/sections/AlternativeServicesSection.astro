@@ -62,11 +62,11 @@ if (!enable || services.length === 0) {
 
               {showIcons && service.icon && (
                 <span
-                  class="alternative-service-icon pointer-events-none absolute -bottom-5 left-4 z-10 flex size-18 items-center justify-center rounded-2xl border bg-white text-primary md:left-5 md:size-20 lg:size-21"
+                  class="alternative-service-icon pointer-events-none absolute -bottom-4 left-4 z-10 flex size-16 items-center justify-center rounded-2xl border bg-white text-primary md:size-17 lg:size-18"
                   aria-hidden="true">
                   <DynamicIcon
                     name={service.icon}
-                    class="size-8 md:size-9 lg:size-10"
+                    class="size-7 lg:size-8"
                     stroke-width={1.75}
                   />
                 </span>
@@ -76,7 +76,7 @@ if (!enable || services.length === 0) {
             <div
               class:list={[
                 "flex flex-1 flex-col px-1 pb-1",
-                showIcons ? "pt-14 lg:pt-15" : "pt-7",
+                showIcons ? "pt-12 lg:pt-13" : "pt-7",
               ]}>
               <h2 class="text-h6">{service.title}</h2>
               <p class="mt-2">{service.description}</p>
