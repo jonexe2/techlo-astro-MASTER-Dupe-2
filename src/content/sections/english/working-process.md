@@ -1,15 +1,15 @@
 ---
 enable: true
-title: "Our working process on how<br />to grow your business"
+title: "HVAC Service Made Simple"
 # Images should remain lightweight transparent illustrations for the process step layout.
 list:
-  - title: "Initiation & Planning"
-    description: "We clarify goals, risks, users, timelines, and the technical path forward."
+  - title: "Schedule Your Service"
+    description: "Tell us what you need and choose a convenient appointment time."
     image: "/images/process/step-01.png"
-  - title: "Execution & Development"
-    description: "We design, build, integrate, and review each milestone with your team."
+  - title: "Inspect Your System"
+    description: "We inspect your equipment, check performance, and identify any needed service."
     image: "/images/process/step-02.png"
-  - title: "Testing & Maintenance"
-    description: "We validate performance, fix issues, document systems, and support launch."
+  - title: "Complete the Service"
+    description: "We complete the approved work and test your system before leaving."
     image: "/images/process/step-03.png"
 ---
