@@ -13,6 +13,7 @@ type WorkingProcessContent = Section &
 type Props = {
   content?: WorkingProcessContent;
   hasSectionSpacing?: boolean;
+  hasLightBackground?: boolean;
 };
 
 const defaultContent = (
@@ -25,14 +26,18 @@ const actualContent = overrideObjects(
 ) as WorkingProcessContent;
 
 const { enable = true, title, list = [] } = actualContent;
-const { hasSectionSpacing = true } = Astro.props;
+const { hasSectionSpacing = true, hasLightBackground = false } = Astro.props;
 
 if (!enable) {
   return null;
 }
 ---
 
-<section class:list={[!hasSectionSpacing && "pt-0"]}>
+<section
+  class:list={[
+    !hasSectionSpacing && "pt-0",
+    hasLightBackground && "bg-theme-light",
+  ]}>
   <div class="container space-y-16">
     {
       title && (

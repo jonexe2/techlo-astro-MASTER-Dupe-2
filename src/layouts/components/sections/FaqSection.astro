@@ -13,6 +13,7 @@ type FaqSectionContent = Section &
 type Props = {
   content?: FaqSectionContent;
   hasSectionSpacing?: boolean;
+  hasLightBackground?: boolean;
 };
 
 const defaultContent = (
@@ -25,7 +26,7 @@ const actualContent = overrideObjects(
 ) as FaqSectionContent;
 
 const { enable = true, title, items = [] } = actualContent;
-const { hasSectionSpacing = true } = Astro.props;
+const { hasSectionSpacing = true, hasLightBackground = false } = Astro.props;
 
 if (!enable || !items.length) {
   return null;
@@ -36,6 +37,7 @@ if (!enable || !items.length) {
   class:list={[
     !hasSectionSpacing && "pt-0",
     "pb-16 lg:pb-20 xl:pb-24",
+    hasLightBackground && "bg-theme-light",
   ]}>
   <div class="container space-y-12">
     {
