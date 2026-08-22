@@ -32,7 +32,11 @@ if (!enable || !items.length) {
 }
 ---
 
-<section class:list={[!hasSectionSpacing && "pt-0"]}>
+<section
+  class:list={[
+    !hasSectionSpacing && "pt-0",
+    "pb-16 lg:pb-20 xl:pb-24",
+  ]}>
   <div class="container space-y-12">
     {
       title && (
