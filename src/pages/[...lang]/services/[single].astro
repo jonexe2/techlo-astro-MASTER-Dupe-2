@@ -68,7 +68,7 @@ const serviceDetailFaqContent = await getEntryCTM(
 <Base {...service.data} fitToScreen={false}>
   <PageHeader content={service?.data} />
   <ServicesSingle content={service} />
-  {isWebMobileAppService && <WorkingProcessSection />}
+  {isWebMobileAppService && <WorkingProcessSection hasBottomSpacing />}
   <FaqSection
     content={serviceDetailFaqContent?.data}
     hasLightBackground
