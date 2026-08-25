@@ -11,6 +11,7 @@ import FaqSection from "@/components/sections/FaqSection.astro";
 import ServiceAreaSection from "@/components/sections/ServiceAreaSection.astro";
 import WorkingProcessSection from "@/components/sections/WorkingProcessSection.astro";
 import ServiceWhyChooseUsSection from "@/components/sections/ServiceWhyChooseUsSection.astro";
+import ServiceEmergencyCtaSection from "@/components/sections/ServiceEmergencyCtaSection.astro";
 
 export async function getStaticPaths() {
   const paths = await Promise.all(
@@ -64,15 +65,26 @@ const serviceDetailFaqContent = await getEntryCTM(
   "service-detail-faq-section",
   Astro.currentLocale,
 );
+
+const heatingRepairFaqContent = await getEntryCTM(
+  "sections",
+  "heating-repair-faq-section",
+  Astro.currentLocale,
+);
+
+const activeFaqContent = isWebMobileAppService
+  ? heatingRepairFaqContent
+  : serviceDetailFaqContent;
 ---
 
 <Base {...service.data} fitToScreen={false}>
   <PageHeader content={service?.data} />
   <ServicesSingle content={service} />
+  {isWebMobileAppService && <ServiceEmergencyCtaSection />}
   {isWebMobileAppService && <ServiceWhyChooseUsSection />}
   {isWebMobileAppService && <WorkingProcessSection hasBottomSpacing />}
   <FaqSection
-    content={serviceDetailFaqContent?.data}
+    content={activeFaqContent?.data}
     hasLightBackground
   />
   <ServiceAreaSection hasSectionSpacing={false} />
