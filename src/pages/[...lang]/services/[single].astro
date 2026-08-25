@@ -10,6 +10,7 @@ import PageHeader from "@/components/widgets/PageHeader.astro";
 import FaqSection from "@/components/sections/FaqSection.astro";
 import ServiceAreaSection from "@/components/sections/ServiceAreaSection.astro";
 import WorkingProcessSection from "@/components/sections/WorkingProcessSection.astro";
+import ServiceWhyChooseUsSection from "@/components/sections/ServiceWhyChooseUsSection.astro";
 
 export async function getStaticPaths() {
   const paths = await Promise.all(
@@ -68,6 +69,7 @@ const serviceDetailFaqContent = await getEntryCTM(
 <Base {...service.data} fitToScreen={false}>
   <PageHeader content={service?.data} />
   <ServicesSingle content={service} />
+  {isWebMobileAppService && <ServiceWhyChooseUsSection />}
   {isWebMobileAppService && <WorkingProcessSection hasBottomSpacing />}
   <FaqSection
     content={serviceDetailFaqContent?.data}
