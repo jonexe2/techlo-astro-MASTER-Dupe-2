@@ -7,6 +7,8 @@ import ServicesSingle from "@/components/ServicesSingle.astro";
 import extractSlug from "@/lib/utils/extractSlug";
 import config from ".astro/config.generated.json";
 import PageHeader from "@/components/widgets/PageHeader.astro";
+import FaqSection from "@/components/sections/FaqSection.astro";
+import ServiceAreaSection from "@/components/sections/ServiceAreaSection.astro";
 
 export async function getStaticPaths() {
   const paths = await Promise.all(
@@ -51,9 +53,17 @@ export async function getStaticPaths() {
 }
 
 const { service } = Astro.props;
+
+const serviceDetailFaqContent = await getEntryCTM(
+  "sections",
+  "service-detail-faq-section",
+  Astro.currentLocale,
+);
 ---
 
 <Base {...service.data} fitToScreen={false}>
   <PageHeader content={service?.data} />
   <ServicesSingle content={service} />
+  <FaqSection content={serviceDetailFaqContent?.data} />
+  <ServiceAreaSection hasSectionSpacing={false} />
 </Base>
