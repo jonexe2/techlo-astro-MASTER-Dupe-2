@@ -28,6 +28,8 @@ const actualContent = overrideObjects(
 ) as ServiceBenefitsContent;
 
 const { enable = true, title, description, items = [] } = actualContent;
+const primaryOutcome = items[0];
+const secondaryOutcomes = items.slice(1);
 
 if (!enable || !items.length) {
   return null;
@@ -38,48 +40,109 @@ if (!enable || !items.length) {
   aria-labelledby="service-benefits-heading"
   class="section-spacing-vertical overflow-hidden">
   <div class="container">
-    <div class="grid gap-12 lg:grid-cols-12 lg:gap-16 xl:gap-20">
-      <div class="lg:col-span-5" data-scroll-reveal="blur-up">
-        {
-          title && (
-            <h2 id="service-benefits-heading" set:html={markdownify(title)} />
-          )
-        }
-        {
-          description && (
-            <p
-              class="text-text-default leading-body mt-6 max-w-xl"
-              set:html={markdownify(description)}
-            />
-          )
-        }
+    <div class="mx-auto max-w-4xl text-center" data-scroll-reveal="blur-up">
+      {
+        title && (
+          <h2 id="service-benefits-heading" set:html={markdownify(title)} />
+        )
+      }
+      {
+        description && (
+          <p
+            class="text-text-default leading-body mx-auto mt-5 max-w-3xl"
+            set:html={markdownify(description)}
+          />
+        )
+      }
+    </div>
+
+    <div
+      class="mt-12 grid gap-0 lg:grid-cols-12 lg:items-stretch"
+      data-scroll-reveal="fade-up"
+      data-scroll-reveal-delay="120">
+      <div
+        class="border-primary/15 bg-primary/5 relative order-1 flex min-h-80 flex-col items-center justify-center overflow-hidden rounded-xl border px-7 py-10 text-center lg:order-2 lg:col-span-6 lg:min-h-96">
+        <Icons
+          icon="House"
+          class="text-primary/5 pointer-events-none absolute -right-10 -bottom-12 size-64"
+          stroke-width="1.2"
+          aria-hidden="true"
+        />
+        <div
+          class="border-primary/20 bg-body relative z-10 flex size-36 items-center justify-center rounded-full border md:size-40">
+          <Icons
+            icon="House"
+            class="text-primary size-20 md:size-24"
+            stroke-width="1.35"
+            aria-hidden="true"
+          />
+        </div>
+        <p
+          class="text-primary relative z-10 mt-7 text-sm font-semibold tracking-widest uppercase">
+          Whole-Home Comfort
+        </p>
+        <p class="text-dark relative z-10 mt-2 text-lg font-semibold">
+          Heating • Cooling • Airflow
+        </p>
       </div>
 
-      <div class="border-border-light border-t lg:col-span-7">
-        {
-          items.map((item, index) => (
-            <article
-              class="border-border-light grid grid-cols-12 gap-5 border-b py-7 md:gap-7 md:py-8"
-              data-scroll-reveal="fade-up"
-              data-scroll-reveal-delay={index * 100}>
-              <div class="col-span-2 pt-1">
-                <span class="bg-primary/10 text-primary flex size-10 items-center justify-center rounded-md">
-                  {item.icon ? (
-                    <Icons icon={item.icon} class="size-5" stroke-width="1.8" />
-                  ) : (
-                    <span class="text-sm font-semibold">
-                      {item.number || String(index + 1).padStart(2, "0")}
-                    </span>
-                  )}
-                </span>
-              </div>
-              <div class="col-span-10">
-                <h3 class="text-h5" set:html={markdownify(item.title)} />
-                <p
-                  class="text-text-default leading-body mt-3"
-                  set:html={markdownify(item.description)}
+      {
+        primaryOutcome && (
+          <article class="border-border-light relative order-2 border-t py-7 lg:order-1 lg:col-span-3 lg:self-center lg:border-t-0 lg:pe-10 lg:text-end">
+            <span
+              aria-hidden="true"
+              class="border-primary/25 absolute top-1/2 -right-10 hidden w-10 border-t lg:block"
+            />
+            <div class="flex items-center gap-3 lg:justify-end">
+              <span class="text-primary text-sm font-semibold">01</span>
+              {primaryOutcome.icon && (
+                <Icons
+                  icon={primaryOutcome.icon}
+                  class="text-primary size-9"
+                  stroke-width="1.6"
+                  aria-hidden="true"
                 />
+              )}
+            </div>
+            <h3
+              class="text-h5 mt-4"
+              set:html={markdownify(primaryOutcome.title)}
+            />
+            <p
+              class="text-text-default leading-body mt-3"
+              set:html={markdownify(primaryOutcome.description)}
+            />
+          </article>
+        )
+      }
+
+      <div
+        class="border-border-light order-3 border-t lg:col-span-3 lg:border-t-0 lg:ps-10">
+        {
+          secondaryOutcomes.map((item, index) => (
+            <article class="border-border-light relative border-b py-7 lg:flex lg:min-h-48 lg:flex-col lg:justify-center lg:py-6">
+              <span
+                aria-hidden="true"
+                class="border-primary/25 absolute top-1/2 -left-10 hidden w-10 border-t lg:block"
+              />
+              <div class="flex items-center gap-3">
+                <span class="text-primary text-sm font-semibold">
+                  {String(index + 2).padStart(2, "0")}
+                </span>
+                {item.icon && (
+                  <Icons
+                    icon={item.icon}
+                    class="text-primary size-9"
+                    stroke-width="1.6"
+                    aria-hidden="true"
+                  />
+                )}
               </div>
+              <h3 class="text-h5 mt-4" set:html={markdownify(item.title)} />
+              <p
+                class="text-text-default leading-body mt-3"
+                set:html={markdownify(item.description)}
+              />
             </article>
           ))
         }

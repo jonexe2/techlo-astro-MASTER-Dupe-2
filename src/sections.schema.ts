@@ -270,6 +270,8 @@ const serviceEditorialItemSchema = z.object({
   number: z.string().optional(),
   icon: z.string().optional(),
   title: z.string(),
+  tagline: z.string().optional(),
+  bestFor: z.string().optional(),
   description: z.string(),
 });
 
@@ -298,6 +300,7 @@ export const serviceTrustSectionSchema = z
     eyebrow: z.string().optional(),
     title: z.string().optional(),
     description: z.string().optional(),
+    location: z.string().optional(),
     items: z.array(serviceEditorialItemSchema).optional(),
   })
   .optional();

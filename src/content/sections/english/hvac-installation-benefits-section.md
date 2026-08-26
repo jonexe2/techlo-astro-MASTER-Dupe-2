@@ -1,16 +1,16 @@
 ---
 enable: true
-title: "What a New HVAC System Can Do for Your Home"
-description: "Replacing an outdated or poorly performing system can improve more than heating and cooling. The right HVAC equipment can create a more comfortable, efficient, and dependable home environment."
+title: "Designed Around How Your Home Should Feel"
+description: "A properly selected and installed HVAC system can improve more than temperature alone. The right equipment can create a home that feels more comfortable, uses energy more effectively, and performs reliably through every season."
 
 items:
   - icon: "ThermometerSun"
-    title: "More Consistent Comfort"
-    description: "Properly selected and installed equipment can provide more even temperatures, stronger airflow, and better control over comfort throughout the home."
+    title: "Comfort in Every Room"
+    description: "More even temperatures, stronger airflow, and better control can make the entire home feel more consistently comfortable."
   - icon: "Zap"
-    title: "Better Energy Efficiency"
-    description: "Modern HVAC systems are designed to use energy more effectively. Replacing older equipment can reduce wasted energy and help the system meet your home's heating and cooling needs more efficiently."
-  - icon: "Gauge"
-    title: "Reliable Long-Term Performance"
-    description: "A professional installation gives new equipment the foundation it needs to operate correctly. Proper setup, airflow, controls, and testing can help reduce avoidable performance problems after installation."
+    title: "Less Energy Going to Waste"
+    description: "Modern HVAC equipment can meet your home's heating and cooling needs more efficiently and reduce unnecessary energy loss."
+  - icon: "ShieldCheck"
+    title: "Confidence Through Every Season"
+    description: "Professional installation helps your new system operate as designed so you can depend on it through Boston's hottest and coldest weather."
 ---

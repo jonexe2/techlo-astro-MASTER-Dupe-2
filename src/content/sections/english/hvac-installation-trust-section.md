@@ -1,20 +1,21 @@
 ---
 enable: true
 eyebrow: "WHY BLUEFLAME"
-title: "Why Boston Homeowners Choose BlueFlame Heating & Air"
-description: "Installing a new HVAC system is a major decision, and the company completing the work matters just as much as the equipment itself. BlueFlame Heating & Air combines professional installation, straightforward communication, and dependable local service to make the process easier from the first estimate through final system testing."
+title: "Installation You Can Feel Confident About"
+description: "A new HVAC system is a major investment in your home. BlueFlame Heating & Air makes the process clear from the first estimate through final system testing, with professional installation, straightforward pricing, warranty protection, and local experience."
+location: "BOSTON, MASSACHUSETTS"
 
 items:
   - icon: "BadgeCheck"
     title: "Licensed & Certified Technicians"
-    description: "Our installation team is trained to work with modern heating and cooling equipment and follows professional installation practices designed for safe, dependable system operation."
+    description: "Professional installation by trained HVAC technicians who follow proven installation practices for dependable system performance."
   - icon: "ReceiptText"
     title: "Upfront Pricing & Clear Estimates"
-    description: "We explain the recommended equipment, installation scope, and expected cost before the work begins so you know what is included and what to expect."
+    description: "Know the recommended equipment, project scope, and expected cost before installation begins."
   - icon: "ShieldCheck"
     title: "Warranty-Backed Installation"
-    description: "Our HVAC installations include warranty protection for added confidence in your new equipment and the work performed in your home."
+    description: "Added protection for your equipment and installation gives you greater confidence in your new system."
   - icon: "MapPin"
     title: "Local Boston Experience"
-    description: "We understand the comfort challenges that come with Boston-area homes, from older properties and existing ductwork to cold winters and humid summers."
+    description: "Experience with Boston-area homes, older properties, existing ductwork, cold winters, and humid summers."
 ---
