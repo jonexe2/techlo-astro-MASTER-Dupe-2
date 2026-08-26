@@ -11,8 +11,14 @@ type Props = {
     hiddenPaths?: string[];
     currentBreadcrumbLabel?: string;
   };
+  supportingText?: string;
+  trustSignals?: Array<{
+    icon: string;
+    label: string;
+  }>;
 };
 
+const { supportingText, trustSignals = [] } = Astro.props;
 const {
   title,
   hiddenPaths,
@@ -77,14 +83,52 @@ const breadcrumbParts = breadcrumb
     data-scroll-reveal="blur-up">
     {
       title && (
-        <h1 class="text-display-6 sm:text-display-5 md:text-display-3 text-white">
+        <h1
+          class:list={[
+            "text-display-6 sm:text-display-5 text-white",
+            supportingText || trustSignals.length
+              ? "md:text-display-4 xl:text-display-3"
+              : "md:text-display-3",
+          ]}>
           {humanize(title)}
         </h1>
       )
     }
     {
+      supportingText && (
+        <p class="text-light mx-auto mt-5 max-w-3xl text-base leading-relaxed md:text-lg">
+          {supportingText}
+        </p>
+      )
+    }
+    {
+      trustSignals.length > 0 && (
+        <ul
+          class="mt-6 grid w-full max-w-4xl grid-cols-2 gap-y-4 md:gap-x-4 lg:flex lg:flex-wrap lg:items-center lg:justify-center lg:gap-y-3"
+          aria-label="Service credentials">
+          {trustSignals.map((signal, index) => (
+            <li
+              class:list={[
+                "flex min-w-0 items-center justify-center gap-2 px-2 text-sm text-white/90 sm:px-4",
+                index % 2 === 1 && "border-s border-white/15",
+                index > 0 && "lg:border-s lg:border-white/15",
+              ]}>
+              <Icons
+                icon={signal.icon}
+                class="size-4 shrink-0 text-white"
+                stroke-width="1.8"
+              />
+              <span>{signal.label}</span>
+            </li>
+          ))}
+        </ul>
+      )
+    }
+    {
       breadcrumb && breadcrumbParts.length > 0 && (
-        <nav class="mt-3" aria-label={t("aria.breadcrumb")}>
+        <nav
+          class:list={[supportingText || trustSignals.length ? "mt-6" : "mt-3"]}
+          aria-label={t("aria.breadcrumb")}>
           <ol
             class="flex flex-wrap items-center justify-center gap-2"
             role="list">

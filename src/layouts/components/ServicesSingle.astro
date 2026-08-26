@@ -11,9 +11,23 @@ import CallToActionWidget from "./widgets/CallToActionWidget.astro";
 
 interface Props {
   content: CollectionEntry<"services">;
+  sidebarCtaContent?: {
+    icon?: string;
+    title?: string;
+    description?: string;
+    button?: {
+      enable?: boolean;
+      label: string;
+      url?: string;
+      hoverEffect?:
+        "text-flip" | "creative-fill" | "magnetic" | "magnetic-text-flip";
+      variant?: "fill" | "fill-white" | "outline" | "text" | "circle";
+      [key: string]: unknown;
+    };
+  };
 }
 
-const { content } = Astro.props;
+const { content, sidebarCtaContent } = Astro.props;
 const {
   data: { title, image },
 } = content;
@@ -88,7 +102,7 @@ const t = await useTranslations(Astro.currentLocale as string);
             </ul>
           </nav>
 
-          <CallToActionWidget />
+          <CallToActionWidget content={sidebarCtaContent} />
         </div>
       </aside>
     </div>

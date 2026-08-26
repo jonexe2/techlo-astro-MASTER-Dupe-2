@@ -266,6 +266,42 @@ export const workingProcessSectionSchema = z
   })
   .optional();
 
+const serviceEditorialItemSchema = z.object({
+  number: z.string().optional(),
+  icon: z.string().optional(),
+  title: z.string(),
+  description: z.string(),
+});
+
+export const serviceOptionsSectionSchema = z
+  .object({
+    enable: z.boolean().default(true).optional(),
+    eyebrow: z.string().optional(),
+    title: z.string().optional(),
+    description: z.string().optional(),
+    items: z.array(serviceEditorialItemSchema).optional(),
+  })
+  .optional();
+
+export const serviceBenefitsSectionSchema = z
+  .object({
+    enable: z.boolean().default(true).optional(),
+    title: z.string().optional(),
+    description: z.string().optional(),
+    items: z.array(serviceEditorialItemSchema).optional(),
+  })
+  .optional();
+
+export const serviceTrustSectionSchema = z
+  .object({
+    enable: z.boolean().default(true).optional(),
+    eyebrow: z.string().optional(),
+    title: z.string().optional(),
+    description: z.string().optional(),
+    items: z.array(serviceEditorialItemSchema).optional(),
+  })
+  .optional();
+
 export const animatedNumber = z.object({
   type: z.string().optional(),
   value: z.union([z.number(), z.string()]).optional(),
@@ -443,6 +479,9 @@ export const sectionsSchema = {
   testimonialSection: testimonialSectionSchema,
   bannerAgencySection: bannerAgencySectionSchema,
   workingProcessSection: workingProcessSectionSchema,
+  serviceOptionsSection: serviceOptionsSectionSchema,
+  serviceBenefitsSection: serviceBenefitsSectionSchema,
+  serviceTrustSection: serviceTrustSectionSchema,
   multipurposeSection: multipurposeSectionSchema,
   faqSection: faqSectionSchema,
   serviceAreaSection: serviceAreaSectionSchema,

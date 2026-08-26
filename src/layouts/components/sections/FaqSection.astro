@@ -70,18 +70,24 @@ if (!enable || !items.length) {
                 aria-expanded="false"
                 aria-controls={`faq-content-${index}`}>
                 <span class="text-h6" set:html={markdownify(item.question)} />
-                <span class="faq-icon flex size-8 shrink-0 items-center justify-center rounded-full bg-theme-light transition-colors">
-                  <Icons icon="Plus" class="hs-accordion-active:hidden size-4" />
-                  <Icons icon="Minus" class="hidden hs-accordion-active:block size-4" />
+                <span class="faq-icon bg-theme-light flex size-8 shrink-0 items-center justify-center rounded-full transition-colors">
+                  <Icons
+                    icon="Plus"
+                    class="hs-accordion-active:hidden size-4"
+                  />
+                  <Icons
+                    icon="Minus"
+                    class="hs-accordion-active:block hidden size-4"
+                  />
                 </span>
               </button>
               <div
                 id={`faq-content-${index}`}
                 role="region"
                 aria-labelledby={`faq-item-${index}`}
-                class="hs-accordion-content w-full overflow-hidden transition-all duration-300 ease-in-out hidden">
+                class="hs-accordion-content hidden w-full overflow-hidden transition-all duration-300 ease-in-out">
                 <p
-                  class="text-text-default leading-body pb-6 pe-12"
+                  class="text-text-default leading-body pe-12 pb-6"
                   set:html={markdownify(item.answer)}
                 />
               </div>
@@ -99,7 +105,11 @@ if (!enable || !items.length) {
   import { HSAccordion } from "preline";
 
   window.addEventListener("load", () => {
-    const accordions = document.querySelectorAll(".faq-accordion .hs-accordion");
+    HSAccordion.autoInit();
+
+    const accordions = document.querySelectorAll(
+      ".faq-accordion .hs-accordion",
+    );
 
     accordions.forEach((currentAccordion) => {
       const instance = HSAccordion.getInstance(currentAccordion, true);
