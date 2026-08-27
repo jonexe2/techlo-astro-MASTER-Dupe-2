@@ -45,7 +45,7 @@ button:
   label: "Request an Estimate"
   url: "/#contact"
   hoverEffect: "magnetic-text-flip"
-  variant: "outline"
+  variant: "fill"
   rel: ""
   target: ""
   class: ""
