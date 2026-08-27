@@ -270,8 +270,11 @@ const serviceEditorialItemSchema = z.object({
   number: z.string().optional(),
   icon: z.string().optional(),
   title: z.string(),
+  tabLabel: z.string().optional(),
   tagline: z.string().optional(),
   bestFor: z.string().optional(),
+  statement: z.string().optional(),
+  highlights: z.array(z.string()).optional(),
   description: z.string(),
 });
 
@@ -282,12 +285,14 @@ export const serviceOptionsSectionSchema = z
     title: z.string().optional(),
     description: z.string().optional(),
     items: z.array(serviceEditorialItemSchema).optional(),
+    button: sharedButton.optional(),
   })
   .optional();
 
 export const serviceBenefitsSectionSchema = z
   .object({
     enable: z.boolean().default(true).optional(),
+    eyebrow: z.string().optional(),
     title: z.string().optional(),
     description: z.string().optional(),
     items: z.array(serviceEditorialItemSchema).optional(),
@@ -301,6 +306,8 @@ export const serviceTrustSectionSchema = z
     title: z.string().optional(),
     description: z.string().optional(),
     location: z.string().optional(),
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
     items: z.array(serviceEditorialItemSchema).optional(),
   })
   .optional();

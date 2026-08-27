@@ -7,20 +7,50 @@ description: "Every home has different heating and cooling needs. BlueFlame Heat
 items:
   - number: "01"
     icon: "Wind"
+    tabLabel: "Central AC"
     title: "Central Air Conditioning Installation"
     tagline: "Whole-home cooling for ducted homes."
     bestFor: "Homes with existing ductwork"
-    description: "Stay comfortable through Boston's warmer months with a central air conditioning system designed around your home's cooling needs, airflow, and existing ductwork."
+    description: "Stay comfortable through Boston's warmer months with a central air conditioning system selected around your home's cooling needs, airflow, layout, and existing ductwork."
+    highlights:
+      - "Consistent whole-home cooling"
+      - "Modern efficiency options"
+      - "Integrated thermostat control"
   - number: "02"
     icon: "Flame"
+    tabLabel: "Furnace"
     title: "Furnace & Heating System Installation"
-    tagline: "Dependable cold-weather heating."
-    bestFor: "Reliable winter heating"
-    description: "Upgrade your home's heating with professionally installed equipment designed to provide dependable warmth and consistent comfort throughout the colder season."
+    tagline: "Dependable heat for Boston winters."
+    bestFor: "Reliable cold-weather heating"
+    description: "Replace aging heating equipment with a professionally installed furnace or heating system designed for reliable warmth and consistent comfort through the colder months."
+    highlights:
+      - "Strong winter performance"
+      - "Replacement for aging systems"
+      - "Designed around your home's heating needs"
   - number: "03"
     icon: "RefreshCw"
+    tabLabel: "Heat Pump"
     title: "Heat Pump Installation"
-    tagline: "One system for heating and cooling."
-    bestFor: "Heating + cooling in one system"
-    description: "Heat pumps provide an efficient option for both heating and cooling. We help determine whether a heat pump is a good fit for your home and install the system for reliable year-round comfort."
+    tagline: "Heating and cooling in one system."
+    bestFor: "Year-round heating and cooling"
+    description: "Heat pumps provide both heating and cooling from one system. We help determine the right configuration for your home and install the equipment for dependable year-round comfort."
+    highlights:
+      - "Heating + cooling"
+      - "Modern energy-efficient operation"
+      - "Flexible comfort options"
+
+button:
+  # Refer to sharedButton in src/sections.schema.ts for all options.
+  enable: true
+  label: "Request an Estimate"
+  url: "/#contact"
+  hoverEffect: "magnetic-text-flip"
+  variant: "outline"
+  rel: ""
+  target: ""
+  class: ""
+  icon:
+    enable: true
+    name: "ArrowUpRight"
+    position: "right"
 ---

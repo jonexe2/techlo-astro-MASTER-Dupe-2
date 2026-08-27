@@ -2,6 +2,7 @@
 import type { z } from "astro/zod";
 import type { Section } from "@/types";
 import Icons from "@/helpers/Icons.astro";
+import OptimizedImage from "@/components/utilities/OptimizedImage.astro";
 import { getEntryCTM } from "@/lib/contentParser.astro";
 import { markdownify } from "@/lib/utils/textConverter";
 import overrideObjects from "@/lib/utils/overrideObjects.ts";
@@ -33,6 +34,8 @@ const {
   title,
   description,
   location,
+  image,
+  imageAlt,
   items = [],
 } = actualContent;
 
@@ -41,32 +44,31 @@ if (!enable || !items.length) {
 }
 ---
 
-<section aria-labelledby="service-trust-heading" class="overflow-hidden">
+<section
+  aria-labelledby="service-trust-heading"
+  class="section-spacing-vertical bg-body overflow-hidden">
   <div class="container">
-    <div
-      class="border-border-light grid overflow-hidden border lg:grid-cols-12">
-      <div
-        class="bg-primary relative overflow-hidden px-7 py-10 md:px-10 md:py-12 lg:col-span-5 lg:flex lg:flex-col lg:justify-center lg:px-12"
-        data-scroll-reveal="blur-up">
-        <Icons
-          icon="ShieldCheck"
-          class="pointer-events-none absolute -right-10 -bottom-12 size-52 text-white/10"
-          stroke-width="1"
-          aria-hidden="true"
-        />
+    <div class="grid items-center gap-12 lg:grid-cols-12 lg:gap-16 xl:gap-20">
+      <div class="lg:col-span-7" data-scroll-reveal="blur-up">
         {
           eyebrow && (
-            <p
-              class="text-base-sm relative z-10 font-semibold tracking-widest text-white/80 uppercase md:text-base"
-              set:html={markdownify(eyebrow)}
-            />
+            <div class="flex items-center gap-3">
+              <span
+                class="bg-heat-accent h-1 w-8 rounded-full"
+                aria-hidden="true"
+              />
+              <p
+                class="text-primary text-base-sm font-semibold tracking-widest uppercase md:text-base"
+                set:html={markdownify(eyebrow)}
+              />
+            </div>
           )
         }
         {
           title && (
             <h2
               id="service-trust-heading"
-              class="relative z-10 mt-3 text-white"
+              class="mt-3 max-w-2xl"
               set:html={markdownify(title)}
             />
           )
@@ -74,61 +76,86 @@ if (!enable || !items.length) {
         {
           description && (
             <p
-              class="leading-body relative z-10 mt-6 max-w-xl text-white/80"
+              class="text-text-default leading-body mt-5 max-w-2xl"
               set:html={markdownify(description)}
             />
           )
         }
-        {
-          location && (
-            <div class="relative z-10 mt-10 flex items-center gap-3 border-t border-white/20 pt-5 text-white">
-              <Icons
-                icon="MapPin"
-                class="size-5 shrink-0"
-                stroke-width="1.8"
-                aria-hidden="true"
-              />
-              <p
-                class="text-sm font-semibold tracking-widest uppercase"
-                set:html={markdownify(location)}
-              />
-            </div>
-          )
-        }
+
+        <div class="mt-8">
+          {
+            items.map((item, index) => (
+              <article
+                class:list={[
+                  "flex gap-5 py-5 md:gap-6 md:py-6",
+                  index === 0 && "pt-0",
+                  index < items.length - 1 && "border-border-light border-b",
+                ]}>
+                <span class="bg-heat-accent text-theme-dark flex size-12 shrink-0 items-center justify-center rounded-full md:size-13">
+                  {item.icon && (
+                    <Icons
+                      icon={item.icon}
+                      class="size-6"
+                      stroke-width="1.8"
+                      aria-hidden="true"
+                    />
+                  )}
+                </span>
+                <div>
+                  <h3
+                    class="text-h5-sm md:text-h5"
+                    set:html={markdownify(item.title)}
+                  />
+                  <p
+                    class="text-text-default leading-body mt-2 max-w-xl"
+                    set:html={markdownify(item.description)}
+                  />
+                </div>
+              </article>
+            ))
+          }
+        </div>
       </div>
 
-      <div
-        class="bg-body px-7 py-4 md:px-10 lg:col-span-7 lg:px-12 lg:py-6"
-        data-scroll-reveal="fade-up"
-        data-scroll-reveal-delay="120">
-        {
-          items.map((item, index) => (
-            <article
-              class:list={[
-                "grid grid-cols-12 gap-5 py-6 md:gap-7 md:py-7",
-                index < items.length - 1 && "border-border-light border-b",
-              ]}>
-              <div class="col-span-2 pt-1">
-                {item.icon && (
-                  <Icons
-                    icon={item.icon}
-                    class="text-primary size-9 md:size-10"
-                    stroke-width="1.6"
-                    aria-hidden="true"
-                  />
-                )}
-              </div>
-              <div class="col-span-10">
-                <h3 class="text-h5" set:html={markdownify(item.title)} />
-                <p
-                  class="text-text-default leading-body mt-3"
-                  set:html={markdownify(item.description)}
+      {
+        image && (
+          <div
+            class="relative pr-4 pb-4 md:pr-6 md:pb-6 lg:col-span-5"
+            data-scroll-reveal="image-clip"
+            data-scroll-reveal-delay="120">
+            <div
+              class="bg-primary absolute right-0 bottom-0 size-full rounded-2xl"
+              aria-hidden="true"
+            />
+            <div class="bg-theme-light relative overflow-hidden rounded-2xl">
+              <OptimizedImage
+                src={image}
+                alt={imageAlt || "BlueFlame Heating & Air HVAC team"}
+                width={900}
+                height={1125}
+                widths={[540, 720, 900, 1080]}
+                sizes="(min-width: 1024px) 42vw, 100vw"
+                quality={82}
+                class="aspect-4/3 w-full object-cover lg:aspect-4/5"
+              />
+            </div>
+
+            {location && (
+              <div class="bg-heat-accent text-theme-dark absolute bottom-0 left-5 z-10 flex items-center gap-2 rounded-lg px-4 py-3 shadow-lg md:left-7">
+                <Icons
+                  icon="MapPin"
+                  class="size-5 shrink-0"
+                  stroke-width="2"
+                  aria-hidden="true"
                 />
+                <span class="text-sm font-semibold tracking-widest uppercase">
+                  {location}
+                </span>
               </div>
-            </article>
-          ))
-        }
-      </div>
+            )}
+          </div>
+        )
+      }
     </div>
   </div>
 </section>
