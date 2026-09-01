@@ -253,6 +253,7 @@ export const testimonialSectionSchema = z
 export const workingProcessSectionSchema = z
   .object({
     enable: z.boolean().default(false).optional(),
+    eyebrow: z.string().optional(),
     title: z.string().optional(),
     list: z
       .array(
@@ -367,6 +368,7 @@ export const multipurposeSectionSchema = z
 export const faqSectionSchema = z
   .object({
     enable: z.boolean().default(false).optional(),
+    eyebrow: z.string().optional(),
     title: z.string().optional(),
     items: z
       .array(

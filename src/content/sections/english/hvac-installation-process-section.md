@@ -1,5 +1,6 @@
 ---
 enable: true
+eyebrow: "OUR PROCESS"
 title: "HVAC Installation Made Simple"
 # Images remain the existing process illustrations used by the theme.
 list:

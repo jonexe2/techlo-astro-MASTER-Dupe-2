@@ -25,7 +25,7 @@ const actualContent = overrideObjects(
   Astro.props.content,
 ) as FaqSectionContent;
 
-const { enable = true, title, items = [] } = actualContent;
+const { enable = true, eyebrow, title, items = [] } = actualContent;
 const { hasSectionSpacing = true, hasLightBackground = false } = Astro.props;
 
 if (!enable || !items.length) {
@@ -40,15 +40,33 @@ if (!enable || !items.length) {
     hasLightBackground && "bg-theme-light",
   ]}>
   <div class="container space-y-12">
-    {
-      title && (
-        <h2
-          class="mx-auto max-w-3xl text-center"
-          data-scroll-reveal="blur-up"
-          set:html={markdownify(title)}
-        />
-      )
-    }
+    <div class="mx-auto max-w-3xl text-center">
+      {
+        eyebrow && (
+          <div
+            class="flex items-center justify-center gap-3"
+            data-scroll-reveal="fade-up">
+            <span
+              class="bg-heat-accent h-1 w-8 rounded-full"
+              aria-hidden="true"
+            />
+            <p
+              class="text-primary text-base-sm font-semibold tracking-widest uppercase md:text-base"
+              set:html={markdownify(eyebrow)}
+            />
+          </div>
+        )
+      }
+      {
+        title && (
+          <h2
+            class:list={[eyebrow && "mt-4"]}
+            data-scroll-reveal="blur-up"
+            set:html={markdownify(title)}
+          />
+        )
+      }
+    </div>
 
     <div
       class="faq-accordion mx-auto max-w-3xl"

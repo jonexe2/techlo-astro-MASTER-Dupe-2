@@ -102,16 +102,6 @@ const activeFaqContent = isHeatingRepairService
     ? hvacInstallationFaqContent
     : serviceDetailFaqContent;
 
-const hvacHeroSupportingText =
-  "Professional heating and cooling installation built around your home's comfort, efficiency, and long-term performance.";
-
-const hvacHeroTrustSignals = [
-  { icon: "Star", label: "4.9/5 Customer Rating" },
-  { icon: "ShieldCheck", label: "Licensed & Insured" },
-  { icon: "BadgeCheck", label: "Certified HVAC Technicians" },
-  { icon: "Award", label: "Warranty-Backed Installation" },
-];
-
 const hvacSidebarCtaContent = {
   icon: "Headset",
   title: "Planning a New HVAC System?",
@@ -131,13 +121,7 @@ const hvacSidebarCtaContent = {
   {...service.data}
   fitToScreen={false}
   hideCallToAction={isHvacInstallationService}>
-  <PageHeader
-    content={service?.data}
-    supportingText={isHvacInstallationService
-      ? hvacHeroSupportingText
-      : undefined}
-    trustSignals={isHvacInstallationService ? hvacHeroTrustSignals : undefined}
-  />
+  <PageHeader content={service?.data} />
   <ServicesSingle
     content={service}
     sidebarCtaContent={isHvacInstallationService

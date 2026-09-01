@@ -17,7 +17,7 @@ items:
   - icon: "ShieldCheck"
     title: "Warranty-Backed Installation"
     description: "Added protection for your equipment and installation gives you greater confidence in your new system."
-  - icon: "MapPin"
-    title: "Local Boston Experience"
-    description: "Experience with Boston-area homes, older properties, existing ductwork, cold winters, and humid summers."
+  - icon: "Star"
+    title: "4.95 Customer Rating"
+    description: "Homeowners consistently rate BlueFlame Heating & Air highly for professional service, clear communication, dependable workmanship, and a smooth installation experience."
 ---

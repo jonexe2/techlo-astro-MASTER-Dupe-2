@@ -1,5 +1,6 @@
 ---
 enable: true
+eyebrow: "COMMON QUESTIONS"
 title: "HVAC Installation FAQs"
 
 items:

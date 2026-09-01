@@ -1,6 +1,6 @@
 ---
 enable: true
-eyebrow: "BUILT FOR BETTER COMFORT"
+eyebrow: "BUILT FOR COMFORT"
 title: "Designed Around How Your Home Should Feel"
 description: "A professionally selected and installed HVAC system should do more than heat or cool your home. It should create better comfort, use energy intelligently, and give you confidence through every season."
 
