@@ -48,8 +48,12 @@ if (!enable || !items.length) {
   aria-labelledby="service-options-heading"
   class="section-spacing-vertical bg-body overflow-hidden">
   <div class="container">
-    <div class="grid items-end gap-8 lg:grid-cols-12 lg:gap-12">
-      <div class="lg:col-span-6 lg:col-start-7" data-scroll-reveal="blur-up">
+    <div
+      class="service-selector grid min-w-0 gap-x-12 lg:grid-cols-12 xl:gap-x-16"
+      data-service-selector>
+      <div
+        class="order-1 lg:col-span-6 lg:col-start-7 lg:row-start-1"
+        data-scroll-reveal="blur-up">
         {
           eyebrow && (
             <div class="flex items-center gap-3">
@@ -74,16 +78,13 @@ if (!enable || !items.length) {
           )
         }
       </div>
-    </div>
 
-    <div
-      class="service-selector mt-10 grid min-w-0 gap-x-12 md:mt-12 lg:grid-cols-12 xl:gap-x-16"
-      data-service-selector
-      data-scroll-reveal="fade-up"
-      data-scroll-reveal-delay="160">
       {
         image && (
-          <div class="relative order-1 overflow-hidden rounded-2xl lg:col-span-6 lg:col-start-1 lg:min-h-96">
+          <div
+            class="relative order-2 mt-10 overflow-hidden rounded-2xl md:mt-12 lg:col-span-6 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:mt-9 lg:mb-24 lg:min-h-96"
+            data-scroll-reveal="fade-up"
+            data-scroll-reveal-delay="160">
             <OptimizedImage
               src={image}
               alt={imageAlt || "HVAC technician inspecting an outdoor system"}
@@ -98,7 +99,10 @@ if (!enable || !items.length) {
         )
       }
 
-      <div class="order-2 mt-8 min-w-0 lg:col-span-6 lg:col-start-7 lg:mt-0">
+      <div
+        class="order-3 mt-8 min-w-0 lg:col-span-6 lg:col-start-7 lg:row-start-2 lg:mt-12"
+        data-scroll-reveal="fade-up"
+        data-scroll-reveal-delay="160">
         <div
           class="border-border-light flex w-full min-w-0 overflow-x-auto border-b"
           role="tablist"
@@ -125,12 +129,12 @@ if (!enable || !items.length) {
           }
         </div>
 
-        <div class="mt-6 min-w-0 lg:mt-5">
+        <div class="mt-6 min-w-0 lg:mt-5 lg:min-h-112">
           {
             items.map((item, index) => (
               <article
                 id={`service-option-panel-${index}`}
-                class="service-option-panel"
+                class="service-option-panel lg:flex lg:min-h-112 lg:flex-col"
                 role="tabpanel"
                 tabindex="0"
                 aria-labelledby={`service-option-tab-${index}`}
@@ -158,9 +162,9 @@ if (!enable || !items.length) {
                     {item.highlights.map((highlight) => (
                       <li class="text-dark flex items-start gap-3 font-medium">
                         <Icons
-                          icon="CircleCheck"
-                          class="text-heat-accent mt-0.5 size-6 shrink-0"
-                          stroke-width="2.5"
+                          icon="CircleCheckBig"
+                          class="text-heat-accent mt-0.5 size-7 shrink-0"
+                          stroke-width="2.4"
                           aria-hidden="true"
                         />
                         <span>{highlight}</span>
@@ -170,7 +174,7 @@ if (!enable || !items.length) {
                 )}
 
                 {button && (
-                  <div class="mt-8 w-fit">
+                  <div class="mt-8 w-fit lg:mt-auto lg:pt-8">
                     <Button {...button} />
                   </div>
                 )}
