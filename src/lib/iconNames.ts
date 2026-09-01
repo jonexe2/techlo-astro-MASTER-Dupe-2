@@ -6,6 +6,7 @@ export const knownIconNames = [
   "ArrowUpRight",
   "Briefcase",
   "Check",
+  "CircleCheck",
   "ChevronDown",
   "ChevronLeft",
   "ChevronRight",
