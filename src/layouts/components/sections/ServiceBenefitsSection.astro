@@ -42,7 +42,7 @@ if (!enable || !items.length) {
 
 <section
   aria-labelledby="service-benefits-heading"
-  class="section-spacing-vertical bg-theme-dark relative isolate overflow-hidden">
+  class="section-spacing-vertical bg-theme-dark relative isolate overflow-clip">
   <Icons
     icon="House"
     class="pointer-events-none absolute -right-20 -bottom-20 -z-10 size-96 text-white/5 xl:size-96"
@@ -52,7 +52,9 @@ if (!enable || !items.length) {
 
   <div class="container">
     <div class="grid gap-12 lg:grid-cols-12 lg:gap-16 xl:gap-20">
-      <div class="lg:col-span-5" data-scroll-reveal="blur-up">
+      <div
+        class="lg:sticky lg:top-32 lg:col-span-5 lg:self-start"
+        data-scroll-reveal="blur-up">
         {
           eyebrow && (
             <div class="flex items-center gap-3">
@@ -84,29 +86,15 @@ if (!enable || !items.length) {
             />
           )
         }
-
-        <div
-          class="mt-8 flex items-center gap-3 text-white/55"
-          aria-hidden="true">
-          <Icons
-            icon="Wind"
-            class="text-heat-accent size-7"
-            stroke-width="1.5"
-          />
-          <span class="h-px w-24 bg-white/20"></span>
-          <span class="text-xs font-semibold tracking-widest uppercase">
-            Whole-home performance
-          </span>
-        </div>
       </div>
 
       <div
-        class="lg:col-span-7"
+        class="space-y-5 lg:col-span-7"
         data-scroll-reveal="fade-up"
         data-scroll-reveal-delay="120">
         {
           items.map((item, index) => (
-            <article class="border-t border-white/15 py-8 first:pt-7 last:pb-0 lg:py-9">
+            <article class="rounded-2xl border border-white/10 bg-white/5 p-7 shadow-lg shadow-black/10 lg:p-8">
               <div class="flex items-center gap-3">
                 <span class="text-heat-accent text-sm font-semibold">
                   {String(index + 1).padStart(2, "0")}
