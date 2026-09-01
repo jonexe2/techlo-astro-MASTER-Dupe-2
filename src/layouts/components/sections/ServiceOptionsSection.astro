@@ -100,7 +100,7 @@ if (!enable || !items.length) {
             items.map((item, index) => (
               <button
                 id={`service-option-tab-${index}`}
-                class="service-tab text-text-default focus-visible:outline-primary relative min-w-24 flex-1 pb-4 text-center text-sm font-semibold focus-visible:outline-2 focus-visible:outline-offset-4 md:text-base"
+                class="service-tab text-text-default focus-visible:outline-primary relative min-w-24 flex-1 pb-4 text-center text-lg font-semibold focus-visible:outline-2 focus-visible:outline-offset-4"
                 type="button"
                 role="tab"
                 aria-selected={index === 0 ? "true" : "false"}
@@ -175,16 +175,7 @@ if (!enable || !items.length) {
               tabindex="0"
               aria-labelledby={`service-option-tab-${index}`}
               data-service-panel>
-              <h3
-                class="text-h4-sm md:text-h4"
-                set:html={markdownify(item.title)}
-              />
-              {item.tagline && (
-                <p
-                  class="text-dark mt-3 text-lg font-semibold"
-                  set:html={markdownify(item.tagline)}
-                />
-              )}
+              <h3 class="text-lg" set:html={markdownify(item.title)} />
               <p
                 class="text-text-default leading-body mt-4 max-w-2xl"
                 set:html={markdownify(item.description)}

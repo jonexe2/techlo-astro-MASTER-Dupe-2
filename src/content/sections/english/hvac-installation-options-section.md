@@ -9,7 +9,6 @@ items:
     icon: "Wind"
     tabLabel: "Central AC"
     title: "Central Air Conditioning Installation"
-    tagline: "Whole-home cooling for ducted homes."
     bestFor: "Homes with existing ductwork"
     description: "Stay comfortable through Boston's warmer months with a central air conditioning system selected around your home's cooling needs, airflow, layout, and existing ductwork."
     highlights:
@@ -20,7 +19,6 @@ items:
     icon: "Flame"
     tabLabel: "Furnace"
     title: "Furnace & Heating System Installation"
-    tagline: "Dependable heat for Boston winters."
     bestFor: "Reliable cold-weather heating"
     description: "Replace aging heating equipment with a professionally installed furnace or heating system designed for reliable warmth and consistent comfort through the colder months."
     highlights:
@@ -31,7 +29,6 @@ items:
     icon: "RefreshCw"
     tabLabel: "Heat Pump"
     title: "Heat Pump Installation"
-    tagline: "Heating and cooling in one system."
     bestFor: "Year-round heating and cooling"
     description: "Heat pumps provide both heating and cooling from one system. We help determine the right configuration for your home and install the equipment for dependable year-round comfort."
     highlights:
