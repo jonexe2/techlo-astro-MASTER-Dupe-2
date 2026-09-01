@@ -2,6 +2,7 @@
 import type { z } from "astro/zod";
 import type { Section } from "@/types";
 import Button from "@/components/Button.astro";
+import OptimizedImage from "@/components/utilities/OptimizedImage.astro";
 import Icons from "@/helpers/Icons.astro";
 import { getEntryCTM } from "@/lib/contentParser.astro";
 import { markdownify } from "@/lib/utils/textConverter";
@@ -32,7 +33,8 @@ const {
   enable = true,
   eyebrow,
   title,
-  description,
+  image,
+  imageAlt,
   items = [],
   button,
 } = actualContent;
@@ -44,10 +46,10 @@ if (!enable || !items.length) {
 
 <section
   aria-labelledby="service-options-heading"
-  class="section-spacing-vertical bg-theme-light overflow-hidden">
+  class="section-spacing-vertical bg-body overflow-hidden">
   <div class="container">
     <div class="grid items-end gap-8 lg:grid-cols-12 lg:gap-12">
-      <div class="lg:col-span-7" data-scroll-reveal="blur-up">
+      <div class="lg:col-span-7 lg:col-start-6" data-scroll-reveal="blur-up">
         {
           eyebrow && (
             <div class="flex items-center gap-3">
@@ -72,17 +74,6 @@ if (!enable || !items.length) {
           )
         }
       </div>
-
-      {
-        description && (
-          <p
-            class="text-text-default leading-body max-w-xl lg:col-span-5 lg:justify-self-end"
-            data-scroll-reveal="fade-up"
-            data-scroll-reveal-delay="100"
-            set:html={markdownify(description)}
-          />
-        )
-      }
     </div>
 
     <div
@@ -90,7 +81,24 @@ if (!enable || !items.length) {
       data-service-selector
       data-scroll-reveal="fade-up"
       data-scroll-reveal-delay="160">
-      <div class="order-1 min-w-0 lg:col-span-7 lg:col-start-6">
+      {
+        image && (
+          <div class="order-1 overflow-hidden rounded-2xl lg:col-span-5 lg:col-start-1 lg:row-span-2 lg:row-start-1">
+            <OptimizedImage
+              src={image}
+              alt={imageAlt || "HVAC technician inspecting an outdoor system"}
+              width={900}
+              height={1125}
+              widths={[540, 720, 900, 1080]}
+              sizes="(min-width: 1024px) 42vw, 100vw"
+              quality={82}
+              class="aspect-4/3 w-full object-cover lg:aspect-auto lg:h-full lg:min-h-96"
+            />
+          </div>
+        )
+      }
+
+      <div class="order-2 mt-8 min-w-0 lg:col-span-7 lg:col-start-6 lg:mt-0">
         <div
           class="border-border-light flex w-full min-w-0 overflow-x-auto border-b"
           role="tablist"
@@ -100,7 +108,7 @@ if (!enable || !items.length) {
             items.map((item, index) => (
               <button
                 id={`service-option-tab-${index}`}
-                class="service-tab text-text-default focus-visible:outline-primary text-h5-sm md:text-h5 relative min-w-24 flex-1 pb-4 text-center font-semibold focus-visible:outline-2 focus-visible:outline-offset-4"
+                class="service-tab text-text-default aria-selected:text-heat-accent focus-visible:outline-primary text-h5-sm md:text-h5 relative min-w-24 flex-1 pb-4 text-center font-semibold focus-visible:outline-2 focus-visible:outline-offset-4"
                 type="button"
                 role="tab"
                 aria-selected={index === 0 ? "true" : "false"}
@@ -109,59 +117,13 @@ if (!enable || !items.length) {
                 data-service-tab>
                 {item.tabLabel || item.title}
                 <span
-                  class="service-tab-indicator bg-heat-accent absolute bottom-0 left-0 h-1 w-0 transition-all duration-300"
+                  class="service-tab-indicator bg-heat-accent absolute bottom-0 left-0 h-0.5 w-0 transition-all duration-300"
                   aria-hidden="true"
                 />
               </button>
             ))
           }
         </div>
-      </div>
-
-      <div
-        class="relative order-2 mt-7 min-h-80 lg:col-span-5 lg:col-start-1 lg:row-span-2 lg:row-start-1 lg:mt-0 lg:min-h-96">
-        {
-          items.map((item, index) => (
-            <div
-              class="border-primary/15 bg-primary-soft relative flex h-full min-h-80 flex-col justify-between overflow-hidden rounded-2xl border p-7 md:p-10 lg:min-h-96"
-              data-service-visual={String(index)}
-              hidden={index !== 0}>
-              <div class="border-primary/10 pointer-events-none absolute top-16 -right-16 size-72 rounded-full border" />
-              <div class="border-primary/10 pointer-events-none absolute top-24 -right-8 size-52 rounded-full border" />
-              <div class="bg-primary/15 pointer-events-none absolute bottom-10 left-10 h-px w-40" />
-
-              <div class="relative z-10 flex items-center gap-3">
-                <span
-                  class="bg-heat-accent size-3 rounded-full"
-                  aria-hidden="true"
-                />
-                <span class="text-dark text-sm font-semibold tracking-widest uppercase">
-                  System {item.number || String(index + 1).padStart(2, "0")}
-                </span>
-              </div>
-
-              <div class="relative z-10 flex flex-1 items-center justify-center py-8">
-                {item.icon && (
-                  <Icons
-                    icon={item.icon}
-                    class="text-primary size-32 md:size-40"
-                    stroke-width="1.05"
-                    aria-hidden="true"
-                  />
-                )}
-              </div>
-
-              <div class="relative z-10">
-                <p class="text-primary text-sm font-semibold tracking-widest uppercase">
-                  Selected system
-                </p>
-                <p class="text-dark mt-2 text-xl font-semibold md:text-2xl">
-                  {item.tabLabel || item.title}
-                </p>
-              </div>
-            </div>
-          ))
-        }
       </div>
 
       <div
@@ -182,7 +144,7 @@ if (!enable || !items.length) {
               />
 
               {item.bestFor && (
-                <div class="border-heat-accent mt-6 border-s-4 ps-4">
+                <div class="mt-6">
                   <p class="text-primary text-sm font-semibold tracking-widest uppercase">
                     Best For
                   </p>
@@ -197,12 +159,15 @@ if (!enable || !items.length) {
                 <ul class="mt-7 grid gap-3 sm:grid-cols-2" role="list">
                   {item.highlights.map((highlight) => (
                     <li class="text-dark flex items-start gap-3 font-medium">
-                      <Icons
-                        icon="Check"
-                        class="text-heat-accent mt-1 size-5 shrink-0"
-                        stroke-width="2.4"
-                        aria-hidden="true"
-                      />
+                      <span
+                        class="border-heat-accent text-heat-accent mt-0.5 flex size-6 shrink-0 items-center justify-center rounded-full border"
+                        aria-hidden="true">
+                        <Icons
+                          icon="Check"
+                          class="size-3.5"
+                          stroke-width="2.4"
+                        />
+                      </span>
                       <span>{highlight}</span>
                     </li>
                   ))}
@@ -235,9 +200,6 @@ if (!enable || !items.length) {
         const panels = Array.from(
           selector.querySelectorAll<HTMLElement>("[data-service-panel]"),
         );
-        const visuals = Array.from(
-          selector.querySelectorAll<HTMLElement>("[data-service-visual]"),
-        );
         const reduceMotion = window.matchMedia(
           "(prefers-reduced-motion: reduce)",
         ).matches;
@@ -247,7 +209,6 @@ if (!enable || !items.length) {
           shouldFocus = true,
         ) => {
           const panelId = nextTab.getAttribute("aria-controls");
-          const activeIndex = tabs.indexOf(nextTab);
 
           tabs.forEach((tab) => {
             const isActive = tab === nextTab;
@@ -258,15 +219,8 @@ if (!enable || !items.length) {
           panels.forEach((panel) => {
             panel.hidden = panel.id !== panelId;
           });
-          visuals.forEach((visual) => {
-            visual.hidden =
-              visual.dataset.serviceVisual !== String(activeIndex);
-          });
 
           const activePanel = panels.find((panel) => panel.id === panelId);
-          const activeVisual = visuals.find(
-            (visual) => visual.dataset.serviceVisual === String(activeIndex),
-          );
 
           if (!reduceMotion) {
             activePanel?.animate(
@@ -275,13 +229,6 @@ if (!enable || !items.length) {
                 { opacity: 1, transform: "translateY(0)" },
               ],
               { duration: 220, easing: "ease-out" },
-            );
-            activeVisual?.animate(
-              [
-                { opacity: 0.45, transform: "translateY(6px)" },
-                { opacity: 1, transform: "translateY(0)" },
-              ],
-              { duration: 240, easing: "ease-out" },
             );
           }
 
@@ -333,10 +280,6 @@ if (!enable || !items.length) {
 </script>
 
 <style>
-  .service-tab[aria-selected="true"] {
-    color: var(--color-dark);
-  }
-
   .service-tab[aria-selected="true"] .service-tab-indicator {
     width: 100%;
   }

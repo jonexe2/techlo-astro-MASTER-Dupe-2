@@ -285,6 +285,8 @@ export const serviceOptionsSectionSchema = z
     eyebrow: z.string().optional(),
     title: z.string().optional(),
     description: z.string().optional(),
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
     items: z.array(serviceEditorialItemSchema).optional(),
     button: sharedButton.optional(),
   })
