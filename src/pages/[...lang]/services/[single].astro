@@ -61,9 +61,26 @@ export async function getStaticPaths() {
 
 const { service } = Astro.props;
 
-const serviceSlug = extractSlug(service).split("/").pop();
-const isHeatingRepairService = serviceSlug === "service-02";
-const isHvacInstallationService = serviceSlug === "service-03";
+const serviceId = service.id
+  .split("/")
+  .pop()
+  ?.replace(/\.(mdx?|MDX?)$/, "");
+
+const serviceContentPrefixes = {
+  "service-01": "ac-repair",
+  "service-02": "heating-repair",
+  "service-03": "hvac-installation",
+  "service-04": "preventive-maintenance",
+  "service-05": "indoor-air-quality",
+  "service-06": "emergency-hvac",
+} as const;
+
+const serviceContentPrefix =
+  serviceContentPrefixes[serviceId as keyof typeof serviceContentPrefixes];
+const isConfiguredHvacService = Boolean(serviceContentPrefix);
+const isHeatingRepairService = serviceId === "service-02";
+const isHvacInstallationService = serviceId === "service-03";
+const isEmergencyHvacService = serviceId === "service-06";
 
 const serviceDetailFaqContent = await getEntryCTM(
   "sections",
@@ -71,65 +88,53 @@ const serviceDetailFaqContent = await getEntryCTM(
   Astro.currentLocale,
 );
 
-const heatingRepairFaqContent = await getEntryCTM(
-  "sections",
-  "heating-repair-faq-section",
-  Astro.currentLocale,
-);
+const activeOptionsContent = serviceContentPrefix
+  ? await getEntryCTM(
+      "sections",
+      `${serviceContentPrefix}-options-section`,
+      Astro.currentLocale,
+    )
+  : undefined;
 
-const hvacInstallationFaqContent = await getEntryCTM(
-  "sections",
-  "hvac-installation-faq-section",
-  Astro.currentLocale,
-);
+const activeBenefitsContent = serviceContentPrefix
+  ? await getEntryCTM(
+      "sections",
+      `${serviceContentPrefix}-benefits-section`,
+      Astro.currentLocale,
+    )
+  : undefined;
 
-const hvacInstallationProcessContent = await getEntryCTM(
-  "sections",
-  "hvac-installation-process-section",
-  Astro.currentLocale,
-);
+const activeProcessContent = serviceContentPrefix
+  ? await getEntryCTM(
+      "sections",
+      `${serviceContentPrefix}-process-section`,
+      Astro.currentLocale,
+    )
+  : undefined;
 
-const hvacInstallationFinalCtaContent = await getEntryCTM(
-  "sections",
-  "hvac-installation-final-cta",
-  Astro.currentLocale,
-);
+const activeTrustContent = serviceContentPrefix
+  ? await getEntryCTM(
+      "sections",
+      `${serviceContentPrefix}-trust-section`,
+      Astro.currentLocale,
+    )
+  : undefined;
 
-const heatingRepairOptionsContent = await getEntryCTM(
-  "sections",
-  "heating-repair-options-section",
-  Astro.currentLocale,
-);
+const activeFaqContent = serviceContentPrefix
+  ? await getEntryCTM(
+      "sections",
+      `${serviceContentPrefix}-faq-section`,
+      Astro.currentLocale,
+    )
+  : serviceDetailFaqContent;
 
-const heatingRepairBenefitsContent = await getEntryCTM(
-  "sections",
-  "heating-repair-benefits-section",
-  Astro.currentLocale,
-);
-
-const heatingRepairProcessContent = await getEntryCTM(
-  "sections",
-  "heating-repair-process-section",
-  Astro.currentLocale,
-);
-
-const heatingRepairTrustContent = await getEntryCTM(
-  "sections",
-  "heating-repair-trust-section",
-  Astro.currentLocale,
-);
-
-const heatingRepairFinalCtaContent = await getEntryCTM(
-  "sections",
-  "heating-repair-final-cta",
-  Astro.currentLocale,
-);
-
-const activeFaqContent = isHeatingRepairService
-  ? heatingRepairFaqContent
-  : isHvacInstallationService
-    ? hvacInstallationFaqContent
-    : serviceDetailFaqContent;
+const activeFinalCtaContent = serviceContentPrefix
+  ? await getEntryCTM(
+      "sections",
+      `${serviceContentPrefix}-final-cta`,
+      Astro.currentLocale,
+    )
+  : undefined;
 
 const hvacSidebarCtaContent = {
   icon: "Headset",
@@ -149,7 +154,7 @@ const hvacSidebarCtaContent = {
 <Base
   {...service.data}
   fitToScreen={false}
-  hideCallToAction={isHeatingRepairService || isHvacInstallationService}>
+  hideCallToAction={isConfiguredHvacService}>
   <PageHeader content={service?.data} />
   <ServicesSingle
     content={service}
@@ -157,65 +162,45 @@ const hvacSidebarCtaContent = {
       ? hvacSidebarCtaContent
       : undefined}
   />
-  {isHeatingRepairService && <ServiceEmergencyCtaSection />}
   {
-    isHeatingRepairService && (
-      <ServiceOptionsSection content={heatingRepairOptionsContent?.data} />
+    (isHeatingRepairService || isEmergencyHvacService) && (
+      <ServiceEmergencyCtaSection />
     )
   }
   {
-    isHeatingRepairService && (
-      <ServiceBenefitsSection content={heatingRepairBenefitsContent?.data} />
+    isConfiguredHvacService && (
+      <ServiceOptionsSection content={activeOptionsContent?.data} />
     )
   }
   {
-    isHeatingRepairService && (
+    isConfiguredHvacService && (
+      <ServiceBenefitsSection content={activeBenefitsContent?.data} />
+    )
+  }
+  {
+    isConfiguredHvacService && (
       <WorkingProcessSection
-        content={heatingRepairProcessContent?.data}
+        content={activeProcessContent?.data}
         hasLightBackground
       />
     )
   }
   {
-    isHeatingRepairService && (
-      <ServiceTrustSection content={heatingRepairTrustContent?.data} />
+    isConfiguredHvacService && (
+      <ServiceTrustSection content={activeTrustContent?.data} />
     )
   }
   {
-    isHeatingRepairService && (
-      <TestimonialQuoteSection hasSectionSpacing={false} />
-    )
-  }
-  {isHvacInstallationService && <ServiceOptionsSection />}
-  {isHvacInstallationService && <ServiceBenefitsSection />}
-  {
-    isHvacInstallationService && (
-      <WorkingProcessSection
-        content={hvacInstallationProcessContent?.data}
-        hasLightBackground
-      />
-    )
-  }
-  {isHvacInstallationService && <ServiceTrustSection />}
-  {
-    isHvacInstallationService && (
+    isConfiguredHvacService && (
       <TestimonialQuoteSection hasSectionSpacing={false} />
     )
   }
   <FaqSection content={activeFaqContent?.data} hasLightBackground />
   <ServiceAreaSection hasSectionSpacing={false} />
   {
-    isHeatingRepairService && (
+    isConfiguredHvacService && (
       <CallToAction
-        content={heatingRepairFinalCtaContent?.data}
-        hasSectionSpacing={false}
-      />
-    )
-  }
-  {
-    isHvacInstallationService && (
-      <CallToAction
-        content={hvacInstallationFinalCtaContent?.data}
+        content={activeFinalCtaContent?.data}
         hasSectionSpacing={false}
       />
     )
