@@ -10,7 +10,6 @@ import PageHeader from "@/components/widgets/PageHeader.astro";
 import FaqSection from "@/components/sections/FaqSection.astro";
 import ServiceAreaSection from "@/components/sections/ServiceAreaSection.astro";
 import WorkingProcessSection from "@/components/sections/WorkingProcessSection.astro";
-import ServiceWhyChooseUsSection from "@/components/sections/ServiceWhyChooseUsSection.astro";
 import ServiceEmergencyCtaSection from "@/components/sections/ServiceEmergencyCtaSection.astro";
 import ServiceOptionsSection from "@/components/sections/ServiceOptionsSection.astro";
 import ServiceBenefitsSection from "@/components/sections/ServiceBenefitsSection.astro";
@@ -96,6 +95,36 @@ const hvacInstallationFinalCtaContent = await getEntryCTM(
   Astro.currentLocale,
 );
 
+const heatingRepairOptionsContent = await getEntryCTM(
+  "sections",
+  "heating-repair-options-section",
+  Astro.currentLocale,
+);
+
+const heatingRepairBenefitsContent = await getEntryCTM(
+  "sections",
+  "heating-repair-benefits-section",
+  Astro.currentLocale,
+);
+
+const heatingRepairProcessContent = await getEntryCTM(
+  "sections",
+  "heating-repair-process-section",
+  Astro.currentLocale,
+);
+
+const heatingRepairTrustContent = await getEntryCTM(
+  "sections",
+  "heating-repair-trust-section",
+  Astro.currentLocale,
+);
+
+const heatingRepairFinalCtaContent = await getEntryCTM(
+  "sections",
+  "heating-repair-final-cta",
+  Astro.currentLocale,
+);
+
 const activeFaqContent = isHeatingRepairService
   ? heatingRepairFaqContent
   : isHvacInstallationService
@@ -120,7 +149,7 @@ const hvacSidebarCtaContent = {
 <Base
   {...service.data}
   fitToScreen={false}
-  hideCallToAction={isHvacInstallationService}>
+  hideCallToAction={isHeatingRepairService || isHvacInstallationService}>
   <PageHeader content={service?.data} />
   <ServicesSingle
     content={service}
@@ -129,8 +158,34 @@ const hvacSidebarCtaContent = {
       : undefined}
   />
   {isHeatingRepairService && <ServiceEmergencyCtaSection />}
-  {isHeatingRepairService && <ServiceWhyChooseUsSection />}
-  {isHeatingRepairService && <WorkingProcessSection hasBottomSpacing />}
+  {
+    isHeatingRepairService && (
+      <ServiceOptionsSection content={heatingRepairOptionsContent?.data} />
+    )
+  }
+  {
+    isHeatingRepairService && (
+      <ServiceBenefitsSection content={heatingRepairBenefitsContent?.data} />
+    )
+  }
+  {
+    isHeatingRepairService && (
+      <WorkingProcessSection
+        content={heatingRepairProcessContent?.data}
+        hasLightBackground
+      />
+    )
+  }
+  {
+    isHeatingRepairService && (
+      <ServiceTrustSection content={heatingRepairTrustContent?.data} />
+    )
+  }
+  {
+    isHeatingRepairService && (
+      <TestimonialQuoteSection hasSectionSpacing={false} />
+    )
+  }
   {isHvacInstallationService && <ServiceOptionsSection />}
   {isHvacInstallationService && <ServiceBenefitsSection />}
   {
@@ -149,6 +204,14 @@ const hvacSidebarCtaContent = {
   }
   <FaqSection content={activeFaqContent?.data} hasLightBackground />
   <ServiceAreaSection hasSectionSpacing={false} />
+  {
+    isHeatingRepairService && (
+      <CallToAction
+        content={heatingRepairFinalCtaContent?.data}
+        hasSectionSpacing={false}
+      />
+    )
+  }
   {
     isHvacInstallationService && (
       <CallToAction

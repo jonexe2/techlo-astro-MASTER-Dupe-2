@@ -1,5 +1,6 @@
 ---
 enable: true
+eyebrow: "COMMON QUESTIONS"
 title: "Frequently Asked Questions About Heating Repair"
 
 items:
