@@ -79,7 +79,6 @@ const serviceContentPrefix =
   serviceContentPrefixes[serviceId as keyof typeof serviceContentPrefixes];
 const isConfiguredHvacService = Boolean(serviceContentPrefix);
 const isHeatingRepairService = serviceId === "service-02";
-const isHvacInstallationService = serviceId === "service-03";
 const isEmergencyHvacService = serviceId === "service-06";
 
 const serviceDetailFaqContent = await getEntryCTM(
@@ -136,19 +135,91 @@ const activeFinalCtaContent = serviceContentPrefix
     )
   : undefined;
 
-const hvacSidebarCtaContent = {
-  icon: "Headset",
-  title: "Planning a New HVAC System?",
-  description:
-    "Talk with BlueFlame Heating & Air about installation options designed around your home, comfort needs, and budget.",
-  button: {
-    enable: true,
-    label: "Request an Estimate",
-    url: "/#contact",
-    hoverEffect: "magnetic-text-flip",
-    variant: "fill",
+const sidebarCtaContentByService = {
+  "service-01": {
+    icon: "Snowflake",
+    title: "Need Help With Your AC?",
+    description:
+      "Talk with BlueFlame Heating & Air about cooling problems, AC performance issues, and the repair needed to restore dependable comfort.",
+    button: {
+      enable: true,
+      label: "Request AC Repair",
+      url: "/#contact",
+      hoverEffect: "magnetic-text-flip",
+      variant: "fill",
+    },
+  },
+  "service-02": {
+    icon: "Flame",
+    title: "Need Help With Your Heat?",
+    description:
+      "Talk with BlueFlame Heating & Air about heating problems, system performance, and the repair needed to restore dependable warmth.",
+    button: {
+      enable: true,
+      label: "Request Heating Repair",
+      url: "/#contact",
+      hoverEffect: "magnetic-text-flip",
+      variant: "fill",
+    },
+  },
+  "service-03": {
+    icon: "Headset",
+    title: "Planning a New HVAC System?",
+    description:
+      "Talk with BlueFlame Heating & Air about installation options designed around your home, comfort needs, and budget.",
+    button: {
+      enable: true,
+      label: "Request an Estimate",
+      url: "/#contact",
+      hoverEffect: "magnetic-text-flip",
+      variant: "fill",
+    },
+  },
+  "service-04": {
+    icon: "Settings",
+    title: "Is Your HVAC System Ready?",
+    description:
+      "Schedule preventive maintenance with BlueFlame Heating & Air to inspect your equipment and prepare it for seasonal heating and cooling demand.",
+    button: {
+      enable: true,
+      label: "Schedule Maintenance",
+      url: "/#contact",
+      hoverEffect: "magnetic-text-flip",
+      variant: "fill",
+    },
+  },
+  "service-05": {
+    icon: "Wind",
+    title: "Want Better Indoor Air?",
+    description:
+      "Talk with BlueFlame Heating & Air about filtration, humidity control, and HVAC-based indoor air quality options for your home.",
+    button: {
+      enable: true,
+      label: "Explore Air Quality Options",
+      url: "/#contact",
+      hoverEffect: "magnetic-text-flip",
+      variant: "fill",
+    },
+  },
+  "service-06": {
+    icon: "Phone",
+    title: "Need HVAC Help Now?",
+    description:
+      "Tell BlueFlame Heating & Air what is happening with your heating or cooling system so the problem can be evaluated and the appropriate next step determined.",
+    button: {
+      enable: true,
+      label: "Request HVAC Service",
+      url: "/#contact",
+      hoverEffect: "magnetic-text-flip",
+      variant: "fill",
+    },
   },
 } as const;
+
+const activeSidebarCtaContent =
+  sidebarCtaContentByService[
+    serviceId as keyof typeof sidebarCtaContentByService
+  ];
 ---
 
 <Base
@@ -158,9 +229,7 @@ const hvacSidebarCtaContent = {
   <PageHeader content={service?.data} />
   <ServicesSingle
     content={service}
-    sidebarCtaContent={isHvacInstallationService
-      ? hvacSidebarCtaContent
-      : undefined}
+    sidebarCtaContent={activeSidebarCtaContent}
   />
   {
     (isHeatingRepairService || isEmergencyHvacService) && (

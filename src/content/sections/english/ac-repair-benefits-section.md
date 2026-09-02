@@ -6,15 +6,15 @@ description: "An AC repair should address the condition affecting cooling perfor
 
 items:
   - icon: "ThermometerSun"
-    statement: "COMFORT."
+    statement: "COOLING."
     title: "Get Comfortable Again"
     description: "Proper AC repair can help restore cooler temperatures, stronger airflow, and more consistent comfort throughout the home."
   - icon: "Zap"
-    statement: "EFFICIENCY."
+    statement: "PERFORMANCE."
     title: "Fix the Problem Behind Poor Performance"
     description: "Correcting the diagnosed issue helps the system operate as intended instead of continuing to struggle with an unresolved cooling problem."
   - icon: "ShieldCheck"
-    statement: "CONFIDENCE."
+    statement: "CLARITY."
     title: "Know What Was Repaired"
     description: "A clear diagnosis and completed repair help you understand what caused the problem and what was done to restore cooling."
 ---

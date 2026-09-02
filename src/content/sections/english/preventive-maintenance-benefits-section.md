@@ -6,15 +6,15 @@ description: "Preventive maintenance helps you understand system condition, prep
 
 items:
   - icon: "ThermometerSun"
-    statement: "COMFORT."
+    statement: "READINESS."
     title: "More Consistent Seasonal Comfort"
     description: "Checking heating and cooling equipment before peak use helps prepare the system to support dependable comfort when you need it."
   - icon: "Zap"
-    statement: "EFFICIENCY."
+    statement: "PERFORMANCE."
     title: "Keep the System Operating as Intended"
     description: "Reviewing system condition, airflow, and operation can identify issues that may be interfering with normal HVAC performance."
   - icon: "ShieldCheck"
-    statement: "CONFIDENCE."
+    statement: "PREVENTION."
     title: "Catch Problems Earlier"
     description: "A maintenance visit can reveal wear or developing concerns and give you time to consider the appropriate next step."
 ---

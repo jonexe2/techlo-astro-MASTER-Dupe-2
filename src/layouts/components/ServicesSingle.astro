@@ -72,6 +72,10 @@ const t = await useTranslations(Astro.currentLocale as string);
                   const isActive =
                     service.filePath === content.filePath ||
                     service.id === content.id;
+                  const serviceNavLabel = service.data.title.replace(
+                    /\s+in Boston,\s*MA$/i,
+                    "",
+                  );
 
                   return (
                     <li>
@@ -88,7 +92,7 @@ const t = await useTranslations(Astro.currentLocale as string);
                             ? "bg-primary text-white"
                             : "bg-light/70 text-dark hover:bg-primary hover:text-white",
                         ]}>
-                        <span>{service.data.title}</span>
+                        <span>{serviceNavLabel}</span>
                         <Icons
                           icon="ArrowUpRight"
                           class="size-5 shrink-0"

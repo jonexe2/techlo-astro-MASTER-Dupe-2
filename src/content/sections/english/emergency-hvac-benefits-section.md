@@ -6,15 +6,15 @@ description: "Urgent HVAC service should identify what stopped the system from o
 
 items:
   - icon: "ThermometerSun"
-    statement: "COMFORT."
+    statement: "RESTORATION."
     title: "Get Heating or Cooling Back"
     description: "Diagnosing and repairing the system can help restore the dependable heating or cooling your home needs."
   - icon: "Zap"
-    statement: "EFFICIENCY."
+    statement: "DIAGNOSIS."
     title: "Identify the Actual Problem"
     description: "Careful troubleshooting focuses the work on the diagnosed condition instead of relying on assumptions about an urgent symptom."
   - icon: "ShieldCheck"
-    statement: "CONFIDENCE."
+    statement: "CLARITY."
     title: "Know the Next Step"
     description: "Clear findings and repair recommendations help you understand the system condition and decide how to move forward."
 ---
