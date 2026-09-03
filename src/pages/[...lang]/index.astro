@@ -28,6 +28,12 @@ const skillSectionContent = await getEntryCTM(
   "startup-skill-section",
   Astro.currentLocale,
 );
+
+const duplicateSkillSectionContent = await getEntryCTM(
+  "sections",
+  "startup-skill-section-duplicate",
+  Astro.currentLocale,
+);
 ---
 
 <Base {...homepageContent?.data} headerLayout="three" headerPosition="fixed">
@@ -43,6 +49,10 @@ const skillSectionContent = await getEntryCTM(
   <MultipurposeSection
     hasSectionBackground={true}
     content={skillSectionContent.data}
+  />
+  <MultipurposeSection
+    hasSectionBackground={true}
+    content={duplicateSkillSectionContent.data}
   />
   <WhyChooseUsSection hasExtraBottomSpacing />
   <WorkingProcessSection hasLightBackground />
