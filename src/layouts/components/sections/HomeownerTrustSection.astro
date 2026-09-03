@@ -4,7 +4,6 @@ import type { Section } from "@/types";
 import type { homeownerTrustSectionSchema } from "@/sections.schema";
 import { markdownify } from "@/lib/utils/textConverter";
 import OptimizedImage from "@/components/utilities/OptimizedImage.astro";
-import Icons from "@/helpers/Icons.astro";
 
 type HomeownerTrustContent = Section &
   NonNullable<z.infer<typeof homeownerTrustSectionSchema>>;
@@ -25,6 +24,31 @@ const {
 if (!enable || !title || features.length !== 4) {
   return null;
 }
+
+const featureIconPaths = [
+  [
+    "M16 4.25l2.15 1.36 2.53-.16.91 2.36 2.15 1.36-.77 2.42.77 2.42-2.15 1.36-.91 2.36-2.53-.16L16 18.97l-2.15-1.36-2.53.16-.91-2.36-2.15-1.36.77-2.42-.77-2.42 2.15-1.36.91-2.36 2.53.16L16 4.25Z",
+    "m12.75 11.7 2.05 2.05 4.45-4.55",
+    "m12.1 18.1-1.45 8.15L16 23.1l5.35 3.15-1.45-8.15",
+  ],
+  [
+    "M9 4.75h11.2l3.8 3.8v17.7H9V4.75Z",
+    "M20.2 4.75v4.1H24",
+    "M13 14.25h7",
+    "M13 18.25h3.5",
+    "M13 22.25h4",
+    "M21.2 17.75c-1.55 0-2.55.7-2.55 1.75s1 1.75 2.55 1.75 2.55.7 2.55 1.75-1 1.75-2.55 1.75m0-7.75v1.75m0 7v1.75",
+  ],
+  [
+    "M4.5 15.15 16 5.75l11.5 9.4",
+    "M7.5 13.05v13.2h17v-13.2",
+    "M16 22.75s-5-2.65-5-6.05c0-1.65 1.25-2.85 2.75-2.85 1.05 0 1.85.55 2.25 1.35.4-.8 1.2-1.35 2.25-1.35 1.5 0 2.75 1.2 2.75 2.85 0 3.4-5 6.05-5 6.05Z",
+  ],
+  [
+    "M16 3.75c3.25 2.15 6.35 3.1 9.4 3.25v7.15c0 6.15-3.75 10.95-9.4 14.1-5.65-3.15-9.4-7.95-9.4-14.1V7c3.05-.15 6.15-1.1 9.4-3.25Z",
+    "m11.25 15.85 3.15 3.15 6.45-6.65",
+  ],
+];
 ---
 
 <section class="bg-theme-light section-spacing-vertical overflow-hidden">
@@ -129,33 +153,46 @@ if (!enable || !title || features.length !== 4) {
       </div>
 
       <div
-        class="border-border-light w-full overflow-hidden rounded-xl border bg-white"
+        class="w-full"
         data-scroll-reveal="fade-up"
         data-scroll-reveal-delay="120">
-        <div class="divide-border-light divide-y">
-          {
-            features.map((feature) => (
-              <article class="flex items-center px-5 py-6 sm:px-6 lg:px-8 lg:py-8">
-                <Icons
-                  icon={feature.icon}
-            class="text-primary size-9 shrink-0"
-                  stroke-width="1.6"
+        {
+          features.map((feature, index) => (
+            <article
+              class:list={[
+                "flex items-start gap-5 py-6 sm:gap-6 lg:gap-7 lg:py-8",
+                index < features.length - 1 &&
+                  "border-border-light border-b",
+              ]}>
+              <span class="bg-dark flex size-14 shrink-0 items-center justify-center rounded-full text-white sm:size-16 lg:size-18">
+                <svg
+                  class="size-8 lg:size-9"
+                  viewBox="0 0 32 32"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2.15"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
                   aria-hidden="true"
+                  focusable="false">
+                  {
+                    featureIconPaths[index].map((path) => <path d={path} />)
+                  }
+                </svg>
+              </span>
+              <div class="min-w-0 flex-1 pt-1.5 lg:pt-2">
+                <h3
+                  class="text-h5-sm md:text-h5 text-dark"
+                  set:html={markdownify(feature.title)}
                 />
-                <div class="ml-5 min-w-0 flex-1 sm:ml-6 lg:ml-7">
-                  <h3
-                    class="text-h6-sm md:text-h6 text-dark"
-                    set:html={markdownify(feature.title)}
-                  />
-                  <p
-                    class="text-text-default leading-body mt-1.5 text-sm sm:text-base"
-                    set:html={markdownify(feature.description)}
-                  />
-                </div>
-              </article>
-            ))
-          }
-        </div>
+                <p
+                  class="text-text-default leading-body mt-2 text-sm sm:text-base"
+                  set:html={markdownify(feature.description)}
+                />
+              </div>
+            </article>
+          ))
+        }
       </div>
     </div>
   </div>
