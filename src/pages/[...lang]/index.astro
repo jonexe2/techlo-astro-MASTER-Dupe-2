@@ -12,6 +12,7 @@ import FaqSection from "@/components/sections/FaqSection.astro";
 import ServiceAreaSection from "@/components/sections/ServiceAreaSection.astro";
 import ContactSectionTwo from "@/components/sections/ContactSectionTwo.astro";
 import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection.astro";
+import HomeownerTrustSection from "@/components/sections/HomeownerTrustSection.astro";
 
 export function getStaticPaths() {
   return generatePaths();
@@ -50,10 +51,7 @@ const duplicateSkillSectionContent = await getEntryCTM(
     hasSectionBackground={true}
     content={skillSectionContent.data}
   />
-  <MultipurposeSection
-    hasSectionBackground={true}
-    content={duplicateSkillSectionContent.data}
-  />
+  <HomeownerTrustSection content={duplicateSkillSectionContent.data} />
   <WhyChooseUsSection hasExtraBottomSpacing />
   <WorkingProcessSection hasLightBackground />
   <TestimonialQuoteSection hasSectionSpacing={false} />

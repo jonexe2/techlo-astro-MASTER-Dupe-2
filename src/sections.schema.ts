@@ -367,6 +367,28 @@ export const multipurposeSectionSchema = z
   })
   .optional();
 
+export const homeownerTrustSectionSchema = z
+  .object({
+    enable: z.boolean().default(true).optional(),
+    eyebrow: z.string().optional(),
+    title: z.string(),
+    description: z.string(),
+    images: z.object({
+      large: z.string(),
+      small: z.string(),
+    }),
+    features: z
+      .array(
+        z.object({
+          icon: z.string(),
+          title: z.string(),
+          description: z.string(),
+        }),
+      )
+      .length(4),
+  })
+  .optional();
+
 export const faqSectionSchema = z
   .object({
     enable: z.boolean().default(false).optional(),
@@ -497,6 +519,7 @@ export const sectionsSchema = {
   serviceBenefitsSection: serviceBenefitsSectionSchema,
   serviceTrustSection: serviceTrustSectionSchema,
   multipurposeSection: multipurposeSectionSchema,
+  homeownerTrustSection: homeownerTrustSectionSchema,
   faqSection: faqSectionSchema,
   serviceAreaSection: serviceAreaSectionSchema,
   whyChooseUsSection: whyChooseUsSectionSchema,
