@@ -125,7 +125,7 @@ const cityColumns = [cities.slice(0, 6), cities.slice(6)];
   </div>
 
   <div class="container relative z-10 -mt-28 md:-mt-36">
-    <div class="overflow-hidden rounded-xl shadow-sm">
+    <div class="showcase-map overflow-hidden rounded-xl">
       <iframe
         title={mapLabel}
         src={mapEmbedUrl}
@@ -143,9 +143,15 @@ const cityColumns = [cities.slice(0, 6), cities.slice(6)];
     clip-path: polygon(
       0 0,
       100% 0,
-      100% calc(100% - 4rem),
+      100% calc(100% - 8rem),
       50% 100%,
-      0 calc(100% - 4rem)
+      0 calc(100% - 8rem)
     );
+  }
+
+  .showcase-map {
+    box-shadow:
+      0 2px 6px color-mix(in srgb, var(--color-dark) 8%, transparent),
+      0 14px 30px -10px color-mix(in srgb, var(--color-dark) 16%, transparent);
   }
 </style>
