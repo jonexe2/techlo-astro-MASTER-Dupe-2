@@ -417,6 +417,23 @@ export const serviceAreaSectionSchema = z
   })
   .optional();
 
+export const homepageServiceAreaShowcaseSectionSchema = serviceAreaSectionSchema
+  .unwrap()
+  .extend({
+    title: z.string(),
+    description: z.string(),
+    cities: z.array(z.string()).length(12),
+    cityIcon: z.string(),
+    mapLabel: z.string(),
+    mapEmbedUrl: z.url(),
+    trustCallout: z.object({
+      icon: z.string(),
+      title: z.string(),
+      description: z.string(),
+    }),
+  })
+  .optional();
+
 export const whyChooseUsSectionSchema = z
   .object({
     enable: z.boolean().default(true).optional(),
@@ -522,6 +539,7 @@ export const sectionsSchema = {
   homeownerTrustSection: homeownerTrustSectionSchema,
   faqSection: faqSectionSchema,
   serviceAreaSection: serviceAreaSectionSchema,
+  homepageServiceAreaShowcaseSection: homepageServiceAreaShowcaseSectionSchema,
   whyChooseUsSection: whyChooseUsSectionSchema,
   aboutUsIntroSection: aboutUsIntroSectionSchema,
   alternativeServicesSection: alternativeServicesSectionSchema,
