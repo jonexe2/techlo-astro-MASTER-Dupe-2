@@ -131,15 +131,22 @@ const iconPaths: Record<string, string[]> = {
           const isRepair = panel.variant === "repair";
 
           return (
-            <article
+            <div
               class:list={[
-                "comparison-panel relative isolate flex h-full flex-col overflow-hidden rounded-2xl border p-6 sm:p-8 lg:p-10",
+                "comparison-panel-shell h-full",
                 isRepair
-                  ? "comparison-panel-repair border-white/10 bg-theme-dark text-white"
-                  : "comparison-panel-replace border-primary/20 bg-white",
+                  ? "comparison-panel-shell-repair"
+                  : "comparison-panel-shell-replace",
               ]}
               data-scroll-reveal="fade-up"
               data-scroll-reveal-delay={panelIndex === 1 ? "100" : undefined}>
+              <article
+                class:list={[
+                  "comparison-panel relative isolate flex h-full flex-col overflow-hidden rounded-2xl border p-6 sm:p-8 lg:p-10",
+                  isRepair
+                    ? "comparison-panel-repair border-white/10 bg-theme-dark text-white"
+                    : "comparison-panel-replace border-primary/20 bg-white",
+                ]}>
               <div
                 class="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl"
                 aria-hidden="true">
@@ -185,25 +192,39 @@ const iconPaths: Record<string, string[]> = {
                 ) : (
                   <>
                     <svg
-                      class="text-primary-soft absolute -top-12 -right-8 h-56 w-28 opacity-90"
-                      viewBox="0 0 112 224"
+                      class="text-primary-soft absolute -top-20 -right-24 size-96 opacity-70 blur-sm"
+                      viewBox="0 0 384 384"
                       fill="none">
                       <path
-                        d="M126 6C54 34 52 88 118 122"
+                        d="M66 14c54 57 132 51 190 96 59 46 64 107 120 151"
                         stroke="currentColor"
-                        stroke-width="24"
+                        stroke-width="62"
                         stroke-linecap="round"
+                      />
+                      <path
+                        d="M113-2c40 51 105 61 155 99 50 39 61 86 106 120"
+                        stroke="var(--color-primary)"
+                        stroke-width="10"
+                        stroke-linecap="round"
+                        opacity=".05"
                       />
                     </svg>
                     <svg
-                      class="text-primary-soft absolute -right-8 -bottom-12 h-56 w-28 opacity-90"
-                      viewBox="0 0 112 224"
+                      class="text-primary-soft absolute -right-24 -bottom-32 size-96 opacity-70 blur-sm"
+                      viewBox="0 0 384 384"
                       fill="none">
                       <path
-                        d="M120 102C54 136 55 190 126 218"
+                        d="M24 338c74-54 118-45 173-99 53-51 73-114 179-143"
                         stroke="currentColor"
-                        stroke-width="24"
+                        stroke-width="68"
                         stroke-linecap="round"
+                      />
+                      <path
+                        d="M55 374c84-56 127-55 188-108 57-49 77-101 136-128"
+                        stroke="var(--color-primary)"
+                        stroke-width="9"
+                        stroke-linecap="round"
+                        opacity=".05"
                       />
                     </svg>
                   </>
@@ -294,7 +315,8 @@ const iconPaths: Record<string, string[]> = {
                   ))
                 }
               </ul>
-            </article>
+              </article>
+            </div>
           );
         })
       }
@@ -343,14 +365,18 @@ const iconPaths: Record<string, string[]> = {
 
 <style>
   .comparison-panel-repair {
-    box-shadow:
-      inset 0 1px 0 color-mix(in srgb, white 9%, transparent),
-      0 14px 30px -22px color-mix(in srgb, var(--color-dark) 52%, transparent);
+    box-shadow: inset 0 1px 0 color-mix(in srgb, white 9%, transparent);
   }
 
   .comparison-panel-replace {
-    box-shadow:
-      inset 0 1px 0 white,
-      0 14px 30px -22px color-mix(in srgb, var(--color-dark) 20%, transparent);
+    box-shadow: inset 0 1px 0 white;
+  }
+
+  .comparison-panel-shell-repair {
+    filter: drop-shadow(0 10px 10px color-mix(in srgb, var(--color-dark) 18%, transparent));
+  }
+
+  .comparison-panel-shell-replace {
+    filter: drop-shadow(0 8px 9px color-mix(in srgb, var(--color-dark) 10%, transparent));
   }
 </style>
