@@ -185,32 +185,25 @@ const iconPaths: Record<string, string[]> = {
                 ) : (
                   <>
                     <svg
-                      class="text-primary-soft absolute -top-24 -right-24 size-96 opacity-80"
-                      viewBox="0 0 384 384"
+                      class="text-primary-soft absolute -top-12 -right-8 h-56 w-28 opacity-90"
+                      viewBox="0 0 112 224"
                       fill="none">
                       <path
-                        d="M36 22c64 76 150 59 215 117 58 52 63 122 125 168"
+                        d="M126 6C54 34 52 88 118 122"
                         stroke="currentColor"
-                        stroke-width="88"
+                        stroke-width="24"
                         stroke-linecap="round"
                       />
                     </svg>
                     <svg
-                      class="text-primary absolute -right-32 -bottom-32 size-96 opacity-5"
-                      viewBox="0 0 384 384"
+                      class="text-primary-soft absolute -right-8 -bottom-12 h-56 w-28 opacity-90"
+                      viewBox="0 0 112 224"
                       fill="none">
                       <path
-                        d="M8 344c79-64 126-48 184-112 49-54 70-119 180-154"
+                        d="M120 102C54 136 55 190 126 218"
                         stroke="currentColor"
-                        stroke-width="78"
+                        stroke-width="24"
                         stroke-linecap="round"
-                      />
-                      <path
-                        d="M30 376c90-61 137-62 201-119 57-50 79-106 153-137"
-                        stroke="currentColor"
-                        stroke-width="14"
-                        stroke-linecap="round"
-                        opacity=".55"
                       />
                     </svg>
                   </>
@@ -259,21 +252,13 @@ const iconPaths: Record<string, string[]> = {
                       ]}>
                       <span
                         class:list={[
-                          "comparison-icon-frame relative flex size-15 shrink-0 items-center justify-center xl:size-14",
+                          "flex size-15 shrink-0 items-center justify-center rounded-full xl:size-14",
                           isRepair
-                            ? "comparison-icon-frame-repair text-white"
-                            : "comparison-icon-frame-light text-dark",
+                            ? "border-primary/30 bg-primary/20 border text-white"
+                            : "border-primary/10 bg-primary-soft border text-dark",
                         ]}>
-                        <span
-                          class="comparison-icon-frame-surface absolute inset-0.5"
-                          aria-hidden="true"
-                        />
-                        <span
-                          class="bg-heat-accent absolute top-0 left-2 z-10 h-0.5 w-3"
-                          aria-hidden="true"
-                        />
                         <svg
-                          class="relative z-10 size-8"
+                          class="size-8"
                           viewBox="0 0 32 32"
                           fill="none"
                           stroke="currentColor"
@@ -319,17 +304,9 @@ const iconPaths: Record<string, string[]> = {
       class="border-border-light mt-8 flex flex-col items-start gap-5 rounded-xl border bg-white p-6 shadow-sm sm:p-8 lg:mt-10 lg:flex-row lg:items-center lg:gap-7"
       aria-labelledby="repair-vs-replacement-recommendation-heading"
       data-scroll-reveal="fade-up">
-      <span class="comparison-icon-frame comparison-icon-frame-light text-primary relative flex size-14 shrink-0 items-center justify-center">
-        <span
-          class="comparison-icon-frame-surface absolute inset-0.5"
-          aria-hidden="true"
-        />
-        <span
-          class="bg-heat-accent absolute top-0 left-2 z-10 h-0.5 w-3"
-          aria-hidden="true"
-        />
+      <span class="border-primary/10 bg-primary-soft text-primary flex size-14 shrink-0 items-center justify-center rounded-full border">
         <svg
-          class="relative z-10 size-7"
+          class="size-7"
           viewBox="0 0 32 32"
           fill="none"
           stroke="currentColor"
@@ -368,35 +345,12 @@ const iconPaths: Record<string, string[]> = {
   .comparison-panel-repair {
     box-shadow:
       inset 0 1px 0 color-mix(in srgb, white 9%, transparent),
-      0 12px 28px -16px color-mix(in srgb, var(--color-dark) 58%, transparent),
-      0 26px 52px -30px color-mix(in srgb, var(--color-primary) 42%, transparent);
+      0 14px 30px -22px color-mix(in srgb, var(--color-dark) 52%, transparent);
   }
 
   .comparison-panel-replace {
     box-shadow:
       inset 0 1px 0 white,
-      0 10px 24px -16px color-mix(in srgb, var(--color-dark) 20%, transparent),
-      0 24px 48px -28px color-mix(in srgb, var(--color-primary) 24%, transparent);
-  }
-
-  .comparison-icon-frame,
-  .comparison-icon-frame-surface {
-    clip-path: polygon(0 0, calc(100% - 0.7rem) 0, 100% 0.7rem, 100% 100%, 0 100%);
-  }
-
-  .comparison-icon-frame-repair {
-    background-color: color-mix(in srgb, var(--color-primary) 72%, transparent);
-  }
-
-  .comparison-icon-frame-repair .comparison-icon-frame-surface {
-    background-color: color-mix(in srgb, var(--color-primary) 14%, transparent);
-  }
-
-  .comparison-icon-frame-light {
-    background-color: color-mix(in srgb, var(--color-primary) 38%, var(--color-border-light));
-  }
-
-  .comparison-icon-frame-light .comparison-icon-frame-surface {
-    background-color: color-mix(in srgb, var(--color-primary-soft) 35%, white);
+      0 14px 30px -22px color-mix(in srgb, var(--color-dark) 20%, transparent);
   }
 </style>
