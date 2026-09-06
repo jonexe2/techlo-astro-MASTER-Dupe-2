@@ -365,18 +365,16 @@ const iconPaths: Record<string, string[]> = {
 
 <style>
   .comparison-panel-repair {
-    box-shadow: inset 0 1px 0 color-mix(in srgb, white 9%, transparent);
+    box-shadow:
+      inset 0 1px 0 color-mix(in srgb, white 9%, transparent),
+      0 3px 8px color-mix(in srgb, var(--color-dark) 14%, transparent),
+      0 16px 32px color-mix(in srgb, var(--color-dark) 18%, transparent);
   }
 
   .comparison-panel-replace {
-    box-shadow: inset 0 1px 0 white;
-  }
-
-  .comparison-panel-shell-repair {
-    filter: drop-shadow(0 10px 10px color-mix(in srgb, var(--color-dark) 18%, transparent));
-  }
-
-  .comparison-panel-shell-replace {
-    filter: drop-shadow(0 8px 9px color-mix(in srgb, var(--color-dark) 10%, transparent));
+    box-shadow:
+      inset 0 1px 0 white,
+      0 3px 8px color-mix(in srgb, var(--color-dark) 9%, transparent),
+      0 16px 32px color-mix(in srgb, var(--color-dark) 12%, transparent);
   }
 </style>
