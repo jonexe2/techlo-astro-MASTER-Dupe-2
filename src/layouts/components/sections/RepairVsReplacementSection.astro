@@ -127,7 +127,7 @@ const iconPaths: Record<string, string[]> = {
 
     <div class="grid items-stretch gap-6 md:grid-cols-2 lg:gap-8">
       {
-        panels.map((panel, panelIndex) => {
+        panels.map((panel) => {
           const isRepair = panel.variant === "repair";
 
           return (
@@ -137,9 +137,7 @@ const iconPaths: Record<string, string[]> = {
                 isRepair
                   ? "comparison-panel-repair border-white/10 bg-theme-dark text-white"
                   : "comparison-panel-replace border-primary/20 bg-white",
-              ]}
-              data-scroll-reveal="fade-up"
-              data-scroll-reveal-delay={panelIndex === 1 ? "100" : undefined}>
+              ]}>
               <div
                 class="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl"
                 aria-hidden="true">
@@ -358,15 +356,15 @@ const iconPaths: Record<string, string[]> = {
 <style>
   .comparison-panel-repair {
     box-shadow:
-      0 2px 6px color-mix(in srgb, var(--color-dark) 10%, transparent),
-      0 0 20px color-mix(in srgb, var(--color-dark) 11%, transparent),
-      0 14px 30px -10px color-mix(in srgb, var(--color-dark) 20%, transparent);
+      0 3px 8px color-mix(in srgb, var(--color-dark) 12%, transparent),
+      0 0 28px color-mix(in srgb, var(--color-dark) 14%, transparent),
+      0 18px 40px -8px color-mix(in srgb, var(--color-dark) 22%, transparent);
   }
 
   .comparison-panel-replace {
     box-shadow:
-      0 2px 6px color-mix(in srgb, var(--color-dark) 10%, transparent),
-      0 0 20px color-mix(in srgb, var(--color-dark) 11%, transparent),
-      0 14px 30px -10px color-mix(in srgb, var(--color-dark) 20%, transparent);
+      0 3px 8px color-mix(in srgb, var(--color-dark) 12%, transparent),
+      0 0 28px color-mix(in srgb, var(--color-dark) 14%, transparent),
+      0 18px 40px -8px color-mix(in srgb, var(--color-dark) 22%, transparent);
   }
 </style>
