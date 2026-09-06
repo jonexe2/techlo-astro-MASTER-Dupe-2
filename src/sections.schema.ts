@@ -434,6 +434,40 @@ export const homepageServiceAreaShowcaseSectionSchema = serviceAreaSectionSchema
   })
   .optional();
 
+export const repairVsReplacementSectionSchema = z
+  .object({
+    enable: z.boolean().default(true).optional(),
+    eyebrow: z.string().optional(),
+    title: z.string(),
+    description: z.string(),
+    panels: z
+      .array(
+        z.object({
+          variant: z.enum(["repair", "replace"]),
+          label: z.string(),
+          title: z.string(),
+          description: z.string(),
+          features: z
+            .array(
+              z.object({
+                icon: z.string(),
+                title: z.string(),
+                description: z.string(),
+              }),
+            )
+            .length(4),
+        }),
+      )
+      .length(2),
+    recommendation: z.object({
+      eyebrow: z.string(),
+      title: z.string(),
+      description: z.string(),
+      button: sharedButton,
+    }),
+  })
+  .optional();
+
 export const whyChooseUsSectionSchema = z
   .object({
     enable: z.boolean().default(true).optional(),
@@ -540,6 +574,7 @@ export const sectionsSchema = {
   faqSection: faqSectionSchema,
   serviceAreaSection: serviceAreaSectionSchema,
   homepageServiceAreaShowcaseSection: homepageServiceAreaShowcaseSectionSchema,
+  repairVsReplacementSection: repairVsReplacementSectionSchema,
   whyChooseUsSection: whyChooseUsSectionSchema,
   aboutUsIntroSection: aboutUsIntroSectionSchema,
   alternativeServicesSection: alternativeServicesSectionSchema,

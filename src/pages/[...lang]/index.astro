@@ -4,8 +4,8 @@ import { getEntryCTM } from "@/lib/contentParser.astro";
 import { generatePaths } from "@/lib/utils/i18nUtils.ts";
 import BlogSection from "@/components/sections/BlogSection.astro";
 import AlternativeHeroSection from "@/components/sections/AlternativeHeroSection.astro";
-import MultipurposeSection from "@/components/sections/Section.astro";
 import ServicesSection from "@/components/sections/ServicesSection.astro";
+import RepairVsReplacementSection from "@/components/sections/RepairVsReplacementSection.astro";
 import WorkingProcessSection from "@/components/sections/WorkingProcessSection.astro";
 import TestimonialQuoteSection from "@/components/sections/TestimonialQuoteSection.astro";
 import FaqSection from "@/components/sections/FaqSection.astro";
@@ -21,12 +21,6 @@ export function getStaticPaths() {
 const homepageContent = await getEntryCTM(
   "homepage",
   "-index",
-  Astro.currentLocale,
-);
-
-const skillSectionContent = await getEntryCTM(
-  "sections",
-  "startup-skill-section",
   Astro.currentLocale,
 );
 
@@ -47,10 +41,7 @@ const duplicateSkillSectionContent = await getEntryCTM(
       },
     }}
   />
-  <MultipurposeSection
-    hasSectionBackground={true}
-    content={skillSectionContent.data}
-  />
+  <RepairVsReplacementSection />
   <HomeownerTrustSection content={duplicateSkillSectionContent.data} />
   <WhyChooseUsSection hasExtraBottomSpacing />
   <WorkingProcessSection hasLightBackground />
