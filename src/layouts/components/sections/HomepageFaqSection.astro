@@ -62,7 +62,7 @@ if (!enable || !title || !items.length) {
           items.map((item, index) => (
             <div
               class:list={[
-                "hs-accordion hs-accordion-active:border-primary border-primary/20 rounded-xl border bg-white transition-colors duration-200",
+                "hs-accordion hs-accordion-active:border-primary border-primary/20 rounded-xl border-2 bg-white transition-colors duration-200",
                 index === 0 && "active",
               ]}
               data-group="homepage-faq"
@@ -92,7 +92,7 @@ if (!enable || !title || !items.length) {
                   "hs-accordion-content w-full overflow-hidden transition-[height] duration-300 ease-in-out",
                   index !== 0 && "hidden",
                 ]}>
-                <div class="border-primary/20 mx-5 mb-5 border-s-2 ps-4 sm:mx-7 sm:mb-6 sm:ps-5 lg:mx-8">
+                <div class="mx-5 mb-5 sm:mx-7 sm:mb-6 lg:mx-8">
                   <p
                     class="text-text-default leading-body max-w-4xl"
                     set:html={markdownify(item.answer)}
