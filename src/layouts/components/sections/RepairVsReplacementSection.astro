@@ -87,7 +87,7 @@ const iconPaths: Record<string, string[]> = {
 ---
 
 <section
-  class="section-spacing-vertical bg-theme-light"
+  class="section-spacing-vertical bg-white"
   aria-labelledby="repair-vs-replacement-heading">
   <div class="container">
     <header class="mx-auto mb-12 max-w-4xl text-center lg:mb-14">
@@ -183,39 +183,35 @@ const iconPaths: Record<string, string[]> = {
                 ) : (
                   <>
                     <svg
-                      class="text-primary-soft absolute -top-20 -right-24 size-96 opacity-70 blur-sm"
-                      viewBox="0 0 384 384"
+                      class="text-primary-soft absolute -top-24 -right-20 size-80 opacity-80 blur-sm"
+                      viewBox="0 0 320 320"
                       fill="none">
                       <path
-                        d="M66 14c54 57 132 51 190 96 59 46 64 107 120 151"
-                        stroke="currentColor"
-                        stroke-width="62"
-                        stroke-linecap="round"
+                        d="M320 0v186c-45 24-96 28-137 6-46-25-61-71-38-111C169 39 228 10 320 0Z"
+                        fill="currentColor"
+                        opacity=".52"
                       />
                       <path
-                        d="M113-2c40 51 105 61 155 99 50 39 61 86 106 120"
+                        d="M320 20c-78 6-128 31-151 69-20 34-7 72 32 93 34 18 77 15 119-5"
                         stroke="var(--color-primary)"
-                        stroke-width="10"
+                        stroke-width="3"
                         stroke-linecap="round"
-                        opacity=".05"
+                        opacity=".04"
                       />
                     </svg>
                     <svg
-                      class="text-primary-soft absolute -right-24 -bottom-32 size-96 opacity-70 blur-sm"
+                      class="text-primary-soft absolute -right-16 -bottom-24 size-96 opacity-90 blur-sm"
                       viewBox="0 0 384 384"
                       fill="none">
                       <path
-                        d="M24 338c74-54 118-45 173-99 53-51 73-114 179-143"
-                        stroke="currentColor"
-                        stroke-width="68"
-                        stroke-linecap="round"
+                        d="M384 52v332H24c70-47 118-60 177-103 69-50 92-131 183-229Z"
+                        fill="currentColor"
+                        opacity=".72"
                       />
                       <path
-                        d="M55 374c84-56 127-55 188-108 57-49 77-101 136-128"
-                        stroke="var(--color-primary)"
-                        stroke-width="9"
-                        stroke-linecap="round"
-                        opacity=".05"
+                        d="M384 137v247H105c58-34 98-49 145-86 58-45 83-101 134-161Z"
+                        fill="var(--color-primary)"
+                        opacity=".055"
                       />
                     </svg>
                   </>
@@ -313,10 +309,56 @@ const iconPaths: Record<string, string[]> = {
     </div>
 
     <aside
-      class="border-border-light mt-8 flex flex-col items-start gap-5 rounded-xl border bg-white p-6 shadow-sm sm:p-8 lg:mt-10 lg:flex-row lg:items-center lg:gap-7"
-      aria-labelledby="repair-vs-replacement-recommendation-heading"
-      data-scroll-reveal="fade-up">
-      <span class="border-primary/10 bg-primary-soft text-primary flex size-14 shrink-0 items-center justify-center rounded-full border">
+      class="recommendation-banner bg-theme-dark relative isolate mt-8 flex flex-col items-start gap-5 overflow-hidden rounded-2xl border border-white/10 p-6 sm:p-8 lg:mt-10 lg:flex-row lg:items-center lg:gap-7"
+      aria-labelledby="repair-vs-replacement-recommendation-heading">
+      <div
+        class="pointer-events-none absolute inset-0 overflow-hidden rounded-2xl"
+        aria-hidden="true">
+        <svg
+          class="text-primary absolute -bottom-32 -left-20 size-80 opacity-25"
+          viewBox="0 0 320 320"
+          fill="none">
+          <path
+            d="M0 102c58 22 102 58 132 108 20 34 28 71 31 110H0V102Z"
+            fill="currentColor"
+            opacity=".42"
+          />
+          <path
+            d="M0 136c46 20 81 50 106 91 17 28 24 59 28 93"
+            stroke="currentColor"
+            stroke-width="2"
+            opacity=".7"
+          />
+        </svg>
+        <svg
+          class="text-primary absolute -top-20 -right-20 size-96 opacity-50"
+          viewBox="0 0 384 384"
+          fill="none">
+          <path
+            d="M414 4c-83 74-96 151-164 214-52 48-91 89-126 166"
+            stroke="currentColor"
+            stroke-width="96"
+            stroke-linecap="round"
+            opacity=".18"
+          />
+          <path
+            d="M392 18c-70 67-88 139-149 197-48 46-83 86-113 169"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            opacity=".72"
+          />
+          <path
+            d="M420 104c-76 50-99 107-155 160-43 41-72 76-96 120"
+            stroke="currentColor"
+            stroke-width="14"
+            stroke-linecap="round"
+            opacity=".16"
+          />
+        </svg>
+      </div>
+
+      <span class="border-primary/50 bg-primary/15 relative z-10 flex size-14 shrink-0 items-center justify-center rounded-full border text-white sm:size-16">
         <svg
           class="size-7"
           viewBox="0 0 32 32"
@@ -333,22 +375,30 @@ const iconPaths: Record<string, string[]> = {
         </svg>
       </span>
 
-      <div class="min-w-0 flex-1">
-        <p class="text-primary text-sm font-semibold tracking-widest uppercase">
+      <div class="relative z-10 min-w-0 flex-1">
+        <p class="text-light text-sm font-semibold tracking-widest uppercase">
           {recommendation.eyebrow}
         </p>
         <h3
           id="repair-vs-replacement-recommendation-heading"
-          class="mt-2 text-h5-sm md:text-h5"
+          class="mt-2 text-h5-sm text-white md:text-h5"
           set:html={markdownify(recommendation.title)}
         />
         <p
-          class="text-text-default leading-body mt-2 max-w-3xl"
+          class="text-light leading-body mt-2 max-w-3xl"
           set:html={markdownify(recommendation.description)}
         />
       </div>
 
-      <Button {...recommendation.button} class="shrink-0" />
+      <span
+        class="relative z-10 hidden h-20 w-px shrink-0 bg-white/20 lg:block"
+        aria-hidden="true"
+      />
+
+      <Button
+        {...recommendation.button}
+        class="relative z-10 shrink-0 lg:ml-4"
+      />
     </aside>
   </div>
 </section>
@@ -366,5 +416,11 @@ const iconPaths: Record<string, string[]> = {
       0 3px 8px color-mix(in srgb, var(--color-dark) 12%, transparent),
       0 0 28px color-mix(in srgb, var(--color-dark) 14%, transparent),
       0 18px 40px -8px color-mix(in srgb, var(--color-dark) 22%, transparent);
+  }
+
+  .recommendation-banner {
+    box-shadow:
+      0 3px 8px color-mix(in srgb, var(--color-dark) 12%, transparent),
+      0 16px 36px -14px color-mix(in srgb, var(--color-dark) 28%, transparent);
   }
 </style>
