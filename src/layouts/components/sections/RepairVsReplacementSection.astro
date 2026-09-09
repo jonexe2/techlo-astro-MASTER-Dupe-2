@@ -6,6 +6,7 @@ import { getEntryCTM } from "@/lib/contentParser.astro";
 import { markdownify } from "@/lib/utils/textConverter";
 import overrideObjects from "@/lib/utils/overrideObjects.ts";
 import Button from "@/components/Button.astro";
+import { Handshake } from "lucide";
 
 type RepairVsReplacementContent = Section &
   NonNullable<z.infer<typeof repairVsReplacementSectionSchema>>;
@@ -77,14 +78,6 @@ const iconPaths: Record<string, string[]> = {
     "M15.85 18.05c-5.25.08-8.35-2.55-8.7-7.88 5.27-.4 8.45 2.38 8.7 7.88Z",
     "M16.15 14.85c.35-5.2 3.4-7.98 8.7-7.88-.08 5.3-3.4 8.13-8.7 7.88Z",
     "M9.25 27h13.5",
-  ],
-  handshake: [
-    "M4.25 9.5 8.5 6l4.25 3.4-5.4 7.55-3.1-2.3V9.5Z",
-    "M27.75 9.5 23.5 6l-4.25 3.4 5.4 7.55 3.1-2.3V9.5Z",
-    "M10.6 14.4l4.2-3.35a3.1 3.1 0 0 1 3.8-.05l5.95 4.75",
-    "M7.5 17.2l7.1 6.05a2 2 0 0 0 2.7-.12l.65-.67",
-    "m12.2 19.05 3.35 2.85m-.4-4.65 4.1 3.5m-1.1-5.2 4.15 3.55",
-    "m24.55 15.75-4.45 6.05a2 2 0 0 1-2.82.35",
   ],
 };
 ---
@@ -186,7 +179,7 @@ const iconPaths: Record<string, string[]> = {
                 ) : (
                   <>
                     <svg
-                      class="text-primary-soft absolute -top-8 -right-8 size-80"
+                      class="text-primary-soft absolute -top-8 -right-8 size-80 blur-sm"
                       viewBox="0 0 288 288"
                       fill="none">
                       <path
@@ -200,12 +193,12 @@ const iconPaths: Record<string, string[]> = {
                       />
                       <path
                         d="M151 0h12c8 34 28 57 62 70 24 10 45 24 63 43v13c-20-22-43-38-69-48-37-15-60-41-68-78Z"
-                        fill="white"
-                        opacity=".72"
+                        fill="var(--color-primary)"
+                        opacity=".07"
                       />
                     </svg>
                     <svg
-                      class="text-primary-soft absolute -right-16 -bottom-20 size-96"
+                      class="text-primary-soft absolute -right-16 -bottom-20 size-96 blur-sm"
                       viewBox="0 0 384 384"
                       fill="none">
                       <path
@@ -219,8 +212,8 @@ const iconPaths: Record<string, string[]> = {
                       />
                       <path
                         d="M384 166v18c-45 54-80 96-141 122-48 21-90 46-127 78H94c40-40 87-70 142-94 62-27 98-72 148-124Z"
-                        fill="white"
-                        opacity=".66"
+                        fill="var(--color-primary)"
+                        opacity=".07"
                       />
                     </svg>
                   </>
@@ -324,7 +317,7 @@ const iconPaths: Record<string, string[]> = {
         class="pointer-events-none absolute inset-0 overflow-hidden rounded-xl"
         aria-hidden="true">
         <svg
-          class="text-primary-soft absolute -bottom-18 -left-12 size-64"
+          class="text-primary-soft absolute -bottom-18 -left-12 size-64 blur-sm"
           viewBox="0 0 256 256"
           fill="none">
           <path
@@ -338,12 +331,12 @@ const iconPaths: Record<string, string[]> = {
           />
           <path
             d="M0 101v10c37 16 62 40 78 72 11 22 16 46 19 73h10c-3-30-9-57-21-80-18-35-46-60-86-75Z"
-            fill="white"
-            opacity=".72"
+            fill="var(--color-primary)"
+            opacity=".07"
           />
         </svg>
         <svg
-          class="text-primary-soft absolute -top-20 -right-16 size-80"
+          class="text-primary-soft absolute -top-20 -right-16 size-80 blur-sm"
           viewBox="0 0 320 320"
           fill="none">
           <path
@@ -357,8 +350,8 @@ const iconPaths: Record<string, string[]> = {
           />
           <path
             d="M198 0h12v38c17 21 32 47 45 77 14 32 36 58 65 79v14c-34-23-59-53-75-88-13-29-29-55-47-77V0Z"
-            fill="white"
-            opacity=".68"
+            fill="var(--color-primary)"
+            opacity=".07"
           />
         </svg>
       </div>
@@ -366,7 +359,7 @@ const iconPaths: Record<string, string[]> = {
       <span class="border-primary/20 bg-primary-soft text-dark relative z-10 flex size-14 shrink-0 items-center justify-center rounded-full border">
         <svg
           class="size-7"
-          viewBox="0 0 32 32"
+          viewBox="0 0 24 24"
           fill="none"
           stroke="currentColor"
           stroke-width="1.8"
@@ -375,7 +368,7 @@ const iconPaths: Record<string, string[]> = {
           aria-hidden="true"
           focusable="false">
           {
-            iconPaths.handshake.map((path) => <path d={path} />)
+            Handshake.map(([, attributes]) => <path {...attributes} />)
           }
         </svg>
       </span>
