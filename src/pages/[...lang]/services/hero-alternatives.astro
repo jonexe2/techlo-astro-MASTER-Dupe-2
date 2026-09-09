@@ -1,6 +1,7 @@
 ---
 import Base from "@/layouts/Base.astro";
 import BannerThree from "@/components/sections/BannerThree.astro";
+import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection.astro";
 import { generatePaths } from "@/lib/utils/i18nUtils.ts";
 
 export function getStaticPaths() {
@@ -15,4 +16,5 @@ export function getStaticPaths() {
   headerLayout="three"
   headerPosition="fixed">
   <BannerThree />
+  <WhyChooseUsSection />
 </Base>

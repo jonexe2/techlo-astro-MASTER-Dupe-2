@@ -8,10 +8,9 @@ import ServicesSection from "@/components/sections/ServicesSection.astro";
 import RepairVsReplacementSection from "@/components/sections/RepairVsReplacementSection.astro";
 import WorkingProcessSection from "@/components/sections/WorkingProcessSection.astro";
 import TestimonialQuoteSection from "@/components/sections/TestimonialQuoteSection.astro";
-import FaqSection from "@/components/sections/FaqSection.astro";
+import HomepageFaqSection from "@/components/sections/HomepageFaqSection.astro";
 import HomepageServiceAreaShowcaseSection from "@/components/sections/HomepageServiceAreaShowcaseSection.astro";
 import ContactSectionTwo from "@/components/sections/ContactSectionTwo.astro";
-import WhyChooseUsSection from "@/components/sections/WhyChooseUsSection.astro";
 import HomeownerTrustSection from "@/components/sections/HomeownerTrustSection.astro";
 
 export function getStaticPaths() {
@@ -43,10 +42,9 @@ const duplicateSkillSectionContent = await getEntryCTM(
   />
   <RepairVsReplacementSection />
   <HomeownerTrustSection content={duplicateSkillSectionContent.data} />
-  <WhyChooseUsSection hasExtraBottomSpacing />
   <WorkingProcessSection hasLightBackground />
   <TestimonialQuoteSection hasSectionSpacing={false} />
-  <FaqSection hasLightBackground />
+  <HomepageFaqSection />
   <HomepageServiceAreaShowcaseSection />
   <ContactSectionTwo hasSectionSpacing={false} />
   <BlogSection />
