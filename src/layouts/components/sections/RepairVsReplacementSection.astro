@@ -315,7 +315,7 @@ const iconPaths: Record<string, string[]> = {
         class="pointer-events-none absolute inset-0 overflow-hidden rounded-xl"
         aria-hidden="true">
         <svg
-          class="text-primary-soft absolute -bottom-6 -left-8 size-72 opacity-70 blur-sm lg:-bottom-12 lg:-left-12 lg:size-96"
+          class="text-primary-soft absolute -bottom-12 -left-16 size-64 opacity-70 blur-sm lg:-bottom-16 lg:-left-20 lg:size-80"
           viewBox="0 0 384 384"
           fill="none">
           <g transform="translate(384 0) scale(-1 1)">
@@ -335,7 +335,7 @@ const iconPaths: Record<string, string[]> = {
           </g>
         </svg>
         <svg
-          class="text-primary-soft absolute -top-6 -right-8 size-72 opacity-70 blur-sm lg:-top-12 lg:-right-12 lg:size-96"
+          class="text-primary-soft absolute -top-12 -right-16 size-64 opacity-70 blur-sm lg:-top-16 lg:-right-20 lg:size-80"
           viewBox="0 0 384 384"
           fill="none">
           <path
@@ -354,7 +354,7 @@ const iconPaths: Record<string, string[]> = {
         </svg>
       </div>
 
-      <span class="border-primary/20 bg-primary-soft text-dark relative z-10 flex size-14 shrink-0 items-center justify-center rounded-full border">
+      <span class="border-primary/20 bg-primary-soft text-dark relative z-10 hidden size-14 shrink-0 items-center justify-center rounded-full border md:flex">
         <svg
           class="size-7"
           viewBox="0 0 24 24"
@@ -386,7 +386,10 @@ const iconPaths: Record<string, string[]> = {
         />
       </div>
 
-      <Button {...recommendation.button} class="relative z-10 shrink-0" />
+      <Button
+        {...recommendation.button}
+        class="recommendation-cta-button relative z-10 shrink-0"
+      />
     </aside>
   </div>
 </section>
