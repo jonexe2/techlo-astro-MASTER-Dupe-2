@@ -14,7 +14,7 @@ items:
     title: "Less Energy Going to Waste"
     description: "Modern HVAC equipment can meet your home's heating and cooling needs more efficiently while reducing unnecessary energy loss."
   - icon: "ShieldCheck"
-    statement: "CONFIDENCE."
+    statement: "ASSURANCE."
     title: "Ready for Every Season"
     description: "Professional installation helps your new system operate as designed so you can rely on it through Boston's hottest and coldest weather."
 ---

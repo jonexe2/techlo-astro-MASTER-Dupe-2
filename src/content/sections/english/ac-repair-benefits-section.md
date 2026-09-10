@@ -10,7 +10,7 @@ items:
     title: "Get Comfortable Again"
     description: "Proper AC repair can help restore cooler temperatures, stronger airflow, and more consistent comfort throughout the home."
   - icon: "Zap"
-    statement: "PERFORMANCE."
+    statement: "OPERATION."
     title: "Fix the Problem Behind Poor Performance"
     description: "Correcting the diagnosed issue helps the system operate as intended instead of continuing to struggle with an unresolved cooling problem."
   - icon: "ShieldCheck"

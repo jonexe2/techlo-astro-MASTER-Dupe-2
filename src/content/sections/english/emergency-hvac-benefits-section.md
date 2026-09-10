@@ -6,7 +6,7 @@ description: "Urgent HVAC service should identify what stopped the system from o
 
 items:
   - icon: "ThermometerSun"
-    statement: "RESTORATION."
+    statement: "RECOVERY."
     title: "Get Heating or Cooling Back"
     description: "Diagnosing and repairing the system can help restore the dependable heating or cooling your home needs."
   - icon: "Zap"

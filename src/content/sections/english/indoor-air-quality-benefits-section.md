@@ -10,7 +10,7 @@ items:
     title: "Air That Feels Better Indoors"
     description: "Appropriate filtration and humidity control can help address stale-feeling air, uncomfortable moisture levels, and air-quality concerns."
   - icon: "Zap"
-    statement: "COMPATIBILITY."
+    statement: "SYSTEM FIT."
     title: "Solutions Designed Around Your HVAC System"
     description: "System-compatible equipment supports indoor air goals while respecting the airflow requirements of your existing HVAC setup."
   - icon: "ShieldCheck"
