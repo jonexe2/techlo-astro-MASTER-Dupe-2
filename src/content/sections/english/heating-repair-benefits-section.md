@@ -10,7 +10,7 @@ items:
     title: "Restore Consistent Warmth"
     description: "Proper heating repair can help restore the temperatures, airflow, and dependable warmth your home should have during colder weather."
   - icon: "Zap"
-    statement: "PERFORMANCE."
+    statement: "RELIABILITY."
     title: "Help Your System Work Properly"
     description: "Correcting the problem behind poor heating performance can help the system operate more effectively instead of continuing to struggle with an unresolved issue."
   - icon: "ShieldCheck"
