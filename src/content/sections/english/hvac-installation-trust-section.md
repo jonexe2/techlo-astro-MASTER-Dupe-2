@@ -4,8 +4,8 @@ eyebrow: "WHY BLUEFLAME"
 title: "Installation You Can Feel Confident About"
 description: "A new HVAC system is a major investment in your home. BlueFlame Heating & Air makes the process clear from the first estimate through final testing with trained technicians, straightforward pricing, warranty protection, and local experience."
 location: "BOSTON, MA"
-image: "/images/testimonial/main.jpg"
-imageAlt: "BlueFlame Heating & Air HVAC team"
+image: "/images/hvac/hvac-installation-trust.webp"
+imageAlt: "HVAC technician checking a refrigerant coil during installation work"
 
 items:
   - icon: "BadgeCheck"

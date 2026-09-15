@@ -3,8 +3,8 @@ enable: true
 eyebrow: "INSTALLATION SERVICES"
 title: "HVAC Installation Options for Your Home"
 description: "Every home has different heating and cooling needs. BlueFlame Heating & Air offers installation options designed to provide dependable comfort, efficient operation, and the right system fit for your property."
-image: "/images/alternative-hero-hvac.jpg"
-imageAlt: "HVAC technician inspecting an outdoor air conditioning system"
+image: "/images/hvac/hvac-installation-options.webp"
+imageAlt: "Residential heat pump installed beside a modern home"
 
 items:
   - number: "01"

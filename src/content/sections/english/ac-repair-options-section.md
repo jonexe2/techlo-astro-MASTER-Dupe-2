@@ -2,8 +2,8 @@
 enable: true
 eyebrow: "REPAIR SERVICES"
 title: "AC Repair for Common Cooling Problems"
-image: "/images/alternative-hero-hvac.jpg"
-imageAlt: "HVAC technician inspecting an outdoor air conditioning system"
+image: "/images/hvac/ac-repair-options.webp"
+imageAlt: "HVAC technician connecting manifold gauges to an air conditioning unit"
 
 items:
   - number: "01"

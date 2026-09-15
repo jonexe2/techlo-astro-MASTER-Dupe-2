@@ -376,6 +376,8 @@ export const homeownerTrustSectionSchema = z
     images: z.object({
       large: z.string(),
       small: z.string(),
+      largeAlt: z.string().optional(),
+      smallAlt: z.string().optional(),
     }),
     features: z
       .array(

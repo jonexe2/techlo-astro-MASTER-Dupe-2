@@ -19,6 +19,7 @@ export const page = z.object({
   date: z.date().optional(), // example date format 2022-01-01 or 2022-01-01T00:00:00+00:00 (Year-Month-Day Hour:Minute:Second+Timezone)
   description: z.string().optional(),
   image: z.string().optional(),
+  imageAlt: z.string().optional(),
   draft: z.boolean().optional(),
   button: button.optional(),
   metaTitle: z.string().optional(),

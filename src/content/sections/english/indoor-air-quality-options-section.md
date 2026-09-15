@@ -2,8 +2,8 @@
 enable: true
 eyebrow: "AIR QUALITY SOLUTIONS"
 title: "Indoor Air Quality Options for Your Home"
-image: "/images/alternative-hero-hvac.jpg"
-imageAlt: "HVAC technician evaluating home air quality equipment"
+image: "/images/hvac/indoor-air-quality-filter-options.webp"
+imageAlt: "Technician opening a portable air purifier to inspect its filter"
 
 items:
   - number: "01"

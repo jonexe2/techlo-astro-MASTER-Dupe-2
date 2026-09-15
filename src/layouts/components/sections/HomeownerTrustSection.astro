@@ -17,7 +17,7 @@ const {
   eyebrow,
   title,
   description,
-  images = { large: "", small: "" },
+  images = { large: "", small: "", largeAlt: "", smallAlt: "" },
   features = [],
 } = (Astro.props.content || {}) as HomeownerTrustContent;
 
@@ -108,6 +108,7 @@ const featureIconPaths = [
                 <OptimizedImage
                   width={900}
                   src={images.large}
+                  alt={images.largeAlt || "HVAC technician servicing residential equipment"}
                   class="h-full w-full object-cover"
                 />
               </div>
@@ -133,6 +134,7 @@ const featureIconPaths = [
                   <OptimizedImage
                     width={300}
                     src={images.small}
+                    alt={images.smallAlt || "Homeowner adjusting a smart thermostat"}
                     class="h-full w-full object-cover"
                   />
                 </div>

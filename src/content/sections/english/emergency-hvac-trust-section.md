@@ -4,8 +4,8 @@ eyebrow: "WHY BLUEFLAME"
 title: "HVAC Service You Can Feel Confident About"
 description: "When an HVAC problem needs prompt attention, you need clear findings and dependable work without exaggerated promises. BlueFlame Heating & Air provides trained technicians, straightforward pricing, careful repairs, and local experience."
 location: "BOSTON, MA"
-image: "/images/testimonial/main.jpg"
-imageAlt: "BlueFlame Heating & Air HVAC team"
+image: "/images/hvac/emergency-hvac-trust.webp"
+imageAlt: "HVAC technician securing insulated refrigerant lines at an outdoor unit"
 
 items:
   - icon: "BadgeCheck"

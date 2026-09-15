@@ -29,7 +29,7 @@ interface Props {
 
 const { content, sidebarCtaContent } = Astro.props;
 const {
-  data: { title, image },
+  data: { title, image, imageAlt },
 } = content;
 
 const services = await getCollectionCTM("services", Astro.currentLocale);
@@ -47,7 +47,7 @@ const t = await useTranslations(Astro.currentLocale as string);
               src={image}
               width={856}
               height={570}
-              alt={title}
+              alt={imageAlt || title}
               data-image-lightbox
               class="h-80 w-full rounded-2xl object-cover md:h-112.5 xl:h-142.5"
             />

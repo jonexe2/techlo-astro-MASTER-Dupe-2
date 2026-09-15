@@ -2,8 +2,8 @@
 enable: true
 eyebrow: "EMERGENCY SERVICES"
 title: "HVAC Help for Urgent System Problems"
-image: "/images/alternative-hero-hvac.jpg"
-imageAlt: "HVAC technician evaluating an urgent system problem"
+image: "/images/hvac/emergency-hvac-options.webp"
+imageAlt: "HVAC technician using an electronic tester on an air conditioning coil"
 
 items:
   - number: "01"

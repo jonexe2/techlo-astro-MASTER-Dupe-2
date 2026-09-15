@@ -6,8 +6,10 @@ title: "Why Homeowners Choose BlueFlame Heating & Air"
 description: "We focus on clear communication, careful workmanship, and dependable service from the first conversation through the completed job."
 
 images:
-  large: "/images/skill/skill-1.png"
-  small: "/images/skill/skill-2.jpg"
+  large: "/images/hvac/homeowner-trust-technician.webp"
+  largeAlt: "HVAC technician using manifold gauges during residential service"
+  small: "/images/hvac/homeowner-trust-thermostat.webp"
+  smallAlt: "Homeowner adjusting a wall-mounted smart thermostat"
 
 features:
   - icon: "BadgeCheck"

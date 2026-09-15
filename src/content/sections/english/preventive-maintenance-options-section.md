@@ -2,8 +2,8 @@
 enable: true
 eyebrow: "MAINTENANCE SERVICES"
 title: "HVAC Maintenance for Every Season"
-image: "/images/alternative-hero-hvac.jpg"
-imageAlt: "HVAC technician performing preventive system maintenance"
+image: "/images/hvac/preventive-maintenance-options.webp"
+imageAlt: "HVAC technician using manifold gauges during a seasonal tune-up"
 
 items:
   - number: "01"

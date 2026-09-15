@@ -4,8 +4,8 @@ eyebrow: "WHY BLUEFLAME"
 title: "Air Quality Solutions You Can Feel Confident About"
 description: "Indoor air quality options should reflect your concerns, existing equipment, and airflow needs. BlueFlame Heating & Air provides practical guidance, clear equipment recommendations, straightforward pricing, and local HVAC experience."
 location: "BOSTON, MA"
-image: "/images/testimonial/main.jpg"
-imageAlt: "BlueFlame Heating & Air HVAC team"
+image: "/images/hvac/indoor-air-quality-trust.webp"
+imageAlt: "HVAC technician checking air quality equipment with digital gauges"
 
 items:
   - icon: "BadgeCheck"

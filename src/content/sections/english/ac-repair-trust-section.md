@@ -4,8 +4,8 @@ eyebrow: "WHY BLUEFLAME"
 title: "AC Repair You Can Feel Confident About"
 description: "When your home is not cooling properly, you need a clear diagnosis and dependable repair work. BlueFlame Heating & Air makes the process straightforward with trained technicians, clear pricing, careful testing, and local experience."
 location: "BOSTON, MA"
-image: "/images/testimonial/main.jpg"
-imageAlt: "BlueFlame Heating & Air HVAC team"
+image: "/images/hvac/ac-repair-trust.webp"
+imageAlt: "HVAC technician reading manifold gauges during an AC diagnostic"
 
 items:
   - icon: "BadgeCheck"

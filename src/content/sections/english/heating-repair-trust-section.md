@@ -4,8 +4,8 @@ eyebrow: "WHY BLUEFLAME"
 title: "Heating Repair You Can Feel Confident About"
 description: "When your heat is not working properly, you need clear answers and dependable repair work. BlueFlame Heating & Air makes the process straightforward from diagnosis through final system testing with trained technicians, clear pricing, dependable workmanship, and local experience."
 location: "BOSTON, MA"
-image: "/images/testimonial/main.jpg"
-imageAlt: "BlueFlame Heating & Air HVAC team"
+image: "/images/hvac/heating-repair-trust.webp"
+imageAlt: "Technician measuring a radiator during a home heating service visit"
 
 items:
   - icon: "BadgeCheck"

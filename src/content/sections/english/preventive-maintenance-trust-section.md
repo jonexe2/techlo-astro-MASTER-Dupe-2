@@ -4,8 +4,8 @@ eyebrow: "WHY BLUEFLAME"
 title: "HVAC Maintenance You Can Feel Confident About"
 description: "Preventive maintenance should give you a useful picture of system condition and seasonal readiness. BlueFlame Heating & Air provides careful HVAC checks, clear findings, straightforward recommendations, and local experience."
 location: "BOSTON, MA"
-image: "/images/testimonial/main.jpg"
-imageAlt: "BlueFlame Heating & Air HVAC team"
+image: "/images/hvac/preventive-maintenance-trust.webp"
+imageAlt: "Residential HVAC technician inspecting an outdoor condenser"
 
 items:
   - icon: "BadgeCheck"

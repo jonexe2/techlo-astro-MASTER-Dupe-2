@@ -2,8 +2,8 @@
 enable: true
 eyebrow: "REPAIR SERVICES"
 title: "Heating Repair for Common System Problems"
-image: "/images/alternative-hero-hvac.jpg"
-imageAlt: "HVAC technician inspecting an outdoor heating system"
+image: "/images/hvac/heating-repair-options.webp"
+imageAlt: "Heating technician servicing a wall-mounted boiler system"
 
 items:
   - number: "01"
