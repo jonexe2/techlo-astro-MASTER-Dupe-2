@@ -3,8 +3,8 @@ enable: true
 pageTitle: "About Us"
 metaDescription: "Learn more about our HVAC team and our straightforward approach to residential heating and cooling services."
 
-image: "/images/hvac/about-hvac-team.webp"
-imageAlt: "HVAC technicians collaborating during hands-on air conditioning training"
+image: "/images/hvac/about-hvac-team-new.webp"
+imageAlt: "HVAC technician inspecting an outdoor air conditioning unit beside a home"
 
 title: "Reliable Heating & Cooling Service, Made Simple"
 paragraphs:
