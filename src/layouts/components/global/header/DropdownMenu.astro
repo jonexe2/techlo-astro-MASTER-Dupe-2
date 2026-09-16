@@ -31,55 +31,108 @@ const isMenuActive = (item: NavigationLink): boolean =>
     menu.hasChildren ? "relative" : "",
   ]}
   role="menuitem">
-  <span
-    class:list={[
-      "nav-dropdown-toggle hs-dropdown-toggle flex items-center",
-      {
-        active: isMenuActive(menu),
-      },
-      recursive
-        ? "nav-dropdown-link justify-between"
-        : "nav-link max-lg:flex! max-lg:justify-between",
-    ]}>
-    {menu.name}
-    {
-      recursive ? (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          data-icon="arrow-right"
-          class="nav-dropdown-chevron">
-          <path d="m9 18 6-6-6-6" />
-        </svg>
-      ) : (
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="24"
-          height="24"
-          viewBox="0 0 24 24"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-          stroke-linecap="round"
-          stroke-linejoin="round"
-          data-icon="arrow-down"
-          class="nav-dropdown-chevron">
-          <path d="m6 9 6 6 6-6" />
-        </svg>
-      )
-    }
-  </span>
+  {
+    menu.hasChildren && !recursive ? (
+      <>
+        <a
+          href={getLocaleUrlCTM(menu.url || "/", Astro.currentLocale)}
+          class:list={[
+            "nav-dropdown-toggle nav-link hidden items-center lg:flex",
+            { active: isMenuActive(menu) },
+          ]}>
+          {menu.name}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            data-icon="arrow-down"
+            class="nav-dropdown-chevron lg:group-hover:rotate-180">
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </a>
+        <span
+          class:list={[
+            "nav-dropdown-toggle hs-dropdown-toggle flex items-center lg:hidden",
+            { active: isMenuActive(menu) },
+            "nav-link max-lg:flex! max-lg:justify-between",
+          ]}>
+          {menu.name}
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="24"
+            height="24"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            data-icon="arrow-down"
+            class="nav-dropdown-chevron">
+            <path d="m6 9 6 6 6-6" />
+          </svg>
+        </span>
+      </>
+    ) : (
+      <span
+        class:list={[
+          "nav-dropdown-toggle hs-dropdown-toggle flex items-center",
+          { active: isMenuActive(menu) },
+          recursive
+            ? "nav-dropdown-link justify-between"
+            : "nav-link max-lg:flex! max-lg:justify-between",
+        ]}>
+        {menu.name}
+        {
+          recursive ? (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              data-icon="arrow-right"
+              class="nav-dropdown-chevron">
+              <path d="m9 18 6-6-6-6" />
+            </svg>
+          ) : (
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              data-icon="arrow-down"
+              class="nav-dropdown-chevron">
+              <path d="m6 9 6 6 6-6" />
+            </svg>
+          )
+        }
+      </span>
+    )
+  }
   {
     menu.hasChildren && (
       <ul
-        class="nav-dropdown-list hs-dropdown-menu hs-dropdown-open:mt-2! hs-dropdown-open:pointer-events-auto hs-dropdown-open:opacity-100 pointer-events-none top-0 mt-4 hidden opacity-0 transition-[opacity,margin] max-lg:m-0! max-lg:transform-none! lg:absolute"
+        class:list={[
+          "nav-dropdown-list hs-dropdown-menu hs-dropdown-open:mt-2! hs-dropdown-open:pointer-events-auto hs-dropdown-open:opacity-100 pointer-events-none top-0 mt-4 hidden opacity-0 transition-[opacity,margin] max-lg:m-0! max-lg:transform-none! lg:absolute",
+          !recursive &&
+            "lg:top-full lg:group-hover:mt-2! lg:group-hover:block lg:group-hover:pointer-events-auto lg:group-hover:opacity-100",
+        ]}
         {...(recursive ? { "aria-orientation": "vertical" } : {})}>
         {menu.children?.map((child) => {
           const childUrl = child.url || "/";

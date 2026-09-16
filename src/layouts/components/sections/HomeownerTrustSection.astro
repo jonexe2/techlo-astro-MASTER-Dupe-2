@@ -89,7 +89,7 @@ const featureIconPaths = [
 
     <div class="grid place-items-center gap-16 lg:grid-cols-2 xl:gap-24">
       <div
-        class="relative isolate z-0"
+        class="relative isolate z-0 w-full"
         data-scroll-reveal="image-clip">
         <svg class="absolute h-0 w-0" aria-hidden="true">
           <clipPath
@@ -103,7 +103,7 @@ const featureIconPaths = [
 
         {
           images.large && (
-            <div class="relative mr-auto h-125 w-4/5 rounded-4xl pb-14 sm:h-142">
+            <div class="relative mr-auto h-125 w-4/5 rounded-4xl pb-14 sm:h-142 lg:w-[90%]">
               <div class="clip-about-shape h-full w-full">
                 <OptimizedImage
                   width={900}
@@ -132,7 +132,7 @@ const featureIconPaths = [
               <div class="absolute right-0 bottom-0 h-1/2 w-7/12 rounded-4xl sm:w-5/12">
                 <div class="clip-about-shape h-full w-full">
                   <OptimizedImage
-                    width={300}
+                    width={450}
                     src={images.small}
                     alt={images.smallAlt || "Homeowner adjusting a smart thermostat"}
                     class="h-full w-full object-cover"

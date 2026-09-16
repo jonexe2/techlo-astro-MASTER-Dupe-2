@@ -13,8 +13,8 @@
       "children": [
         {
           "enable": true,
-          "name": "All Services",
-          "url": "/services/"
+          "name": "AC Repair",
+          "url": "/services/service-01/"
         },
         {
           "enable": true,
@@ -23,17 +23,22 @@
         },
         {
           "enable": true,
-          "name": "UI/UX & Branding Identity",
-          "url": "/services/service-05/"
-        },
-        {
-          "enable": true,
           "name": "HVAC Installation",
           "url": "/services/service-03/"
         },
         {
           "enable": true,
-          "name": "Cyber Security Solutions",
+          "name": "Preventive HVAC Maintenance",
+          "url": "/services/service-04/"
+        },
+        {
+          "enable": true,
+          "name": "Indoor Air Quality Services",
+          "url": "/services/service-05/"
+        },
+        {
+          "enable": true,
+          "name": "Emergency HVAC Service",
           "url": "/services/service-06/"
         },
         {
