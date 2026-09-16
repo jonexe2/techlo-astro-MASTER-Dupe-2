@@ -13,6 +13,7 @@ type FaqSectionContent = Section &
 type Props = {
   content?: FaqSectionContent;
   hasSectionSpacing?: boolean;
+  hasLightBackground?: boolean;
 };
 
 const defaultContent = (
@@ -24,25 +25,48 @@ const actualContent = overrideObjects(
   Astro.props.content,
 ) as FaqSectionContent;
 
-const { enable = true, title, items = [] } = actualContent;
-const { hasSectionSpacing = true } = Astro.props;
+const { enable = true, eyebrow, title, items = [] } = actualContent;
+const { hasSectionSpacing = true, hasLightBackground = false } = Astro.props;
 
 if (!enable || !items.length) {
   return null;
 }
 ---
 
-<section class:list={[!hasSectionSpacing && "pt-0", "pb-16 lg:pb-20 xl:pb-24"]}>
+<section
+  class:list={[
+    !hasSectionSpacing && "pt-0",
+    "pb-16 lg:pb-20 xl:pb-24",
+    hasLightBackground && "bg-theme-light",
+  ]}>
   <div class="container space-y-12">
-    {
-      title && (
-        <h2
-          class="mx-auto max-w-3xl text-center"
-          data-scroll-reveal="blur-up"
-          set:html={markdownify(title)}
-        />
-      )
-    }
+    <div class="mx-auto max-w-3xl text-center">
+      {
+        eyebrow && (
+          <div
+            class="flex items-center justify-center gap-3"
+            data-scroll-reveal="fade-up">
+            <span
+              class="bg-heat-accent h-1 w-8 rounded-full"
+              aria-hidden="true"
+            />
+            <p
+              class="text-primary text-base-sm font-semibold tracking-widest uppercase md:text-base"
+              set:html={markdownify(eyebrow)}
+            />
+          </div>
+        )
+      }
+      {
+        title && (
+          <h2
+            class:list={[eyebrow && "mt-4"]}
+            data-scroll-reveal="blur-up"
+            set:html={markdownify(title)}
+          />
+        )
+      }
+    </div>
 
     <div
       class="faq-accordion mx-auto max-w-3xl"
@@ -64,18 +88,24 @@ if (!enable || !items.length) {
                 aria-expanded="false"
                 aria-controls={`faq-content-${index}`}>
                 <span class="text-h6" set:html={markdownify(item.question)} />
-                <span class="faq-icon flex size-8 shrink-0 items-center justify-center rounded-full bg-theme-light transition-colors">
-                  <Icons icon="Plus" class="hs-accordion-active:hidden size-4" />
-                  <Icons icon="Minus" class="hidden hs-accordion-active:block size-4" />
+                <span class="faq-icon bg-theme-light flex size-8 shrink-0 items-center justify-center rounded-full transition-colors">
+                  <Icons
+                    icon="Plus"
+                    class="hs-accordion-active:hidden size-4"
+                  />
+                  <Icons
+                    icon="Minus"
+                    class="hs-accordion-active:block hidden size-4"
+                  />
                 </span>
               </button>
               <div
                 id={`faq-content-${index}`}
                 role="region"
                 aria-labelledby={`faq-item-${index}`}
-                class="hs-accordion-content w-full overflow-hidden transition-all duration-300 ease-in-out hidden">
+                class="hs-accordion-content hidden w-full overflow-hidden transition-all duration-300 ease-in-out">
                 <p
-                  class="text-text-default leading-body pb-6 pe-12"
+                  class="text-text-default leading-body pe-12 pb-6"
                   set:html={markdownify(item.answer)}
                 />
               </div>
@@ -93,7 +123,11 @@ if (!enable || !items.length) {
   import { HSAccordion } from "preline";
 
   window.addEventListener("load", () => {
-    const accordions = document.querySelectorAll(".faq-accordion .hs-accordion");
+    HSAccordion.autoInit();
+
+    const accordions = document.querySelectorAll(
+      ".faq-accordion .hs-accordion",
+    );
 
     accordions.forEach((currentAccordion) => {
       const instance = HSAccordion.getInstance(currentAccordion, true);

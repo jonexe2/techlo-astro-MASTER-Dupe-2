@@ -634,11 +634,13 @@ const clientThemeConfig = JSON.stringify({
     }
 
     function handleMagneticHover(magneticElem: HTMLElement) {
-      const isAlternativeServiceButton = Boolean(
-        magneticElem.closest(".alternative-service-card"),
+      const usesReducedMagneticMotion = Boolean(
+        magneticElem.closest(
+          ".alternative-service-card, .recommendation-cta-button",
+        ),
       );
-      const speed = isAlternativeServiceButton ? 0.14 : defaultSpeed;
-      const maxDistance = isAlternativeServiceButton ? 12 : defaultMaxDistance;
+      const speed = usesReducedMagneticMotion ? 0.14 : defaultSpeed;
+      const maxDistance = usesReducedMagneticMotion ? 12 : defaultMaxDistance;
       let isInside = false;
 
       function updateTransform(e: MouseEvent) {

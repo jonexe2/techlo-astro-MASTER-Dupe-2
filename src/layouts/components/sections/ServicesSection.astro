@@ -15,6 +15,7 @@ type Props = {
   content?: ServicesSectionType;
   hasSectionSpacing?: boolean;
   hasLightBackground?: boolean;
+  hasBottomSpacing?: boolean;
   ignoreLimit?: boolean;
 };
 
@@ -49,7 +50,11 @@ services =
     ? services.slice(0, limit as number)
     : services;
 
-const { hasLightBackground = true, hasSectionSpacing = true } = Astro.props;
+const {
+  hasLightBackground = true,
+  hasSectionSpacing = true,
+  hasBottomSpacing = false,
+} = Astro.props;
 const buttonProps = button && {
   ...button,
   hoverEffect: button.hoverEffect || "magnetic-text-flip",
@@ -82,6 +87,7 @@ if (!hasContentSource || !enable || !services?.length) {
   <div
     class:list={[
       hasLightBackground && "section-spacing-vertical bg-theme-light",
+      hasBottomSpacing && "pb-16 lg:pb-20 xl:pb-24",
     ]}>
     <div class:list={["space-y-16", layout !== "carousel" && "container"]}>
       {

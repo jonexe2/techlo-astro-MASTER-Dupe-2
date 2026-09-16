@@ -2,6 +2,7 @@
 import Button from "@/components/Button.astro";
 import Icons from "@/helpers/Icons.astro";
 import { getEntryCTM } from "@/lib/contentParser.astro";
+import overrideObjects from "@/lib/utils/overrideObjects.ts";
 import type { sharedButton } from "@/sections.schema";
 import type { z } from "astro/zod";
 
@@ -19,20 +20,22 @@ const defaultContent = (
   contact?: CtaContent;
 };
 
-const content = (defaultContent?.contact || {}) as CtaContent;
-const hasWidgetContent = Boolean(
-  defaultContent?.contact &&
-  (content.icon ||
-    content.title ||
-    content.description ||
-    content.button?.enable),
-);
-
 interface Props {
   class?: string;
+  content?: CtaContent;
 }
 
-const { class: className } = Astro.props;
+const { class: className, content: contentOverride } = Astro.props;
+const content = overrideObjects(
+  { ...(defaultContent?.contact || {}) },
+  contentOverride || {},
+) as CtaContent;
+const hasWidgetContent = Boolean(
+  content.icon ||
+  content.title ||
+  content.description ||
+  content.button?.enable,
+);
 
 if (!hasWidgetContent) {
   return null;

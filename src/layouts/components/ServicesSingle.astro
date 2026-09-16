@@ -11,19 +11,28 @@ import CallToActionWidget from "./widgets/CallToActionWidget.astro";
 
 interface Props {
   content: CollectionEntry<"services">;
+  sidebarCtaContent?: {
+    icon?: string;
+    title?: string;
+    description?: string;
+    button?: {
+      enable?: boolean;
+      label: string;
+      url?: string;
+      hoverEffect?:
+        "text-flip" | "creative-fill" | "magnetic" | "magnetic-text-flip";
+      variant?: "fill" | "fill-white" | "outline" | "text" | "circle";
+      [key: string]: unknown;
+    };
+  };
 }
 
-const { content } = Astro.props;
+const { content, sidebarCtaContent } = Astro.props;
 const {
-  data: { title, image },
+  data: { title, image, imageAlt },
 } = content;
 
 const services = await getCollectionCTM("services", Astro.currentLocale);
-const isWebMobileAppDevelopment =
-  extractSlug(content).split("/").pop() === "service-02";
-const sidebarServices = isWebMobileAppDevelopment
-  ? services.slice(0, 6)
-  : services;
 const { Content } = await render(content);
 const t = await useTranslations(Astro.currentLocale as string);
 ---
@@ -38,7 +47,7 @@ const t = await useTranslations(Astro.currentLocale as string);
               src={image}
               width={856}
               height={570}
-              alt={title}
+              alt={imageAlt || title}
               data-image-lightbox
               class="h-80 w-full rounded-2xl object-cover md:h-112.5 xl:h-142.5"
             />
@@ -59,10 +68,14 @@ const t = await useTranslations(Astro.currentLocale as string);
           <nav aria-label={t("aria.services")}>
             <ul class="space-y-2.5">
               {
-                sidebarServices.map((service) => {
+                services.map((service) => {
                   const isActive =
                     service.filePath === content.filePath ||
                     service.id === content.id;
+                  const serviceNavLabel = service.data.title.replace(
+                    /\s+in Boston,\s*MA$/i,
+                    "",
+                  );
 
                   return (
                     <li>
@@ -79,7 +92,7 @@ const t = await useTranslations(Astro.currentLocale as string);
                             ? "bg-primary text-white"
                             : "bg-light/70 text-dark hover:bg-primary hover:text-white",
                         ]}>
-                        <span>{service.data.title}</span>
+                        <span>{serviceNavLabel}</span>
                         <Icons
                           icon="ArrowUpRight"
                           class="size-5 shrink-0"
@@ -93,7 +106,7 @@ const t = await useTranslations(Astro.currentLocale as string);
             </ul>
           </nav>
 
-          <CallToActionWidget />
+          <CallToActionWidget content={sidebarCtaContent} />
         </div>
       </aside>
     </div>

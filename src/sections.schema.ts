@@ -253,6 +253,7 @@ export const testimonialSectionSchema = z
 export const workingProcessSectionSchema = z
   .object({
     enable: z.boolean().default(false).optional(),
+    eyebrow: z.string().optional(),
     title: z.string().optional(),
     list: z
       .array(
@@ -263,6 +264,54 @@ export const workingProcessSectionSchema = z
         }),
       )
       .optional(),
+  })
+  .optional();
+
+const serviceEditorialItemSchema = z.object({
+  number: z.string().optional(),
+  icon: z.string().optional(),
+  title: z.string(),
+  tabLabel: z.string().optional(),
+  tagline: z.string().optional(),
+  bestFor: z.string().optional(),
+  statement: z.string().optional(),
+  highlights: z.array(z.string()).optional(),
+  description: z.string(),
+});
+
+export const serviceOptionsSectionSchema = z
+  .object({
+    enable: z.boolean().default(true).optional(),
+    eyebrow: z.string().optional(),
+    title: z.string().optional(),
+    description: z.string().optional(),
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
+    items: z.array(serviceEditorialItemSchema).optional(),
+    button: sharedButton.optional(),
+  })
+  .optional();
+
+export const serviceBenefitsSectionSchema = z
+  .object({
+    enable: z.boolean().default(true).optional(),
+    eyebrow: z.string().optional(),
+    title: z.string().optional(),
+    description: z.string().optional(),
+    items: z.array(serviceEditorialItemSchema).optional(),
+  })
+  .optional();
+
+export const serviceTrustSectionSchema = z
+  .object({
+    enable: z.boolean().default(true).optional(),
+    eyebrow: z.string().optional(),
+    title: z.string().optional(),
+    description: z.string().optional(),
+    location: z.string().optional(),
+    image: z.string().optional(),
+    imageAlt: z.string().optional(),
+    items: z.array(serviceEditorialItemSchema).optional(),
   })
   .optional();
 
@@ -318,9 +367,34 @@ export const multipurposeSectionSchema = z
   })
   .optional();
 
+export const homeownerTrustSectionSchema = z
+  .object({
+    enable: z.boolean().default(true).optional(),
+    eyebrow: z.string().optional(),
+    title: z.string(),
+    description: z.string(),
+    images: z.object({
+      large: z.string(),
+      small: z.string(),
+      largeAlt: z.string().optional(),
+      smallAlt: z.string().optional(),
+    }),
+    features: z
+      .array(
+        z.object({
+          icon: z.string(),
+          title: z.string(),
+          description: z.string(),
+        }),
+      )
+      .length(4),
+  })
+  .optional();
+
 export const faqSectionSchema = z
   .object({
     enable: z.boolean().default(false).optional(),
+    eyebrow: z.string().optional(),
     title: z.string().optional(),
     items: z
       .array(
@@ -342,6 +416,57 @@ export const serviceAreaSectionSchema = z
     cities: z.array(z.string()).optional(),
     mapLabel: z.string().optional(),
     mapEmbedUrl: z.string().optional(),
+  })
+  .optional();
+
+export const homepageServiceAreaShowcaseSectionSchema = serviceAreaSectionSchema
+  .unwrap()
+  .extend({
+    title: z.string(),
+    description: z.string(),
+    cities: z.array(z.string()).length(12),
+    cityIcon: z.string(),
+    mapLabel: z.string(),
+    mapEmbedUrl: z.url(),
+    trustCallout: z.object({
+      icon: z.string(),
+      title: z.string(),
+      description: z.string(),
+    }),
+  })
+  .optional();
+
+export const repairVsReplacementSectionSchema = z
+  .object({
+    enable: z.boolean().default(true).optional(),
+    eyebrow: z.string().optional(),
+    title: z.string(),
+    description: z.string(),
+    panels: z
+      .array(
+        z.object({
+          variant: z.enum(["repair", "replace"]),
+          label: z.string(),
+          title: z.string(),
+          description: z.string(),
+          features: z
+            .array(
+              z.object({
+                icon: z.string(),
+                title: z.string(),
+                description: z.string(),
+              }),
+            )
+            .length(4),
+        }),
+      )
+      .length(2),
+    recommendation: z.object({
+      eyebrow: z.string(),
+      title: z.string(),
+      description: z.string(),
+      button: sharedButton,
+    }),
   })
   .optional();
 
@@ -367,6 +492,7 @@ export const alternativeServicesSectionSchema = z
           description: z.string(),
           image: z.string(),
           imageAlt: z.string(),
+          icon: z.string().optional(),
           button: sharedButton,
         }),
       )
@@ -442,9 +568,15 @@ export const sectionsSchema = {
   testimonialSection: testimonialSectionSchema,
   bannerAgencySection: bannerAgencySectionSchema,
   workingProcessSection: workingProcessSectionSchema,
+  serviceOptionsSection: serviceOptionsSectionSchema,
+  serviceBenefitsSection: serviceBenefitsSectionSchema,
+  serviceTrustSection: serviceTrustSectionSchema,
   multipurposeSection: multipurposeSectionSchema,
+  homeownerTrustSection: homeownerTrustSectionSchema,
   faqSection: faqSectionSchema,
   serviceAreaSection: serviceAreaSectionSchema,
+  homepageServiceAreaShowcaseSection: homepageServiceAreaShowcaseSectionSchema,
+  repairVsReplacementSection: repairVsReplacementSectionSchema,
   whyChooseUsSection: whyChooseUsSectionSchema,
   aboutUsIntroSection: aboutUsIntroSectionSchema,
   alternativeServicesSection: alternativeServicesSectionSchema,

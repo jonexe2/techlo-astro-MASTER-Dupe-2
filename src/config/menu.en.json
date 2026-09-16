@@ -13,33 +13,33 @@
       "children": [
         {
           "enable": true,
-          "name": "All Services",
-          "url": "/services/"
+          "name": "AC Repair",
+          "url": "/services/service-01/"
         },
         {
           "enable": true,
-          "name": "Web & Mobile App Development",
+          "name": "Heating Repair",
           "url": "/services/service-02/"
         },
         {
           "enable": true,
-          "name": "UI/UX & Branding Identity",
-          "url": "/services/service-05/"
-        },
-        {
-          "enable": true,
-          "name": "Digital Marketing",
+          "name": "HVAC Installation",
           "url": "/services/service-03/"
         },
         {
           "enable": true,
-          "name": "Cyber Security Solutions",
-          "url": "/services/service-06/"
+          "name": "Preventive HVAC Maintenance",
+          "url": "/services/service-04/"
         },
         {
           "enable": true,
-          "name": "Cloud Migration & DevOps",
-          "url": "/services/service-07/"
+          "name": "Indoor Air Quality Services",
+          "url": "/services/service-05/"
+        },
+        {
+          "enable": true,
+          "name": "Emergency HVAC Service",
+          "url": "/services/service-06/"
         },
         {
           "enable": true,
